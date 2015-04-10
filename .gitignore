@@ -1,5 +1,9 @@
 ﻿*.pdf
-/datasheet&reference/*.*
+datasheet&reference/
 *.rar
-/毕业论文/*.*
-/others/*.*
+毕业论文/
+others/
+Document/*.tmp
+Git_program/*.docx
+Git_program/*.xlsx
+Git_program/*.txt
