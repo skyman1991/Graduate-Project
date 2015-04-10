@@ -1,0 +1,18 @@
+[Sfr]
+sfr = "P2SEL",	"Memory",	0x2e,	1,	base=16,	modified
+sfr = "P3DIR",	"Memory",	0x1a,	1,	base=16,	modified
+sfr = "P3SEL",	"Memory",	0x1b,	1,	base=16,	modified
+sfr = "UCB0BR1",	"Memory",	0x6b,	1,	base=16,	modified
+sfr = "CALDCO_16MHZ",	"Memory",	0x10f8,	1,	base=16,	modified
+sfr = "P1SEL.P4",	"Memory",	0x26,	1,	base=16,	modified
+sfr = "P3DIR.P3",	"Memory",	0x1a,	1,	base=16,	modified
+sfr = "TA0IV",	"Memory",	0x12e,	2,	base=16,	modified
+sfr = "UCB0BR0__SPI",	"Memory",	0x6a,	1,	base=16,	modified
+sfr = "UCB0STAT__SPI.UCBUSY",	"Memory",	0x6d,	1,	base=16,	modified
+sfr = "UCB0STAT__SPI.UCFE",	"Memory",	0x6d,	1,	base=16,	modified
+sfr = "UCB0CTL0.UCA10",	"Memory",	0x68,	1,	base=16,	modified
+
+
+[SfrGroupInfo]
+group = "Custom", "P2SEL", "P3DIR"
+group = "Custom", "P3SEL", "UCB0BR1", "CALDCO_16MHZ"

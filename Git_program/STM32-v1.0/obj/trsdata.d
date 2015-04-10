@@ -1,0 +1,29 @@
+..\OBJ\trsdata.o: ..\trsdata\trsdata.c
+..\OBJ\trsdata.o: ..\trsdata\trsdata.h
+..\OBJ\trsdata.o: ..\HARDWARE\common.h
+..\OBJ\trsdata.o: ..\HARDWARE\LED\led.h
+..\OBJ\trsdata.o: ..\SYSTEM\sys\sys.h
+..\OBJ\trsdata.o: ..\USER\stm32f10x.h
+..\OBJ\trsdata.o: ..\CORE\core_cm3.h
+..\OBJ\trsdata.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdint.h
+..\OBJ\trsdata.o: ..\USER\system_stm32f10x.h
+..\OBJ\trsdata.o: ..\USER\stm32f10x_conf.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h
+..\OBJ\trsdata.o: ..\USER\stm32f10x.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\misc.h
+..\OBJ\trsdata.o: ..\SYSTEM\delay\delay.h
+..\OBJ\trsdata.o: ..\HARDWARE\KEY\key.h
+..\OBJ\trsdata.o: ..\SYSTEM\usart\usart.h
+..\OBJ\trsdata.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdio.h
+..\OBJ\trsdata.o: ..\HARDWARE\SPI\spi.h
+..\OBJ\trsdata.o: ..\HARDWARE\A7129\A7129.h
+..\OBJ\trsdata.o: ..\HARDWARE\common.h
+..\OBJ\trsdata.o: ..\HARDWARE\TIMER\timer.h
+..\OBJ\trsdata.o: ..\HARDWARE\A7129\A7139_CONFIG.h
+..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\OBJ\trsdata.o: ..\HARDWARE\../trsdata/trsdata.h
