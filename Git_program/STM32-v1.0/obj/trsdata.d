@@ -21,9 +21,10 @@
 ..\OBJ\trsdata.o: ..\SYSTEM\usart\usart.h
 ..\OBJ\trsdata.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdio.h
 ..\OBJ\trsdata.o: ..\HARDWARE\SPI\spi.h
-..\OBJ\trsdata.o: ..\HARDWARE\A7129\A7129.h
+..\OBJ\trsdata.o: ..\HARDWARE\A7139\A7139.h
 ..\OBJ\trsdata.o: ..\HARDWARE\common.h
 ..\OBJ\trsdata.o: ..\HARDWARE\TIMER\timer.h
-..\OBJ\trsdata.o: ..\HARDWARE\A7129\A7139_CONFIG.h
+..\OBJ\trsdata.o: ..\HARDWARE\A7139\A7139_CONFIG.h
 ..\OBJ\trsdata.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
 ..\OBJ\trsdata.o: ..\HARDWARE\../trsdata/trsdata.h
+..\OBJ\trsdata.o: ..\hardware\interrupt\interrupt.h

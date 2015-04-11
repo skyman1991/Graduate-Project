@@ -11,6 +11,11 @@
 #include "types.h"
 #include "A7139_CONFIG.h"
 
+#define RF_WOR_RECV 0
+#define RF_WOR_SEND 0
+
+#define MAX_DATA_LENGTH 64
+
 
 #define SYSTEMCLOCK_REG 	0x00
 #define PLL1_REG 			0x01
@@ -81,7 +86,7 @@
 #define ERR_GET_RSSI		0x00
 #define CMD_CID_W			0x20	//001x,xxxx	ID write
 
-#define MAX_DATA_LENGTH 64
+
 
 extern void A7139_StrobeCmd(uint8 cmd);
 extern uint8 A7139_SetCID(uint32 id);
@@ -92,7 +97,6 @@ extern uint8 A7139_Init(float rfFreq);
 extern void Correct_State(void);
 extern void A7139_WriteFIFO(uint8 *buf,uint8 bufSize);
 extern void A7139_ReadFIFO(uint8 *buf,uint8 bufSize);
-extern void Interrupt_Init(void);
 extern uint8 A7139_SetPackLen(uint8 len);
 extern uint8 DataRecv[MAX_DATA_LENGTH];
 

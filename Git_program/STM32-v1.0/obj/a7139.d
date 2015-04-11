@@ -1,0 +1,29 @@
+..\OBJ\a7139.o: ..\hardware\A7139\A7139.c
+..\OBJ\a7139.o: ..\HARDWARE\common.h
+..\OBJ\a7139.o: ..\HARDWARE\LED\led.h
+..\OBJ\a7139.o: ..\SYSTEM\sys\sys.h
+..\OBJ\a7139.o: ..\USER\stm32f10x.h
+..\OBJ\a7139.o: ..\CORE\core_cm3.h
+..\OBJ\a7139.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdint.h
+..\OBJ\a7139.o: ..\USER\system_stm32f10x.h
+..\OBJ\a7139.o: ..\USER\stm32f10x_conf.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h
+..\OBJ\a7139.o: ..\USER\stm32f10x.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\misc.h
+..\OBJ\a7139.o: ..\SYSTEM\delay\delay.h
+..\OBJ\a7139.o: ..\HARDWARE\KEY\key.h
+..\OBJ\a7139.o: ..\SYSTEM\usart\usart.h
+..\OBJ\a7139.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdio.h
+..\OBJ\a7139.o: ..\HARDWARE\SPI\spi.h
+..\OBJ\a7139.o: ..\HARDWARE\A7139\A7139.h
+..\OBJ\a7139.o: ..\HARDWARE\common.h
+..\OBJ\a7139.o: ..\HARDWARE\TIMER\timer.h
+..\OBJ\a7139.o: ..\HARDWARE\A7139\A7139_CONFIG.h
+..\OBJ\a7139.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\OBJ\a7139.o: ..\HARDWARE\../trsdata/trsdata.h
+..\OBJ\a7139.o: ..\hardware\interrupt\interrupt.h

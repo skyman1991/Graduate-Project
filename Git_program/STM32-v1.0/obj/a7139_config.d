@@ -1,5 +1,5 @@
-..\OBJ\a7139_config.o: ..\HARDWARE\A7129\A7139_CONFIG.c
-..\OBJ\a7139_config.o: ..\HARDWARE\A7129\A7139_CONFIG.h
+..\OBJ\a7139_config.o: ..\hardware\A7139\A7139_CONFIG.c
+..\OBJ\a7139_config.o: ..\hardware\A7139\A7139_CONFIG.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\common.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\LED\led.h
 ..\OBJ\a7139_config.o: ..\SYSTEM\sys\sys.h
@@ -21,9 +21,10 @@
 ..\OBJ\a7139_config.o: ..\SYSTEM\usart\usart.h
 ..\OBJ\a7139_config.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdio.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\SPI\spi.h
-..\OBJ\a7139_config.o: ..\HARDWARE\A7129\A7129.h
+..\OBJ\a7139_config.o: ..\HARDWARE\A7139\A7139.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\common.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\TIMER\timer.h
-..\OBJ\a7139_config.o: ..\HARDWARE\A7129\A7139_CONFIG.h
+..\OBJ\a7139_config.o: ..\HARDWARE\A7139\A7139_CONFIG.h
 ..\OBJ\a7139_config.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\../trsdata/trsdata.h
+..\OBJ\a7139_config.o: ..\hardware\interrupt\interrupt.h

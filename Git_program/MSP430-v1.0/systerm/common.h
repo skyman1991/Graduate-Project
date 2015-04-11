@@ -17,4 +17,5 @@
 #include "uart.h"
 #include "in430.h"
 #include "../trsdata/trsdata.h"
+#include "interrupt.h"
 #endif

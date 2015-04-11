@@ -1,7 +1,7 @@
 /***********************************************************************************
-    Filename: hal_int.c
+Filename: hal_int.c
 
-    Copyright 2007 Texas Instruments, Inc.
+Copyright 2007 Texas Instruments, Inc.
 ***********************************************************************************/
 
 #include "common.h"

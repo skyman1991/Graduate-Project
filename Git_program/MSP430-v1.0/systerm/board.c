@@ -1,7 +1,7 @@
 /***********************************************************************************
-    Filename: board.c
+Filename: board.c
 
-    Copyright 2007 Texas Instruments, Inc.
+Copyright 2007 Texas Instruments, Inc.
 ***********************************************************************************/
 #include "common.h"
 
@@ -27,14 +27,14 @@ const digioConfig pinGIO1   = {1, 2, BIT2, HAL_DIGIO_INPUT,  0};
 void halBoardInit(void)
 {
     halMcuInit();
-   
+    
     halDigioConfig(&pinLed1);
     //halDigioConfig(&pinLed2);
     halDigioConfig(&pinGIO1);
     halDigioConfig(&pinGIO2);//中断
     halUartInit(0, 0);
     halLedSet(1);
-   // sched_init();
+    // sched_init();
     //中断初始化
     time_init();
     SPI3_Init();

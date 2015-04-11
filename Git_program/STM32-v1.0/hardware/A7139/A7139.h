@@ -1,13 +1,13 @@
 /********************************************************************
-*   A7129REG.h
-*   RF Chip-A7129 Hardware Definitions
+*   A7139REG.h
+*   RF Chip-A7139 Hardware Definitions
 *
 *   This file provides the constants associated with the
-*   AMICCOM A7129 device.
+*   AMICCOM A7139 device.
 *
 ********************************************************************/
-#ifndef _A7129REG_h_
-#define _A7129REG_h_
+#ifndef _A7139REG_h_
+#define _A7139REG_h_
 #include "common.h"
 
 #define SYSTEMCLOCK_REG 	0x00
@@ -81,13 +81,13 @@
 #define MAX_DATA_LENGTH 64
 
 extern void A7139_StrobeCmd(u8 cmd);
-extern u8 A7139_SetCID(u32 id);
+extern u8 A7139_SetCID(u16 id);
 extern void Err_State(void);
 extern u8 A7139_Init(float rfFreq);
 extern void Correct_State(void);
 extern void A7139_WriteFIFO(u8 *buf,u8 bufSize);
 extern void A7139_ReadFIFO(u8 *buf,u8 bufSize);
-extern void Interrupt_Init(void);
+ 
 extern u8 A7139_SetPackLen(u8 len);
 
 #endif

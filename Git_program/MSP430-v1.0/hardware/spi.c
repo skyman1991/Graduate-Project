@@ -12,7 +12,7 @@ const digioConfig scs       = {3, 2, BIT2, HAL_DIGIO_OUTPUT, 0};
 void MOSI_IN(void)
 {
     P3DIR &= ~BIT1;  
-	
+    
 }
 void MOSI_OUT(void)
 {
@@ -25,10 +25,10 @@ void SPI3_Init(void)
     halDigioConfig(&mosi_out);
     halDigioConfig(&sck);
     halDigioConfig(&scs);
-        
+    
     SCS_SET; 
     SCK_CLEAR;
-	
+    
 }
 
 void SPIx_WriteByte(uint8 dat)
@@ -51,7 +51,7 @@ void SPIx_WriteByte(uint8 dat)
 void SPIx_WriteWord(uint16 wrd)
 {
     uint8 i;
-	  MOSI_CLEAR;
+    MOSI_CLEAR;
     for(i=0; i<16; i++)
     {
         if(wrd & 0x8000)
@@ -68,44 +68,44 @@ void SPIx_WriteWord(uint16 wrd)
 }
 uint16 SPIx_ReadWord(void)
 {
-	uint8  i;
-	uint16 tmp=0;
-	MOSI_CLEAR;
-	MOSI_IN();	
-	for(i=0; i<16; i++)
-	{
-            if(MOSI_DATA)
-                tmp = 0x01|(tmp << 1);
-            else
-                tmp = tmp << 1;
-            delay_1us();
-            SCK_SET;
-            delay_1us();
-            SCK_CLEAR;
-              //tmp = tmp << 1;
-            delay_1us();
-     }
-	MOSI_OUT();
-     return tmp;
-}
-uint8 SPIx_ReadByte(void)
-{
-	uint8 i,tmp=0;
-	MOSI_IN();
-	for(i=0; i<8; i++)
-	{
+    uint8  i;
+    uint16 tmp=0;
+    MOSI_CLEAR;
+    MOSI_IN();	
+    for(i=0; i<16; i++)
+    {
         if(MOSI_DATA)
             tmp = 0x01|(tmp << 1);
         else
             tmp = tmp << 1;
-				delay_1us();
+        delay_1us();
         SCK_SET;
         delay_1us();
         SCK_CLEAR;
         //tmp = tmp << 1;
         delay_1us();
-     }
-	MOSI_OUT();
-	return tmp;
+    }
+    MOSI_OUT();
+    return tmp;
+}
+uint8 SPIx_ReadByte(void)
+{
+    uint8 i,tmp=0;
+    MOSI_IN();
+    for(i=0; i<8; i++)
+    {
+        if(MOSI_DATA)
+            tmp = 0x01|(tmp << 1);
+        else
+            tmp = tmp << 1;
+        delay_1us();
+        SCK_SET;
+        delay_1us();
+        SCK_CLEAR;
+        //tmp = tmp << 1;
+        delay_1us();
+    }
+    MOSI_OUT();
+    return tmp;
 }
 

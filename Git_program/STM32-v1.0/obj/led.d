@@ -20,9 +20,10 @@
 ..\OBJ\led.o: ..\SYSTEM\usart\usart.h
 ..\OBJ\led.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdio.h
 ..\OBJ\led.o: ..\HARDWARE\SPI\spi.h
-..\OBJ\led.o: ..\HARDWARE\A7129\A7129.h
+..\OBJ\led.o: ..\HARDWARE\A7139\A7139.h
 ..\OBJ\led.o: ..\HARDWARE\common.h
 ..\OBJ\led.o: ..\HARDWARE\TIMER\timer.h
-..\OBJ\led.o: ..\HARDWARE\A7129\A7139_CONFIG.h
+..\OBJ\led.o: ..\HARDWARE\A7139\A7139_CONFIG.h
 ..\OBJ\led.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
 ..\OBJ\led.o: ..\HARDWARE\../trsdata/trsdata.h
+..\OBJ\led.o: ..\hardware\interrupt\interrupt.h

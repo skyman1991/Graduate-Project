@@ -26,3 +26,4 @@
 ..\OBJ\a7129.o: ..\HARDWARE\A7129\A7139_CONFIG.h
 ..\OBJ\a7129.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
 ..\OBJ\a7129.o: ..\HARDWARE\../trsdata/trsdata.h
+..\OBJ\a7129.o: ..\hardware\interrupt\interrupt.h

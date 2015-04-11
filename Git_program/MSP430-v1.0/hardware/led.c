@@ -1,7 +1,7 @@
 /***********************************************************************************
-    Filename: led.c
+Filename: led.c
 
-    Copyright 2007 Texas Instruments, Inc.
+Copyright 2007 Texas Instruments, Inc.
 ***********************************************************************************/
 #include "led.h"
 #include "common.h"

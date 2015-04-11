@@ -25,6 +25,7 @@ extern void GO_Init(void);
 #define MOSI_DATA GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_6)
 #define GIO2		  GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_6)
 //#define GIO2		  PBout(5)
-
+#define SCS_SET SCS=1
+#define SCS_CLEAR SCS=0
 		 
 #endif
