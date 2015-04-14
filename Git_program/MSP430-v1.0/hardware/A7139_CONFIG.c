@@ -331,8 +331,8 @@ const uint16  A7139Config_PageA[]=
     0x1706,		//TX1 register, 	Fdev = 37.5kHz
     0x0000,             //[0x08][Page1] WOR I register
     0x0000,             //[0x08][Page2] WOR II register
-    //	0x1187,		//RFI register, 	Enable Tx Ramp up/down   干什么用的？
-    0x1107,             //[0x08][Page3] RF Current register
+    	0x1187,		//RFI register, 	Enable Tx Ramp up/down   干什么用的？
+    //0x1107,             //[0x08][Page3] RF Current register
     0x0170,             //[0x08][Page4] Power Manage register
     0x0201,             //[0x08][Page5] AGC RSSI Threshold register
     0x400F,             //[0x08][Page6] AGC Control register

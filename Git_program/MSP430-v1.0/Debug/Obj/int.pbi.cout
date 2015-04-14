@@ -8,6 +8,10 @@ F:\Graduate\Git_program\MSP430-v1.0\systerm
 -I
 F:\Graduate\Git_program\MSP430-v1.0\users
 -I
+F:\Graduate\Git_program\MSP430-v1.0\schedule
+-I
+F:\Graduate\Git_program\MSP430-v1.0\trsdata
+-I
 E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 7.2\430\inc\dlib
 -I
 E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 7.2\430\inc
@@ -19,6 +23,10 @@ F:\Graduate\Git_program\MSP430-v1.0\hardware
 F:\Graduate\Git_program\MSP430-v1.0\systerm
 -I
 F:\Graduate\Git_program\MSP430-v1.0\users
+-I
+F:\Graduate\Git_program\MSP430-v1.0\schedule
+-I
+F:\Graduate\Git_program\MSP430-v1.0\trsdata
 -D__MSP430F2132__=1
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff

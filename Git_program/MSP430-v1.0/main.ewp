@@ -393,6 +393,8 @@
           <state>$PROJ_DIR$\hardware</state>
           <state>$PROJ_DIR$\systerm</state>
           <state>$PROJ_DIR$\users</state>
+          <state>$PROJ_DIR$\schedule</state>
+          <state>$PROJ_DIR$\trsdata</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -2283,6 +2285,21 @@
     </file>
     <file>
       <name>$PROJ_DIR$\hardware\spi.h</name>
+    </file>
+  </group>
+  <group>
+    <name>schedule</name>
+    <file>
+      <name>$PROJ_DIR$\schedule\scan.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schedule\scan.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schedule\TaskQ.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schedule\TaskQ.h</name>
     </file>
   </group>
   <group>

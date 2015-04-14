@@ -10,12 +10,15 @@
 #include "delay.h"
 #include "led.h"
 #include <msp430.h>
+#include <stdio.h>
 #include "spi.h"
 #include "mcu.h"
 #include "sys.h"
 #include "timer.h"
 #include "uart.h"
 #include "in430.h"
-#include "../trsdata/trsdata.h"
+#include "trsdata.h"
 #include "interrupt.h"
+#include "scan.h"
+#include "TaskQ.h"
 #endif

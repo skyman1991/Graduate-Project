@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\SPI.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\SPI.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Sat Apr 11 22:03:30 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Tue Apr 14 15:33:47 2015
 <BR><P>
 <H3>Maximum Stack Usage =        108 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -536,9 +536,13 @@ Global Symbols
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 
-<P><STRONG><a name="[9a]"></a>A7139_SetPackLen</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, a7139.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;A7139_WritePageA
+<P><STRONG><a name="[9a]"></a>A7139_SetPackLen</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, a7139.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = A7139_SetPackLen &rArr; A7139_WritePageA &rArr; A7139_WriteReg &rArr; SPIx_WriteWord
+</UL>
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;A7139_WritePageA
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;A7139_StrobeCmd
+</UL>
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[9b]"></a>A7139_SetCIDLen</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, a7139.o(.text), UNUSED)
@@ -1460,11 +1464,12 @@ Global Symbols
 
 <P><STRONG><a name="[198]"></a>SPI_I2S_ClearITPendingBit</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, stm32f10x_spi.o(.text), UNUSED)
 
-<P><STRONG><a name="[55]"></a>main</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[55]"></a>main</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = main &rArr; sys_init &rArr; uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_init
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;A7139_WriteFIFO
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;A7139_SetPackLen
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;A7139_StrobeCmd
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupt
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us

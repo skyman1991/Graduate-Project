@@ -9,7 +9,7 @@ int main(void)
 {	 
 		int i=0;
 	  for(i=0;i<64;i++)
-			test[i]=i;
+			test[i]=i+20;
 	  DisableInterrupt();
 		sys_init();
 		//EnableInterrupt();
@@ -52,7 +52,7 @@ int main(void)
 	 
 	 
 		
-	 
+	 A7139_SetPackLen(64);
 
 		while(1)
 		{
@@ -60,7 +60,7 @@ int main(void)
 				/*A7139_StrobeCmd(CMD_PLL);
 				delay_us(2);*/
 
-				A7139_WriteFIFO(test,MAX_DATA_LENGTH);
+				A7139_WriteFIFO(test,64);
 				delay_us(2);
 				A7139_StrobeCmd(CMD_TX);
 		    delay_us(2);
@@ -68,7 +68,7 @@ int main(void)
 				while(GIO2); 		
 				LED1_REV();
 			  
-				delay_ms(1000);
+				delay_ms(50);
 				
 			  /*A7139_WriteFIFO(DataSend,MAX_DATA_LENGTH);
 				LED1_REV();

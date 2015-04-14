@@ -1,5 +1,5 @@
 [DebugChecksum]
-Checksum=1625849800
+Checksum=-1945064999
 [Stack]
 FillEnabled=0
 OverflowWarningsEnabled=1
@@ -39,14 +39,23 @@ Buffer=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Counter0=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [EEM Cycle Counter 1]
 Counter1=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[SfrWindow]
+Show=1 1
+Sort=4 0
 [watch_formats]
 Fmt0={W}0:P1IFG	3	0
 Fmt1={W}0:StateErrorTimes	3	0
 Fmt2={W}0:look	4	0
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
 [Breakpoints]
 Bp0=_ "STD_CODE" "{$PROJ_DIR$\hardware\A7129.c}.234.5" 0 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\hardware\interrupt.c}.53.9" 1 0 0 0 "" 0 ""
-Count=2
+Count=1
 [FET]
 Clock mode=39
 Extended Clock mode=1
@@ -67,13 +76,6 @@ SP=0
 SR=0
 all registers=0
 File name=
-[Log file]
-LoggingEnabled=_ 0
-LogFile=_ ""
-Category=_ 0
-[TermIOLog]
-LoggingEnabled=_ 0
-LogFile=_ ""
 [Aliases]
 A0=_ "F:\MSP430\hardware\A7129.c" "F:\无线通信\MSP430\MSP430-5.3\hardware\A7129.c"
 A1=_ "F:\无线通信\Git_program\MSP430-5.3  v1.2\main.c" "F:\Graduate\Git_program\MSP430-v1.2\main.c"

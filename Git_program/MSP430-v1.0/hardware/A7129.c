@@ -157,7 +157,7 @@ static uint8 A7139_Cal(void)
     return 0;
 }
 
-static void A7139_SetFreq(float rfFreq)
+void A7139_SetFreq(float rfFreq)
 {
     float  divFreq = rfFreq / 12.800f;  
     uint8  intFreq = (uint8)(divFreq); //integer part
@@ -663,7 +663,9 @@ void A7139_SetChannel(uint8 ch)
     A7139_StrobeCmd(CMD_STBY);          //½øÈë¿ÕÏÐ
     A7139_WritePageB(IF2_PAGEB, unnDataTemp);//setting PLL1     LSD_RF_WritePageB   
 }
+void A7139_Receive_Once(uint8 data[],uint8 length)
+{
 
-
+}
 
 

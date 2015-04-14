@@ -3,21 +3,7 @@
 
 Copyright 2007 Texas Instruments, Inc.
 ***********************************************************************************/
-
-#include "digio.h"
 #include "common.h"
-
-// The number of ports and pins supported by a microcontroller will
-// vary (e.g. different families of MSP430 have different number of
-// ports, and not all will support interrupts on port 2). The TEMPLATE
-// HAL implements support for interrupts on port 1 and up to two ports.
-
-
-static ISR_FUNC_PTR port1_isr_tbl[8] = {0};
-static ISR_FUNC_PTR port2_isr_tbl[8] = {0};
-
-
-
 //----------------------------------------------------------------------------------
 //  uint8 halDigioConfig(const digioConfig* p)
 //
@@ -139,23 +125,6 @@ uint8 halDigioGet(const digioConfig* p)
     return(HAL_DIGIO_ERROR);
 }
 
-//----------------------------------------------------------------------------------
-//  uint8 halDigioIntConnect(const digioConfig *p, ISR_FUNC_PTR func)
-//----------------------------------------------------------------------------------
-uint8 halDigioIntConnect(const digioConfig *p, ISR_FUNC_PTR func)
-{
-    istate_t key;
-    HAL_INT_LOCK(key);
-    switch (p->port)
-    {
-        case 1: port1_isr_tbl[p->pin] = func; break;
-        case 2: port2_isr_tbl[p->pin] = func; break;
-        default: HAL_INT_UNLOCK(key); return(HAL_DIGIO_ERROR);
-    }
-    halDigioIntClear(p);
-    HAL_INT_UNLOCK(key);
-    return(HAL_DIGIO_OK);
-}
 
 
 //----------------------------------------------------------------------------------
@@ -232,27 +201,4 @@ uint8 halDigioIntSetEdge(const digioConfig *p, uint8 edge)
 }
 
 
-//----------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------
 
-
-//----------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------
-/*#pragma vector=PORT2_VECTOR
-__interrupt void port2_ISR(void)
-{
-register uint8 i;
-if (P2IFG)
-{
-for (i = 0; i < 8; i++)
-{
-register const uint8 pinmask = 1 << i;
-if ((P2IFG & pinmask) && (P2IE & pinmask) && (port2_isr_tbl[i] != 0))
-{
-(*port2_isr_tbl[i])();
-P2IFG &= ~pinmask;
-            }
-        }
-__low_power_mode_off_on_exit();
-    }
-}*/

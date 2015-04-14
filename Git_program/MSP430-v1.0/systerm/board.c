@@ -40,4 +40,5 @@ void halBoardInit(void)
     SPI3_Init();
     A7139_Init(470.001f);
     Interrupt_Init();
+    Init_TQ();
 }

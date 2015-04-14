@@ -17,7 +17,7 @@
 #define MAX_DATA_LENGTH 64
 
 
-#define SYSTEMCLOCK_REG 	0x00
+#define SYSTEMCLOCK_REG 	        0x00
 #define PLL1_REG 			0x01
 #define PLL2_REG 			0x02
 #define PLL3_REG 			0x03
@@ -31,7 +31,7 @@
 #define RX2_REG  			0x0B
 #define ADC_REG  			0x0C
 #define PIN_REG 			0x0D
-#define CALIBRATION_REG  	0x0E
+#define CALIBRATION_REG  	        0x0E
 #define MODE_REG  			0x0F
 
 #define TX1_PAGEA           0x00
@@ -76,7 +76,7 @@
 #define CMD_TX				0x1A	//0001,1010	TX mode
 //#define CMD_DEEP_SLEEP	0x1C	//0001,1100 Deep Sleep mode(tri-state)
 #define CMD_DEEP_SLEEP		0x1F	//0001,1111 Deep Sleep mode(pull-high)
-#define ERR_PARAM 			0x01
+#define ERR_PARAM 		0x01
 #define ERR_PLATFORM		0x02
 #define ERR_UNK			0x03
 #define ERR_CAL			0x04
@@ -84,7 +84,7 @@
 #define ERR_RCOSC_CAL		0x04
 #define OK_RCOSC_CAL		0x05
 #define ERR_GET_RSSI		0x00
-#define CMD_CID_W			0x20	//001x,xxxx	ID write
+#define CMD_CID_W		0x20	//001x,xxxx	ID write
 
 
 
@@ -99,6 +99,8 @@ extern void A7139_WriteFIFO(uint8 *buf,uint8 bufSize);
 extern void A7139_ReadFIFO(uint8 *buf,uint8 bufSize);
 extern uint8 A7139_SetPackLen(uint8 len);
 extern uint8 DataRecv[MAX_DATA_LENGTH];
+extern void A7139_SetFreq(float rfFreq);
+extern void A7139_Receive_Once(uint8 data[],uint8 length);
 
 
 #endif

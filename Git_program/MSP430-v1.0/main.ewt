@@ -1978,6 +1978,21 @@
     </file>
   </group>
   <group>
+    <name>schedule</name>
+    <file>
+      <name>$PROJ_DIR$\schedule\scan.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schedule\scan.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schedule\TaskQ.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schedule\TaskQ.h</name>
+    </file>
+  </group>
+  <group>
     <name>system</name>
     <file>
       <name>$PROJ_DIR$\systerm\board.c</name>
