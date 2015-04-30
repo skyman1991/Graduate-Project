@@ -393,8 +393,9 @@
           <state>$PROJ_DIR$\hardware</state>
           <state>$PROJ_DIR$\systerm</state>
           <state>$PROJ_DIR$\users</state>
-          <state>$PROJ_DIR$\schedule</state>
+          <state>$PROJ_DIR$\adc</state>
           <state>$PROJ_DIR$\trsdata</state>
+          <state>$PROJ_DIR$\schdule</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -2257,16 +2258,22 @@
   <group>
     <name>hardware</name>
     <file>
-      <name>$PROJ_DIR$\hardware\A7129.c</name>
+      <name>$PROJ_DIR$\hardware\A7139.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\hardware\A7129.h</name>
+      <name>$PROJ_DIR$\hardware\A7139.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\hardware\A7139_CONFIG.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\hardware\A7139_CONFIG.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\hardware\adc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\hardware\adc.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\hardware\digio.c</name>
@@ -2288,18 +2295,24 @@
     </file>
   </group>
   <group>
-    <name>schedule</name>
+    <name>schdule</name>
     <file>
-      <name>$PROJ_DIR$\schedule\scan.c</name>
+      <name>$PROJ_DIR$\schdule\interrupt.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\schedule\scan.h</name>
+      <name>$PROJ_DIR$\schdule\interrupt.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\schedule\TaskQ.c</name>
+      <name>$PROJ_DIR$\schdule\ProcessEvent.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\schedule\TaskQ.h</name>
+      <name>$PROJ_DIR$\schdule\ProcessEvent.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schdule\scan.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schdule\scan.h</name>
     </file>
   </group>
   <group>
@@ -2309,9 +2322,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$\systerm\board.h</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\systerm\common.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\systerm\defs.h</name>
@@ -2327,12 +2337,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$\systerm\int.h</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\hardware\interrupt.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\hardware\interrupt.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\systerm\mcu.c</name>
@@ -2362,6 +2366,9 @@
       <name>$PROJ_DIR$\systerm\uart.h</name>
     </file>
   </group>
+  <file>
+    <name>$PROJ_DIR$\systerm\common.h</name>
+  </file>
   <file>
     <name>$PROJ_DIR$\main.c</name>
   </file>

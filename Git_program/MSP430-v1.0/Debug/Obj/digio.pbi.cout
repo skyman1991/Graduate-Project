@@ -1,16 +1,18 @@
-"F:\Graduate\Git_program\MSP430-v1.0\hardware\digio.c"
+"F:\Graduate\Git_program\1-21\hardware\digio.c"
 -std=c99
 -ferror-limit=100
 -I
-F:\Graduate\Git_program\MSP430-v1.0\hardware
+F:\Graduate\Git_program\1-21\hardware
 -I
-F:\Graduate\Git_program\MSP430-v1.0\systerm
+F:\Graduate\Git_program\1-21\systerm
 -I
-F:\Graduate\Git_program\MSP430-v1.0\users
+F:\Graduate\Git_program\1-21\users
 -I
-F:\Graduate\Git_program\MSP430-v1.0\schedule
+F:\Graduate\Git_program\1-21\adc
 -I
-F:\Graduate\Git_program\MSP430-v1.0\trsdata
+F:\Graduate\Git_program\1-21\trsdata
+-I
+F:\Graduate\Git_program\1-21\schdule
 -I
 E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 7.2\430\inc\dlib
 -I
@@ -18,15 +20,17 @@ E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 7.2\430\inc
 -I
 E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 7.2\430\inc\dlib\c
 -I
-F:\Graduate\Git_program\MSP430-v1.0\hardware
+F:\Graduate\Git_program\1-21\hardware
 -I
-F:\Graduate\Git_program\MSP430-v1.0\systerm
+F:\Graduate\Git_program\1-21\systerm
 -I
-F:\Graduate\Git_program\MSP430-v1.0\users
+F:\Graduate\Git_program\1-21\users
 -I
-F:\Graduate\Git_program\MSP430-v1.0\schedule
+F:\Graduate\Git_program\1-21\adc
 -I
-F:\Graduate\Git_program\MSP430-v1.0\trsdata
+F:\Graduate\Git_program\1-21\trsdata
+-I
+F:\Graduate\Git_program\1-21\schdule
 -D__MSP430F2132__=1
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff

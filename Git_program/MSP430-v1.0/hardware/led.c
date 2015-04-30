@@ -1,7 +1,7 @@
 /***********************************************************************************
-Filename: led.c
+    Filename: led.c
 
-Copyright 2007 Texas Instruments, Inc.
+    Copyright 2007 Texas Instruments, Inc.
 ***********************************************************************************/
 #include "led.h"
 #include "common.h"
@@ -16,7 +16,8 @@ Copyright 2007 Texas Instruments, Inc.
 //----------------------------------------------------------------------------------
 void halLedSet(uint8 id)
 {
-    switch (id)
+  P1DIR|=BIT3;  
+  switch (id)
     {
         case 1: HAL_LED_SET_1; break;
         case 2: HAL_LED_SET_2; break;

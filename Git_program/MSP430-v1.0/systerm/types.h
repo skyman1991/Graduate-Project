@@ -14,14 +14,18 @@
 
 typedef signed   char   int8;
 typedef unsigned char   uint8;
-typedef unsigned char   u8;
 
 typedef signed   short  int16;
 typedef unsigned short  uint16;
-typedef unsigned short  u16;
+
+typedef unsigned int    Uint16;
+typedef signed int      Sint16;
 
 typedef signed   long   int32;
 typedef unsigned long   uint32;
+
+typedef unsigned char   u8;
+typedef unsigned short  u16;
 typedef unsigned long   u32;
 
 typedef void (*ISR_FUNC_PTR)(void);

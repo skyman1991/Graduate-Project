@@ -1,14 +1,129 @@
 [Sfr]
+sfr = "IE1",	"Memory",	0x0,	1,	base=16,	modified
+sfr = "IFG1",	"Memory",	0x2,	1,	base=16,	modified
+sfr = "IE2",	"Memory",	0x1,	1,	base=16,	modified
+sfr = "IFG2",	"Memory",	0x3,	1,	base=16,	modified
+sfr = "ADC10DTC0",	"Memory",	0x48,	1,	base=16,	modified
+sfr = "ADC10DTC1",	"Memory",	0x49,	1,	base=16,	modified
+sfr = "ADC10AE0",	"Memory",	0x4a,	1,	base=16,	modified
+sfr = "ADC10AE1",	"Memory",	0x4b,	1,	base=16,	modified
+sfr = "ADC10CTL0",	"Memory",	0x1b0,	2,	base=16,	modified
+sfr = "BCSCTL1",	"Memory",	0x57,	1,	base=16,	modified
+sfr = "BCSCTL2",	"Memory",	0x58,	1,	base=16,	modified
+sfr = "BCSCTL3",	"Memory",	0x53,	1,	base=16,	modified
+sfr = "CACTL1",	"Memory",	0x59,	1,	base=16,	modified
+sfr = "CACTL2",	"Memory",	0x5a,	1,	base=16,	modified
+sfr = "CAPD",	"Memory",	0x5b,	1,	base=16,	modified
+sfr = "FCTL1",	"Memory",	0x128,	2,	base=16,	modified
+sfr = "FCTL2",	"Memory",	0x12a,	2,	base=16,	modified
+sfr = "FCTL3",	"Memory",	0x12c,	2,	base=16,	modified
+sfr = "P1IN",	"Memory",	0x20,	1,	base=16,	modified
+sfr = "P1OUT",	"Memory",	0x21,	1,	base=16,	modified
+sfr = "P1DIR",	"Memory",	0x22,	1,	base=16,	modified
+sfr = "P1IFG",	"Memory",	0x23,	1,	base=16,	modified
+sfr = "P1IES",	"Memory",	0x24,	1,	base=16,	modified
+sfr = "P1IE",	"Memory",	0x25,	1,	base=16,	modified
+sfr = "P1SEL",	"Memory",	0x26,	1,	base=16,	modified
+sfr = "P1SEL2",	"Memory",	0x41,	1,	base=16,	modified
+sfr = "P1REN",	"Memory",	0x27,	1,	base=16,	modified
+sfr = "P2IN",	"Memory",	0x28,	1,	base=16,	modified
+sfr = "P2OUT",	"Memory",	0x29,	1,	base=16,	modified
+sfr = "P2DIR",	"Memory",	0x2a,	1,	base=16,	modified
+sfr = "P2IFG",	"Memory",	0x2b,	1,	base=16,	modified
+sfr = "P2IES",	"Memory",	0x2c,	1,	base=16,	modified
+sfr = "P2IE",	"Memory",	0x2d,	1,	base=16,	modified
 sfr = "P2SEL",	"Memory",	0x2e,	1,	base=16,	modified
+sfr = "P2SEL2",	"Memory",	0x42,	1,	base=16,	modified
+sfr = "P2REN",	"Memory",	0x2f,	1,	base=16,	modified
+sfr = "P3IN",	"Memory",	0x18,	1,	base=16,	modified
+sfr = "P3OUT",	"Memory",	0x19,	1,	base=16,	modified
 sfr = "P3DIR",	"Memory",	0x1a,	1,	base=16,	modified
 sfr = "P3SEL",	"Memory",	0x1b,	1,	base=16,	modified
+sfr = "P3REN",	"Memory",	0x10,	1,	base=16,	modified
 sfr = "TA0IV",	"Memory",	0x12e,	2,	base=16,	modified
+sfr = "TA0CTL",	"Memory",	0x160,	2,	base=16,	modified
+sfr = "TA0CCTL0",	"Memory",	0x162,	2,	base=16,	modified
+sfr = "TA0CCTL1",	"Memory",	0x164,	2,	base=16,	modified
+sfr = "TA0CCTL2",	"Memory",	0x166,	2,	base=16,	modified
+sfr = "TA0R",	"Memory",	0x170,	2,	base=16,	modified
+sfr = "TA0CCR0",	"Memory",	0x172,	2,	base=16,	modified
+sfr = "TA0CCR1",	"Memory",	0x174,	2,	base=16,	modified
+sfr = "TA0CCR2",	"Memory",	0x176,	2,	base=16,	modified
+sfr = "TA1IV",	"Memory",	0x11e,	2,	base=16,	modified
+sfr = "TA1CTL",	"Memory",	0x180,	2,	base=16,	modified
+sfr = "TA1CCTL0",	"Memory",	0x182,	2,	base=16,	modified
+sfr = "TA1CCTL1",	"Memory",	0x184,	2,	base=16,	modified
+sfr = "TA1R",	"Memory",	0x190,	2,	base=16,	modified
+sfr = "TA1CCR0",	"Memory",	0x192,	2,	base=16,	modified
+sfr = "TA1CCR1",	"Memory",	0x194,	2,	base=16,	modified
+sfr = "UCA0CTL0",	"Memory",	0x60,	1,	base=16,	modified
+sfr = "UCA0CTL1",	"Memory",	0x61,	1,	base=16,	modified
+sfr = "UCA0BR0",	"Memory",	0x62,	1,	base=16,	modified
+sfr = "UCA0BR1",	"Memory",	0x63,	1,	base=16,	modified
+sfr = "UCA0MCTL",	"Memory",	0x64,	1,	base=16,	modified
+sfr = "UCA0STAT",	"Memory",	0x65,	1,	base=16,	modified
+sfr = "UCA0RXBUF",	"Memory",	0x66,	1,	base=16,	modified
+sfr = "UCA0TXBUF",	"Memory",	0x67,	1,	base=16,	modified
+sfr = "UCA0ABCTL",	"Memory",	0x5d,	1,	base=16,	modified
+sfr = "UCA0IRTCTL",	"Memory",	0x5e,	1,	base=16,	modified
+sfr = "UCA0IRRCTL",	"Memory",	0x5f,	1,	base=16,	modified
+sfr = "UCA0CTL0__SPI",	"Memory",	0x60,	1,	base=16,	modified
+sfr = "UCA0CTL1__SPI",	"Memory",	0x61,	1,	base=16,	modified
+sfr = "UCA0BR0__SPI",	"Memory",	0x62,	1,	base=16,	modified
+sfr = "UCA0BR1__SPI",	"Memory",	0x63,	1,	base=16,	modified
+sfr = "UCA0MCTL__SPI",	"Memory",	0x64,	1,	base=16,	modified
+sfr = "UCA0STAT__SPI",	"Memory",	0x65,	1,	base=16,	modified
+sfr = "UCA0RXBUF__SPI",	"Memory",	0x66,	1,	base=16,	modified
+sfr = "UCA0TXBUF__SPI",	"Memory",	0x67,	1,	base=16,	modified
+sfr = "UCB0CTL0__SPI",	"Memory",	0x68,	1,	base=16,	modified
+sfr = "UCB0CTL1__SPI",	"Memory",	0x69,	1,	base=16,	modified
 sfr = "UCB0BR0__SPI",	"Memory",	0x6a,	1,	base=16,	modified
+sfr = "UCB0BR1__SPI",	"Memory",	0x6b,	1,	base=16,	modified
+sfr = "UCB0STAT__SPI",	"Memory",	0x6d,	1,	base=16,	modified
+sfr = "UCB0RXBUF__SPI",	"Memory",	0x6e,	1,	base=16,	modified
+sfr = "UCB0TXBUF__SPI",	"Memory",	0x6f,	1,	base=16,	modified
+sfr = "UCB0CTL0",	"Memory",	0x68,	1,	base=16,	modified
+sfr = "UCB0CTL1",	"Memory",	0x69,	1,	base=16,	modified
+sfr = "UCB0BR0",	"Memory",	0x6a,	1,	base=16,	modified
 sfr = "UCB0BR1",	"Memory",	0x6b,	1,	base=16,	modified
+sfr = "UCB0I2CIE",	"Memory",	0x6c,	1,	base=16,	modified
+sfr = "UCB0STAT",	"Memory",	0x6d,	1,	base=16,	modified
+sfr = "UCB0RXBUF",	"Memory",	0x6e,	1,	base=16,	modified
+sfr = "UCB0TXBUF",	"Memory",	0x6f,	1,	base=16,	modified
+sfr = "UCB0I2COA",	"Memory",	0x118,	2,	base=16,	modified
+sfr = "UCB0I2CSA",	"Memory",	0x11a,	2,	base=16,	modified
+sfr = "WDTCTL",	"Memory",	0x120,	2,	base=16,	modified
+sfr = "TLV_CHECKSUM",	"Memory",	0x10c0,	2,	base=16,	modified
+sfr = "TLV_DCO_30_TAG",	"Memory",	0x10f6,	1,	base=16,	modified
+sfr = "TLV_DCO_30_LEN",	"Memory",	0x10f7,	1,	base=16,	modified
+sfr = "TLV_ADC10_1_TAG",	"Memory",	0x10da,	1,	base=16,	modified
+sfr = "TLV_ADC10_1_LEN",	"Memory",	0x10db,	1,	base=16,	modified
 sfr = "CALDCO_16MHZ",	"Memory",	0x10f8,	1,	base=16,	modified
+sfr = "CALBC1_16MHZ",	"Memory",	0x10f9,	1,	base=16,	modified
+sfr = "CALDCO_12MHZ",	"Memory",	0x10fa,	1,	base=16,	modified
+sfr = "CALBC1_12MHZ",	"Memory",	0x10fb,	1,	base=16,	modified
+sfr = "CALDCO_8MHZ",	"Memory",	0x10fc,	1,	base=16,	modified
+sfr = "CALBC1_8MHZ",	"Memory",	0x10fd,	1,	base=16,	modified
+sfr = "CALDCO_1MHZ",	"Memory",	0x10fe,	1,	base=16,	modified
+sfr = "CALBC1_1MHZ",	"Memory",	0x10ff,	1,	base=16,	modified
 
 
 [SfrGroupInfo]
-group = "Custom", "P2SEL", "P3DIR"
-group = "Custom", "P3SEL", "TA0IV", "UCB0BR0__SPI", "UCB0BR1"
-group = "Custom", "CALDCO_16MHZ"
+group = "Custom", "IE1", "IFG1", "IE2", "IFG2", "ADC10DTC0", "ADC10DTC1"
+group = "Custom", "ADC10AE0", "ADC10AE1", "ADC10CTL0", "BCSCTL1", "BCSCTL2", "BCSCTL3", "CACTL1", "CACTL2"
+group = "Custom", "CAPD", "FCTL1", "FCTL2", "FCTL3", "P1IN", "P1OUT"
+group = "Custom", "P1DIR", "P1IFG", "P1IES", "P1IE", "P1SEL", "P1SEL2"
+group = "Custom", "P1REN", "P2IN", "P2OUT", "P2DIR", "P2IFG", "P2IES"
+group = "Custom", "P2IE", "P2SEL", "P2SEL2", "P2REN", "P3IN", "P3OUT"
+group = "Custom", "P3DIR", "P3SEL", "P3REN", "TA0IV", "TA0CTL", "TA0CCTL0"
+group = "Custom", "TA0CCTL1", "TA0CCTL2", "TA0R", "TA0CCR0", "TA0CCR1", "TA0CCR2"
+group = "Custom", "TA1IV", "TA1CTL", "TA1CCTL0", "TA1CCTL1", "TA1R", "TA1CCR0"
+group = "Custom", "TA1CCR1", "UCA0CTL0", "UCA0CTL1", "UCA0BR0", "UCA0BR1", "UCA0MCTL"
+group = "Custom", "UCA0STAT", "UCA0RXBUF", "UCA0TXBUF", "UCA0ABCTL", "UCA0IRTCTL", "UCA0IRRCTL"
+group = "Custom", "UCA0CTL0__SPI", "UCA0CTL1__SPI", "UCA0BR0__SPI", "UCA0BR1__SPI", "UCA0MCTL__SPI", "UCA0STAT__SPI"
+group = "Custom", "UCA0RXBUF__SPI", "UCA0TXBUF__SPI", "UCB0CTL0__SPI", "UCB0CTL1__SPI", "UCB0BR0__SPI", "UCB0BR1__SPI"
+group = "Custom", "UCB0STAT__SPI", "UCB0RXBUF__SPI", "UCB0TXBUF__SPI", "UCB0CTL0", "UCB0CTL1", "UCB0BR0"
+group = "Custom", "UCB0BR1", "UCB0I2CIE", "UCB0STAT", "UCB0RXBUF", "UCB0TXBUF", "UCB0I2COA"
+group = "Custom", "UCB0I2CSA", "WDTCTL", "TLV_CHECKSUM", "TLV_DCO_30_TAG", "TLV_DCO_30_LEN", "TLV_ADC10_1_TAG"
+group = "Custom", "TLV_ADC10_1_LEN", "CALDCO_16MHZ", "CALBC1_16MHZ", "CALDCO_12MHZ", "CALBC1_12MHZ", "CALDCO_8MHZ"
+group = "Custom", "CALBC1_8MHZ", "CALDCO_1MHZ", "CALBC1_1MHZ"

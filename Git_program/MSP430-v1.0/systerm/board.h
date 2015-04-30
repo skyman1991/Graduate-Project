@@ -18,13 +18,15 @@
 //----------------------------------------------------------------------------------
 #define HAL_LED_SET_1   (P1OUT |= BIT3)//¡¡
 #define HAL_LED_SET_2   (P1OUT |= BIT2)
-
+#define HAL_PLU_SET     (P3OUT |= BIT0)
+      
 #define HAL_LED_CLR_1   (P1OUT &= ~ BIT3)
 #define HAL_LED_CLR_2   (P1OUT &= ~ BIT2)
+#define HAL_PLU_CLR     (P3OUT &= ~ BIT0)
 
 #define HAL_LED_TGL_1   (P1OUT ^= BIT3)
 #define HAL_LED_TGL_2   (P1OUT ^= BIT2)
-
+#define HAL_PLU_TGL     (P3OUT ^= BIT0)
 
 //----------------------------------------------------------------------------------
 //  Define ports and pins used by SPI interface to CC1100/CC2500

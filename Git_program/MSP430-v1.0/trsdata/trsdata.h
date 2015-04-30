@@ -1,8 +1,8 @@
 #ifndef _TRSDATA_h_
 #define _TRSDATA_h_
 
-#define NODE_NUM 2        //节点从2开始  1为源节点
-#define BECAON_PERIOD 100
+#define NODE_NUM  5       //节点从2开始  1为源节点
+#define BECAON_PERIOD 200
 
 #define SLEEP_ENABLE 0    //睡眠模式只在BECAON_PERIOD为500的时候测试过
 #if(CONFIG_DATA_RATE == 250)
@@ -29,12 +29,16 @@
 #define   EN_TIMER    TA1CCTL0 = CCIE
 #define   DIS_TIMER   TA1CCTL0 &= ~CCIE
 extern int send_flag;
-extern uint8 SendOnce;
+extern uint8  SendOnce;
+extern uint16  TDMA_time;
+extern Uint16 AD_curvalue;
 extern uint32 StateError;
+extern Uint16 AD_avevalue;
 extern uint8  StateErrorTimes;
 extern uint8  ResetEnable;
+extern uint8  AD_flag;
 extern uint8 DataRecv[MAX_DATA_LENGTH];
 extern uint8 DataSend[MAX_DATA_LENGTH];
-
+extern void Sensor_status_Value(void);
 extern void DataQueue(void);
 #endif

@@ -19,6 +19,6 @@
 @REM 
 
 
-"E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 5.50\common\bin\cspybat" "E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 5.50\430\bin\430proc.dll" "E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 5.50\430\bin\430fet.dll"  %1 --plugin "E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 5.50\430\bin\430bat.dll" --backend -B "-p" "E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 5.50\430\config\MSP430F2132.ddf" "--iv_base" "0xFFE0" "-d" "fet" "--erase_main_and_info" "--derivative" "MSP430F2132" "--protocol" "automatic" "--eem" "EMEX_LOW" "--port" "Automatic" "--connection" "ti_usb" "--settlingtime=0" "--msp430_dll" "msp430.dll" "--vccDefault" "3.3" 
+"G:\Program Files (x86)\IAR Systems\Embedded Workbench 6.4 Evaluation\common\bin\cspybat" "G:\Program Files (x86)\IAR Systems\Embedded Workbench 6.4 Evaluation\430\bin\430proc.dll" "G:\Program Files (x86)\IAR Systems\Embedded Workbench 6.4 Evaluation\430\bin\430fet.dll"  %1 --plugin "G:\Program Files (x86)\IAR Systems\Embedded Workbench 6.4 Evaluation\430\bin\430bat.dll" --backend -B "-p" "G:\Program Files (x86)\IAR Systems\Embedded Workbench 6.4 Evaluation\430\config\MSP430F2132.ddf" "--iv_base" "0xFFE0" "-d" "fet" "--erase_main_and_info" "--derivative" "MSP430F2132" "--protocol" "automatic" "--eem" "EMEX_LOW" "--port" "Automatic" "--connection" "ti_usb" "--settlingtime=0" "--msp430_dll" "msp430.dll" "--vccDefault" "3.3" 
 
 

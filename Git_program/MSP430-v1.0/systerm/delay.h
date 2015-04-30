@@ -11,6 +11,7 @@
 #define CPU_F ((double)16000000)   
 #define delay_us(x) __delay_cycles((long)(CPU_F*(double)x/1000000.0))  
 #define delay_ms(x) __delay_cycles((long)(CPU_F*(double)x/1000.0))  
+#define delay_s(x) __delay_cycles((long)(CPU_F*(double)x/1.0)) 
 
 
 #ifdef __cplusplus
@@ -28,7 +29,7 @@ void delay_1ms();
 void delay_10ms();
 void delay_100ms();
 void delay_1s();
-void delay_10s();
+//void delay_10s();
 
 
 #ifdef __cplusplus
