@@ -78,7 +78,7 @@
 #define OK_RCOSC_CAL		0x05
 #define ERR_GET_RSSI		0x00
 
-#define MAX_DATA_LENGTH 32
+
 
 extern void A7139_StrobeCmd(u8 cmd);
 extern u8 A7139_SetCID(u32 id);

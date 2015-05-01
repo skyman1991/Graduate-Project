@@ -1,8 +1,7 @@
 #include "common.h"
-u16 BeaconTimeCount = 0;
-u8 BeaconSendFlag = 0;
-u8 DataRecv[MAX_DATA_LENGTH];
-u8 DataSend[MAX_DATA_LENGTH];
+u8 DataRecv[MAX_PACK_LENGTH];
+u8 DataSend[MAX_PACK_LENGTH];
+int time_out = 0;
 void Interrupt_Init(void)
 {
     EXTI_InitTypeDef EXTI_InitStructure;
@@ -33,24 +32,44 @@ void Interrupt_Init(void)
 void TIM3_IRQHandler(void)   //1s
 {
     TIM_ClearITPendingBit(TIM3, TIM_IT_Update  );  //清除TIMx更新中断标志 
-    PostBeacon();
-
+		time_out++;
+		if(time_out>5)
+		{
+				A7139_StrobeCmd(CMD_STBY);
+				delay_us(1);
+				A7139_StrobeCmd(CMD_PLL);
+				delay_us(1);
+				A7139_StrobeCmd(CMD_RX);
+				delay_us(1);
+				LED2_REV();
+			  time_out = 0;
+				printf("restart \r\n");
+		}
 }
 void TIM4_IRQHandler(void)   //100us
 {
     TIM_ClearITPendingBit(TIM4, TIM_IT_Update  );  //清除TIMx更新中断标志 
 }
+	  
 void EXTI9_5_IRQHandler(void)
 {
-    EXTI->PR |= EXTI_Line6;
+    int i=0;
+		u8 length = 0;
+		EXTI->PR |= EXTI_Line6;
     /************3.6ms*************/
     //	  LED2_OFF();
-    A7139_ReadFIFO(DataRecv,32);
-    delay_us(2);
+	  A7139_ReadFIFO(&length,1);
+		delay_us(1);
+    A7139_ReadFIFO(DataRecv,length);
+    delay_us(1);
     A7139_StrobeCmd(CMD_RX);
-    delay_us(2);
-		Usart1_PutData(DataRecv,32);
-	LED1_REV();
+    delay_us(1);
+		Usart1_PutData(DataRecv,length);
+		//printf("\r\n");
+		//printf("%d \r\n",DataRecv);
+		//Usart1_PutData(DataRecv,PACK_LENGTH);
+		LED1_REV();
+		time_out = 0;
     /*****************************/
    
 }

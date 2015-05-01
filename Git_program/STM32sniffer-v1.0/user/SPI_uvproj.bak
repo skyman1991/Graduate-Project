@@ -349,7 +349,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HARDWARE\LED;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\KEY;..\HARDWARE\LCD;..\HARDWARE\RTC;..\HARDWARE\RTC;..\HARDWARE\WKUP;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\DMA;..\HARDWARE\IIC;..\HARDWARE\24CXX;..\HARDWARE\SPI;..\HARDWARE\FLASH;..\HARDWARE;..\HARDWARE\A7129;..\HARDWARE\TIMER;..\STM32F10x_FWLib\inc</IncludePath>
+              <IncludePath>..\HARDWARE\LED;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\KEY;..\HARDWARE\LCD;..\HARDWARE\RTC;..\HARDWARE\RTC;..\HARDWARE\WKUP;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\DMA;..\HARDWARE\IIC;..\HARDWARE\24CXX;..\HARDWARE\SPI;..\HARDWARE\FLASH;..\HARDWARE;..\HARDWARE\A7139;..\HARDWARE\TIMER;..\STM32F10x_FWLib\inc;..\HARDWARE\interrupt;..\trsdata;..\Schdule</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -441,16 +441,6 @@
               <FilePath>..\HARDWARE\common.h</FilePath>
             </File>
             <File>
-              <FileName>A7129.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\A7129\A7129.c</FilePath>
-            </File>
-            <File>
-              <FileName>A7129.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HARDWARE\A7129\A7129.h</FilePath>
-            </File>
-            <File>
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
@@ -461,14 +451,34 @@
               <FilePath>..\HARDWARE\TIMER\timer.h</FilePath>
             </File>
             <File>
+              <FileName>A7139.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\A7139\A7139.c</FilePath>
+            </File>
+            <File>
+              <FileName>A7139.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\A7139\A7139.h</FilePath>
+            </File>
+            <File>
               <FileName>A7139_CONFIG.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\A7129\A7139_CONFIG.c</FilePath>
+              <FilePath>..\hardware\A7139\A7139_CONFIG.c</FilePath>
             </File>
             <File>
               <FileName>A7139_CONFIG.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\HARDWARE\A7129\A7139_CONFIG.h</FilePath>
+              <FilePath>..\hardware\A7139\A7139_CONFIG.h</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\interrupt\interrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\interrupt\interrupt.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -569,6 +579,41 @@
               <FileName>trsdata.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\trsdata\trsdata.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SCHDULE</GroupName>
+          <Files>
+            <File>
+              <FileName>beacon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Schdule\beacon.c</FilePath>
+            </File>
+            <File>
+              <FileName>beacon.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Schdule\beacon.h</FilePath>
+            </File>
+            <File>
+              <FileName>ProcessEvent.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Schdule\ProcessEvent.c</FilePath>
+            </File>
+            <File>
+              <FileName>ProcessEvent.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Schdule\ProcessEvent.h</FilePath>
+            </File>
+            <File>
+              <FileName>scan.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Schdule\scan.c</FilePath>
+            </File>
+            <File>
+              <FileName>scan.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Schdule\scan.h</FilePath>
             </File>
           </Files>
         </Group>

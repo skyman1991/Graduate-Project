@@ -25,9 +25,12 @@ uint8 PostBeacon(void)
 
 void SendBeacon(void)
 {
-		A7139_SetPackLen(BEACON_PACK_LENGTH);
+		A7139_StrobeCmd(CMD_PLL);
+		delay_us(1);
 		A7139_WriteFIFO(&BeaconPacket.length,BEACON_PACK_LENGTH);
-	  delay_us(2);
+	  delay_us(1);
 	  A7139_StrobeCmd(CMD_TX);
-
+		delay_ms(11);
+		LED1_REV();
+		RXMode();
 }

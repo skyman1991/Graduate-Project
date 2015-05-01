@@ -72,10 +72,11 @@ static u16 A7139_ReadPageA(u8 address)
     return tmp;
 }
 
-u16 look;
+
 static void A7139_Config(void)
 {
 	u8 i;
+	u16 look;
 	for(i=0; i<8; i++)
         A7139_WriteReg(i, A7139Config[i]);
 	for(i=10; i<16; i++)
@@ -84,6 +85,7 @@ static void A7139_Config(void)
         A7139_WritePageA(i, A7139Config_PageA[i]);
 	for(i=0; i<5; i++)
         A7139_WritePageB(i, A7139Config_PageB[i]);
+	A7139_SetPackLen(MAX_PACK_LENGTH);
 	look = A7139_ReadReg(SYSTEMCLOCK_REG);
 	if(look != A7139Config[SYSTEMCLOCK_REG])
 	{
@@ -160,7 +162,7 @@ static u8 A7139_Cal(void)
 	return 0;
 }
 
-static void A7139_SetFreq(float rfFreq)
+void A7139_SetFreq(float rfFreq)
 {
 	 float  divFreq = rfFreq / 12.800f;  
 	 u8  intFreq = (u8)(divFreq); //integer part
@@ -734,5 +736,11 @@ uint8 A7139_SetPowerLevel(uint8 pwrLev)
     delay_ms(5);
     return 0;
 }
-
+void RXMode()
+{
+    A7139_StrobeCmd(CMD_PLL);
+    delay_us(1);
+    A7139_StrobeCmd(CMD_RX);
+    delay_us(1);
+}
 

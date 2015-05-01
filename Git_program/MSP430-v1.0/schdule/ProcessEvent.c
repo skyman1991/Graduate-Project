@@ -60,9 +60,7 @@ uint8 Process_Event()
     current_event = Pop_T();
     switch(current_event)
     {
-      case EVENT_SCAN_CHANNEL:
-        Scan_Channel(StartChannel,EndChannel);
-        break;
+
     }
     return current_event;
 }

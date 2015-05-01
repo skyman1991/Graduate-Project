@@ -26,8 +26,7 @@
 ..\OBJ\a7139_config.o: ..\HARDWARE\TIMER\timer.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\A7139\A7139_CONFIG.h
 ..\OBJ\a7139_config.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
-..\OBJ\a7139_config.o: ..\trsdata\trsdata.h
 ..\OBJ\a7139_config.o: ..\HARDWARE\interrupt\interrupt.h
-..\OBJ\a7139_config.o: ..\Schdule\scan.h
+..\OBJ\a7139_config.o: ..\Schdule\join.h
 ..\OBJ\a7139_config.o: ..\Schdule\ProcessEvent.h
 ..\OBJ\a7139_config.o: ..\Schdule\beacon.h

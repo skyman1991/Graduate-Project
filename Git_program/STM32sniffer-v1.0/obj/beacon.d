@@ -25,7 +25,6 @@
 ..\OBJ\beacon.o: ..\HARDWARE\TIMER\timer.h
 ..\OBJ\beacon.o: ..\HARDWARE\A7139\A7139_CONFIG.h
 ..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
-..\OBJ\beacon.o: ..\trsdata\trsdata.h
 ..\OBJ\beacon.o: ..\HARDWARE\interrupt\interrupt.h
 ..\OBJ\beacon.o: ..\Schdule\scan.h
 ..\OBJ\beacon.o: ..\Schdule\ProcessEvent.h

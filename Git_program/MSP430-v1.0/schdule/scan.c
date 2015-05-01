@@ -21,11 +21,11 @@ uint8 Scan_Channel(uint8 startch,uint8 endch)
     for(i=startch;i<endch+2;i++)   //循环16次
     {
         A7139_SetFreq(ChannelList[i]);
-        delay_us(2);
+        //A7139_SetFreq(470.001f);
+        delay_us(1);
         A7139_Cal();                    //更改完频率后校准
-        delay_us(2);
-        A7139_StrobeCmd(CMD_RX);
-        delay_us(2);
+        delay_us(1);
+        RXMode();
         while(GIO1)
         {
             delay_1ms();
@@ -36,7 +36,7 @@ uint8 Scan_Channel(uint8 startch,uint8 endch)
         {
             A7139_ReadFIFO(&datalength,1);
             A7139_ReadFIFO(data,datalength);
-            ScanChannel[i-1].channel_num = data[1];
+            ScanChannel[i-1].channel_num = i;
             ScanChannel[i-1].channel_rssi = A7139_GetRSSI();
             ScanChannel[i-1].channel_free = data[6];
         }
@@ -48,6 +48,5 @@ uint8 Scan_Channel(uint8 startch,uint8 endch)
         }
         timeout = SCAN_TIME_OUT; 
     }
-        
     return i;
 }

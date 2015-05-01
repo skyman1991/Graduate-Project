@@ -25,8 +25,7 @@
 ..\OBJ\sys.o: ..\HARDWARE\TIMER\timer.h
 ..\OBJ\sys.o: ..\HARDWARE\A7139\A7139_CONFIG.h
 ..\OBJ\sys.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
-..\OBJ\sys.o: ..\trsdata\trsdata.h
 ..\OBJ\sys.o: ..\HARDWARE\interrupt\interrupt.h
-..\OBJ\sys.o: ..\Schdule\scan.h
+..\OBJ\sys.o: ..\Schdule\join.h
 ..\OBJ\sys.o: ..\Schdule\ProcessEvent.h
 ..\OBJ\sys.o: ..\Schdule\beacon.h

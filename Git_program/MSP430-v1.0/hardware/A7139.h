@@ -14,9 +14,6 @@
 #define RF_WOR_RECV 0
 #define RF_WOR_SEND 0
 
-#define MAX_DATA_LENGTH 64
-
-
 #define SYSTEMCLOCK_REG 	        0x00
 #define PLL1_REG 			0x01
 #define PLL2_REG 			0x02
@@ -98,10 +95,11 @@ extern void Correct_State(void);
 extern void A7139_WriteFIFO(uint8 *buf,uint8 bufSize);
 extern void A7139_ReadFIFO(uint8 *buf,uint8 bufSize);
 extern uint8 A7139_SetPackLen(uint8 len);
-extern uint8 DataRecv[MAX_DATA_LENGTH];
+extern uint8 DataRecv[MAX_PACK_LENGTH];
 extern void A7139_SetFreq(float rfFreq);
 extern void A7139_Receive_Once(uint8 data[],uint8 length);
 extern uint8 A7139_GetRSSI();
 extern uint8 A7139_Cal(void);
-
+extern void RXMode();
+extern void SendPack(u8 *buf,u8 bufSize);
 #endif

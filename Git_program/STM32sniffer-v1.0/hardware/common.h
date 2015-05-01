@@ -10,6 +10,8 @@
 
 #define    BEACON_TYPE    1
 
+#define    MAX_PACK_LENGTH    12
+
 #include "led.h"
 #include "delay.h"
 #include "key.h"
@@ -24,7 +26,7 @@
 #include "timer.h"
 #include "A7139_CONFIG.h"
 #include "stm32f10x_exti.h"
-#include "trsdata.h"
+
 #include "stdio.h"
 #include "interrupt.h"
 #include "scan.h"

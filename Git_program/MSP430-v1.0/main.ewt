@@ -1992,16 +1992,16 @@
       <name>$PROJ_DIR$\schdule\interrupt.h</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\schdule\join.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schdule\join.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\schdule\ProcessEvent.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\schdule\ProcessEvent.h</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\schdule\scan.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\schdule\scan.h</name>
     </file>
   </group>
   <group>
@@ -2060,12 +2060,6 @@
   </file>
   <file>
     <name>$PROJ_DIR$\main.c</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\trsdata\trsdata.c</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\trsdata\trsdata.h</name>
   </file>
 </project>
 

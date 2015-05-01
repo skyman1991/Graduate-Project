@@ -37,8 +37,8 @@ extern Uint16 AD_avevalue;
 extern uint8  StateErrorTimes;
 extern uint8  ResetEnable;
 extern uint8  AD_flag;
-extern uint8 DataRecv[MAX_DATA_LENGTH];
-extern uint8 DataSend[MAX_DATA_LENGTH];
+extern uint8 DataRecv[MAX_PACK_LENGTH];
+extern uint8 DataSend[MAX_PACK_LENGTH];
 extern void Sensor_status_Value(void);
 extern void DataQueue(void);
 #endif

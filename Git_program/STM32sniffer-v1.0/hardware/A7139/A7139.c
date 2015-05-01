@@ -84,6 +84,7 @@ static void A7139_Config(void)
         A7139_WritePageA(i, A7139Config_PageA[i]);
 	for(i=0; i<5; i++)
         A7139_WritePageB(i, A7139Config_PageB[i]);
+	A7139_SetPackLen(MAX_PACK_LENGTH);
 	look = A7139_ReadReg(SYSTEMCLOCK_REG);
 	if(look != A7139Config[SYSTEMCLOCK_REG])
 	{
@@ -388,6 +389,7 @@ void A7139_ReadFIFO(u8 *buf,u8 bufSize)
 		*buf++ = SPIx_ReadByte(); 
 	SCS = 1;							 
 }
+
 
 u8 A7139_IsBatteryLow(u8 low2_x)
 {

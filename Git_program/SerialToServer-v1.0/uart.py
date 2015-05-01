@@ -18,7 +18,8 @@ def read_until(until):
 	return buf
 def Get_data(data):
 	#params = urllib2.urlencode({'data': data})
-	response  = urllib2.urlopen("http://123.57.11.98:8080/mm/set_new?data" + data)
+	response  = urllib2.urlopen("http://123.57.11.98:8080/mm/set_new?data=" + data)
+	response  = urllib2.urlopen("http://123.57.11.98:8080/mm/set?data=" + data)
 if __name__	== "__main__":
 	serialPort = "COM1"
 	bufdata=[]
