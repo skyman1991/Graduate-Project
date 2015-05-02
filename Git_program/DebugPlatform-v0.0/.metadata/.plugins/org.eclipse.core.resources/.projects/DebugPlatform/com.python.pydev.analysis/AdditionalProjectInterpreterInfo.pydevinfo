@@ -1,0 +1,46 @@
+-- VERSION_4
+-- START DISKCACHE
+F:\Graduate\Git_program\DebugPlatform-v0.0\.metadata\.plugins\org.eclipse.core.resources\.projects\DebugPlatform\com.python.pydev.analysis\v2_indexcache
+form.mainform|1430581182779|F:\Graduate\Git_program\DebugPlatform-v0.0\DebugPlatform\src\form\mainform.py
+-- END DISKCACHE
+-- START DICTIONARY
+9
+7=StatusBar.__init__
+2=MainRoot
+8=MainRoot.SysStatus
+3=MenuBar
+1=form.mainform
+6=MainRoot.__init__
+9=Application.__init__
+4=StatusBar
+5=Application
+-- END DICTIONARY
+-- START TREE 1
+6
+app|1|Application!9@
+mai|1|MainRoot!9@
+men|1|MenuBar!9@
+roo|0|
+sta|1|StatusBar!9@
+uar|0|
+-- END TREE
+-- START TREE 2
+17
+__i|4|__init__!2&10@__init__!3&10@__init__!4&10@__init__!5&10@
+app|1|appFrame!6&11@
+bor|0|
+cal|1|callback!3&10@
+cle|1|clear!4&10@
+com|0|
+lab|1|label!7&11@
+mai|1|mainvalue!5&11@
+net|2|NetStatus!2&10@NetStatus!5&10@
+ope|0|
+roo|1|root!5&11@
+set|1|set!4&10@
+sho|2|ShowData!2&10@ShowData!5&10@
+sta|1|status!8&11@
+sys|2|SysStatus!2&10@SysStatus!5&10@
+tab|3|tab1!9&11@tab3!9&11@tab2!9&11@
+uar|1|Uartettings!3&10@
+-- END TREE

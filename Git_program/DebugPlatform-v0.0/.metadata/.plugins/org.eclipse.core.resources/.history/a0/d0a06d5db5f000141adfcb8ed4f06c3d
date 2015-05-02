@@ -1,0 +1,10 @@
+#coding=utf-8
+import Tkinter
+
+top = Tkinter.Tk()
+frame = Tkinter.Frame(borderwidth = 50)
+top.resizable(False, False)
+label = Tkinter.Label(top, text='tk.resizable(False, False)')
+label.pack()
+frame.pack()
+Tkinter.mainloop()

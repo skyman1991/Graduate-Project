@@ -1,0 +1,29 @@
+#coding=utf-8
+import Tkinter as tk
+import ttk
+from Tix import COLUMN
+class Root(tk.Tk):
+    """Container for all frames within the application"""
+    
+    def __init__(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+
+        self.title("串口配置")
+        self.geometry('200x400')
+        ttk.Label(self, text="串口号:", padding=5).grid(row=0)
+        ttk.Label(self, text="波特率:", padding=5).grid(row=1)
+        ttk.Label(self, text="数据位:", padding=5).grid(row=2)
+        ttk.Label(self, text="停止位:", padding=5).grid(row=3)
+        comnum = tk.StringVar()
+        comnum.set('com2')
+        box = ttk.Combobox(self,width=10)
+        box.insert(0, "com2\n")
+        box.insert(1, "com3\n")
+        box.insert(2, "com4")
+        box.grid(row = 0,column = 1)
+        
+        ttk.Combobox(self,width=10).grid(row=1,column=1)
+
+if __name__ == '__main__':
+    root = Root()
+    root.mainloop()
