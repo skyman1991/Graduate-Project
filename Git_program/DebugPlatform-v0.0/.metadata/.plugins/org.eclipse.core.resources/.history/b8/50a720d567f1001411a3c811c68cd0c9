@@ -1,0 +1,107 @@
+# coding=utf-8
+import Tkinter as tk
+import ttk
+from Tix import COLUMN
+from distutils.cmd import Command
+from mainform import *
+import uart
+import serial
+from scrapy.log import err
+
+
+opened_uart=[]
+class UartRoot(tk.Tk):
+    """Container for all frames within the application"""
+    
+    def __init__(self,comnum, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+
+        self.title("串口配置")
+        self.geometry('200x400')
+        ttk.Label(self, text="串口号:", padding=5).grid(row=0)
+        self.comnumbox = ttk.Combobox(self, width=10,exportselection=0)
+        self.comnumbox.bind("<<ComboboxSelected>>", self.IsOpen)
+#         comnum.append('com2')
+        self.comnumbox['value'] = comnum
+        if len(comnum)>0:
+            self.comnumbox.set(comnum[0])
+        else:
+            self.comnumbox.set('未发现串口')
+        self.comnumbox.grid(row=0, column=1)
+        
+        ttk.Label(self, text="波特率:", padding=5).grid(row=1)
+        bordrate = ['9600', '14400', '19200', '28800', '38400', '56000', '57600', '115200']
+        self.bordratebox = ttk.Combobox(self, width=10)
+        self.bordratebox['value'] = bordrate
+        self.bordratebox.set('115200')
+        self.bordratebox.grid(row=1, column=1)
+        
+        ttk.Label(self, text="数据位:", padding=5).grid(row=2)
+        databit = ['8bit', '7bit']
+        self.databitbox = ttk.Combobox(self, width=10)
+        self.databitbox['value'] = databit
+        self.databitbox.set('8bit')
+        self.databitbox.grid(row=2, column=1)
+        
+        ttk.Label(self, text="停止位:", padding=5).grid(row=3)
+        stopbit = ['1bit', '2bit']
+        self.stopbitbox = ttk.Combobox(self, width=10)
+        self.stopbitbox['value'] = stopbit
+        self.stopbitbox.set('1bit')
+        self.stopbitbox.grid(row=3, column=1)
+        
+        
+#         s = ttk.Style()
+#         s.configure('TButton',
+# #         background='black',
+# #         foreground='white',
+#         highlightthickness='10',
+#         font=('黑体', 14))
+#         s.map('TButton',
+#         foreground=[('disabled', 'yellow'),('pressed', 'red'), ('active', 'blue')],
+#         background=[('disabled', 'magenta'),('pressed', '!focus', 'cyan'),('active', 'green')],
+#         highlightcolor=[('focus', 'green'),('!focus', 'red')],
+#         relief=[('pressed', 'groove'),('!pressed', 'ridge')]
+#         )
+        
+        uartopenbutton = ttk.Button(self, text='打开串口', command=self.OpenUart)
+        uartopenbutton.grid(row=4, column=1)
+        uartclosebutton = ttk.Button(self, text='关闭串口', command=self.CloseUart)
+        uartclosebutton.grid(row=5, column=1)
+        uartopenbutton = ttk.Button(self, text='退出', command=self.Quit)
+        uartopenbutton.grid(row=6, column=1)
+        
+        self.uartstatus = tk.Canvas(self,width=20,height=20,background='black')
+        self.statusrec = self.uartstatus.create_rectangle(0,0,20,20,fill='red')      
+        self.uartstatus.grid(row = 5,column=0)
+        self.IsOpen(0)
+    
+    def OpenUart(self):
+#         mainform.root.status.set("%s",'sdf')
+        global newuart
+        newuart = serial.Serial(port = self.comnumbox.get(),baudrate = self.bordratebox.get())
+        opened_uart.append(self.comnumbox.get())
+        self.IsOpen(0)
+
+    def CloseUart(self):
+        newuart.close()
+    
+    def Quit(self):
+        self.destroy()
+        
+    def IsOpen(self,event):
+        comnunm=self.comnumbox.get()
+        if comnunm in opened_uart:
+            self.uartstatus.itemconfig(self.statusrec, fill='green')
+        else:
+            self.uartstatus.itemconfig(self.statusrec, fill='red')
+
+            
+            
+#         self.uartstatus.itemconfig(self.statusrec, fill='green')
+#         self.uartstatus.itemconfig(self.statusrec, fill='red')
+
+if __name__ == '__main__':
+    comnum=('com1','com2','com3')
+    uartroot = UartRoot(comnum)
+    uartroot.mainloop()
