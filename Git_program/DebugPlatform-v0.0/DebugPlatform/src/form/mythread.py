@@ -18,8 +18,7 @@ class myThread (threading.Thread):
         self.count = 0
         self.filename = filename
         
-        if os.path.exists(self.filename):
-            os.rmdir(self.filename)
+        
         self.file = open(self.filename,'w')
         self.radiovalue = 0
         
@@ -27,10 +26,12 @@ class myThread (threading.Thread):
     def run(self):                   
         print "thread " + self.name
         currenttab = 2
+        fastmodecount = 0
+        fastmodedatabuf=''
         while(1):
             while(self.thread_stop == False):
-                self.uart.write("hello this is my fisrt uart")
                 self.count = self.count + 1
+                self.uart.write("hello this is my fisrt uart")
                 databuf = self.uart.read(self.uart.inWaiting())
                 showbuf = 'RX:'+ databuf + "    count:" + str(self.count)
                 
@@ -43,16 +44,33 @@ class myThread (threading.Thread):
 #                 print self.showdata.appFrame.tabs()
                 self.radiovalue  = self.showdata.appFrame.radiovalue.get()
                 if(currenttab == 2):
-                    if self.radiovalue  == 0:
+#                   低速模式
+                    if self.radiovalue  == 0:  
                         self.showdata.appFrame.updatetext(databuf+"\n")
-                        self.file.write(showbuf+'\n')
+                        try:
+                            self.file.write(showbuf+'\n')
+                        except:
+                            pass
                         time.sleep(0.05)
+                        
+#                   高速模式      
                     elif self.radiovalue  == 1:
-                        self.file.write(showbuf+'\n')
+                        try:
+                            self.file.write(showbuf+'\n')
+                        except:
+                            pass
+                        fastmodecount = fastmodecount + 1
+                        if(fastmodecount == 200):
+                            fastmodecount = 0
+                            print len(fastmodedatabuf)
+#                             self.showdata.appFrame.updatetext(fastmodedatabuf)
+                            fastmodedatabuf = ''
+                        else:
+                            fastmodedatabuf = fastmodedatabuf + databuf +"\n"
+                            
                         time.sleep(0.005)
                 else:
                     time.sleep(0.05)
-#                     print "%s-%s" % ('data', time.strftime('%Y-%m-%d_%H-%M-%S',time.localtime(time.time())))
                 
     def closeuart(self):
         self.uart.close()

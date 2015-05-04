@@ -7,6 +7,7 @@ import mythread
 import tkMessageBox as tkmes
 import os
 import time
+import tkFont
 class MainRoot(tk.Tk):
     """Container for all frames within the application"""
     
@@ -14,20 +15,21 @@ class MainRoot(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
         
         #initialize menu
-        self.config(menu=MenuBar(self))
+        self.rootmenu = MenuBar(self)
+        self.config(menu=self.rootmenu)
         self.title("小虾米")
 
         #居中显示
 #         self.update() # update window ,must do
         curWidth = self.winfo_screenwidth() # get current width
         curHeight = self.winfo_screenheight() # get current height
-        scnWidth = (curWidth-1280)/2
-        scnHeight = (curHeight-768)/2 # get screen width and height
+        scnWidth = (curWidth-1330)/2
+        scnHeight = (curHeight-660)/2 # get screen width and height
         # now generate configuration information
-        tmpcnf = '%dx%d+%d+%d'%(1280,768,scnWidth,scnHeight)
+        tmpcnf = '%dx%d+%d+%d'%(1330,660,scnWidth,scnHeight)
         self.geometry(tmpcnf)
-
-        self.appFrame = Application(self)
+        self.appcanvas = tk.Canvas(self)
+        self.appFrame = Application(root = self)
         self.appFrame.pack(side='top', fill='both', expand='True')
     def ShowData(self):
         self.appFrame.ShowData() 
@@ -45,15 +47,55 @@ class MainRoot(tk.Tk):
         self.status = StatusBar(self)
         self.status.pack(side='bottom', fill='x')
 
+class CarStopRoot(tk.Tk):
+    def __init__(self, *args, **kwargs):
+        self.locat = 0
+        self.carnum = 0
+
+    def show(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+        self.locat = ""
+        self.carnum = 0
+        self.title("停车设置")
+#         self.geometry('400x400')
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.rowconfigure(0, weight=1)
+        
+        carnumlabel = tk.Label(self,text = "车位数量:")
+        carnumlabel.grid(sticky = tk.W)
+        self.carnumspinbox = tk.Spinbox(self,from_ = 4,to=50,width=10)
+
+        self.carnumspinbox.grid(row = 0,column = 1)
+        carlolabel = tk.Label(self,text = "车位位置:")
+        carlolabel.grid(row = 2,column = 0)
+        self.carlocomb = ttk.Combobox(self,width = 10)
+        self.carlocomb['value'] = ("方兴大厦","其他")
+        self.carlocomb.set("方兴大厦")
+        self.carlocomb.grid(row = 2,column = 1)
+        
+        confirmbutt = ttk.Button(self,text = "确认",command = self.carstopconfirm).grid(row = 3,column=0,columnspan = 2)
+    
+    
+    def carstopconfirm(self):
+        self.locat = self.carlocomb.current()
+        self.carnum = int(self.carnumspinbox.get())
+        global root
+        root.appFrame.DrawParking()
+        
 class MenuBar(tk.Menu):
     portlistsort=[]
     def __init__(self, parent):
         tk.Menu.__init__(self, parent)
-
+        self.carstop = CarStopRoot()
         filemenu = tk.Menu(self, tearoff=False)
         self.add_cascade(label="选项",underline=0, menu=filemenu)
-        filemenu.add_command(label="串口配置...", command=self.Uartettings)
-#         filemenu.add_separator()
+        filemenu.add_command(label="串口设置...", command=self.Uartettings)
+        
+        filemenu.add_command(label="网络设置...", command=self.netsettings)
+        
+        filemenu.add_command(label="停车设置...", command=self.carstopsettings)
+
         filemenu.add_command(label="退出", underline=1, command=self.quit)
 
         helpmenu = tk.Menu(self, tearoff=False)
@@ -72,13 +114,24 @@ class MenuBar(tk.Menu):
         self.portlistsort=sorted(self.portlistsort)
         global root
         self.uartform = UartRoot(comnum = self.portlistsort,frame = root)
-        self.uartform.protocol("WM_DELETE_WINDOW", self.shutdown_ttk_repeat)  #防止退出报错
+        self.uartform.protocol("WM_DELETE_WINDOW", self.uart_shutdown_ttk_repeat)  #防止退出报错
         self.uartform.mainloop()
     
+    def netsettings(self):
+        pass
+    
+    def carstopsettings(self):
+        self.carstop.show()
+        self.carstop.protocol("WM_DELETE_WINDOW", self.carstop_shutdown_ttk_repeat)  #防止退出报错
+        self.carstop.mainloop()
     #防止退出报错
-    def shutdown_ttk_repeat(self):
+    def uart_shutdown_ttk_repeat(self):
         self.uartform.eval('::ttk::CancelRepeat')
         self.uartform.destroy()
+    
+    def carstop_shutdown_ttk_repeat(self):
+        self.carstop.eval('::ttk::CancelRepeat')
+        self.carstop.destroy()
 
 class StatusBar(ttk.Frame):
 
@@ -108,6 +161,7 @@ class Application(ttk.Notebook):
     def __init__(self, root):
         ttk.Notebook.__init__(self, root)
         
+        
         self.tab1 = ttk.Frame(self)
         self.tab2 = ttk.Frame(self)
         self.tab3 = ttk.Frame(self)
@@ -117,9 +171,93 @@ class Application(ttk.Notebook):
         self.add(self.tab2, text = "网络拓扑")
         self.add(self.tab3, text = "数据显示")
         self.add(self.tab4, text = "网络抓包")
-    def StopStatus(self):
-        label1 = ttk.Label(self.tab1,text="停车状态").grid()
+        self.topline=[]
+        self.bottomline=[]
+        self.carnum = 0
+        self.width = 1320
+        self.height = 600
+        self.carmove=[]
+        self.stoptext=[]
+        self.front = tkFont.Font(size = 50,family = "黑体")
+        
+    def StopStatus(self):             
+        self.canvas = tk.Canvas(self.tab1,width = self.width,height = self.height)
+        self.canvas.grid(sticky = tk.W+tk.E)
+        self.canvas.create_line(0,self.height/2,self.width,self.height/2,fill='black',dash=(100,80),width = 5)
+        self.canvas.create_line(0,self.height/3,self.width,self.height/3,fill='black',width = 5)
+        self.canvas.create_line(0,self.height/3*2,self.width,self.height/3*2,fill='black',width = 5)
     
+    def DrawParking(self):
+        global root
+        self.carnum = root.rootmenu.carstop.carnum
+
+        if len(self.topline)>0:
+            for line in self.topline:
+                self.canvas.delete(line)
+        if len(self.bottomline)>0:
+            for line in self.bottomline:
+                self.canvas.delete(line)
+        if len(self.stoptext)>0:
+            for text in self.stoptext:
+                self.canvas.delete(text)
+        if self.carnum%2 == 0:
+            topnum = self.carnum/2
+            bottomnum = self.carnum/2
+        else:
+            topnum = (self.carnum+1)/2
+            bottomnum = (self.carnum-1)/2
+        everytopx = self.width/topnum+1
+        everybottomx = self.width/bottomnum+1
+        for i in range(1,topnum):
+            self.topline.append(self.canvas.create_line(everytopx*i,0,everytopx*i,self.height/3,fill='black',width = 5))
+            
+        for i in range(1,bottomnum):
+            self.bottomline.append(self.canvas.create_line(everybottomx*i,self.height/3*2,everybottomx*i,self.height,fill='black',width = 5))
+        
+        self.stopcar(move="1|1,2|1,3|0,4|0,5|1,6|0,7|1")
+        
+        
+    def stopcar(self,move):
+        count = 0
+#         for i in range(self.carnum):
+#             self.stoptext.append(self.canvas.create_text(0,0))
+        if self.carnum>20:
+            self.front.configure(size=10)
+        elif self.carnum>14:
+            self.front.configure(size=20)
+        elif self.carnum>8:
+            self.front.configure(size=32)
+        
+        if self.carnum%2 == 0:
+            topwidth = self.width/(self.carnum/2)
+            bottomwidth = topwidth
+            topnum = self.carnum/2
+            bottomnum = topnum
+        else:
+            topwidth = self.width/((self.carnum+1)/2)
+            bottomwidth = self.width/((self.carnum-1)/2)
+            topnum = (self.carnum+1)/2
+            bottomnum = (self.carnum-1)/2
+        buf = move.split(",")
+        for i in buf:
+            self.carmove.append(i.split("|"))
+        for num,act in self.carmove:
+
+            if count<topnum:
+                if act == '1':
+                    self.stoptext.append(self.canvas.create_text(count*topwidth+topwidth/2,self.height/6,text = num+":已停车",font = self.front,fill = 'red'))
+                
+                else:
+                    self.stoptext.append(self.canvas.create_text(count*topwidth+topwidth/2,self.height/6,text = num+":未停车",font = self.front,fil = 'green'))
+            else:
+                if act == '1':
+                    self.stoptext.append(self.canvas.create_text((count-topnum)*bottomwidth+bottomwidth/2,self.height-self.height/6,text = num+":已停车",font = self.front,fill = 'red'))
+                    print bottomwidth
+                else:
+                    self.stoptext.append(self.canvas.create_text((count-topnum)*bottomwidth+bottomwidth/2,self.height-self.height/6,text = num+":未停车",font = self.front,fil = 'green'))        
+            count = count + 1 
+
+        
     def NetStatus(self):
         label2 = ttk.Label(self.tab2,text="网络拓扑").grid()
     
@@ -220,11 +358,12 @@ class Application(ttk.Notebook):
     def opentxt(self):
         global uartthread
         self.pause()
-        uartthread.clsoefile()
-        os.startfile(uartthread.filename)
-        
-                
-    
+        try:
+            uartthread.clsoefile()
+            os.startfile(uartthread.filename)
+        except:
+            pass
+         
 opened_uart=[]
 class UartRoot(tk.Tk):
     """Container for all frames within the application"""
@@ -331,7 +470,8 @@ class UartRoot(tk.Tk):
             self.uartstatus.itemconfig(self.statusrec, fill='green')
         else:
             self.uartstatus.itemconfig(self.statusrec, fill='red')
-    
+
+
 
 if __name__ == '__main__':
     global root
