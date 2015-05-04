@@ -1,6 +1,5 @@
 import _winreg as winreg
 import itertools
-import serial
 
 class GetSerialPorts(object):
     # list contains all port device info
@@ -31,6 +30,3 @@ class GetSerialPorts(object):
             tmp = self.portList[x]
             print tmp[0]
             print str(tmp[1])
-
-
-        
