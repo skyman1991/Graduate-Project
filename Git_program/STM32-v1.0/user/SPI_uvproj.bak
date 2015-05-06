@@ -406,6 +406,11 @@
           <GroupName>HARDWARE</GroupName>
           <Files>
             <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
+            </File>
+            <File>
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\LED\led.c</FilePath>
@@ -434,16 +439,6 @@
               <FileName>spi.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\HARDWARE\SPI\spi.h</FilePath>
-            </File>
-            <File>
-              <FileName>common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HARDWARE\common.h</FilePath>
-            </File>
-            <File>
-              <FileName>timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
             </File>
             <File>
               <FileName>timer.h</FileName>
@@ -563,22 +558,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>trsdata</GroupName>
+          <GroupName>main</GroupName>
           <Files>
+            <File>
+              <FileName>common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\common.h</FilePath>
+            </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>trsdata.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\trsdata\trsdata.c</FilePath>
-            </File>
-            <File>
-              <FileName>trsdata.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\trsdata\trsdata.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -606,14 +596,14 @@
               <FilePath>..\Schdule\ProcessEvent.h</FilePath>
             </File>
             <File>
-              <FileName>scan.c</FileName>
+              <FileName>join.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Schdule\scan.c</FilePath>
+              <FilePath>..\Schdule\join.c</FilePath>
             </File>
             <File>
-              <FileName>scan.h</FileName>
+              <FileName>join.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Schdule\scan.h</FilePath>
+              <FilePath>..\Schdule\join.h</FilePath>
             </File>
           </Files>
         </Group>

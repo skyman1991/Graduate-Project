@@ -32,4 +32,6 @@
 #include "ProcessEvent.h"
 #include "beacon.h"
 
+
+extern uint8 DataSendBuffer[MAX_PACK_LENGTH];
 #endif

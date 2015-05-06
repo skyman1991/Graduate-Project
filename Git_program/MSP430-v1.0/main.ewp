@@ -2297,6 +2297,12 @@
   <group>
     <name>schdule</name>
     <file>
+      <name>$PROJ_DIR$\schdule\device.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\schdule\device.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\schdule\interrupt.c</name>
     </file>
     <file>

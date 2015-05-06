@@ -1,6 +1,5 @@
 #include "common.h"
-uint8  DataRecv[MAX_PACK_LENGTH];
-uint8  DataSend[MAX_PACK_LENGTH];
+uint8   receive_timeout = 0;
 void Interrupt_Init(void)
 {
     P1DIR &=~ pinGIO2.pin_bm;
@@ -29,18 +28,42 @@ __interrupt void port1_ISR(void)
         A7139_StrobeCmd(CMD_RX);
         delay_us(2);
         halLedToggle(1);
-  
+        switch (Unpack(DataRecv))
+        {
+            case BEACON_TYPE:
+              PostTask(BEACON_HANDLER);
+              break;
+        }
+          
+              
     }
     
 }
+
+//100us
 #pragma vector=TIMER1_A0_VECTOR
 __interrupt void Timer_A (void)
 {
     TA1CCTL0 &= ~CCIFG;
+    
+   
 }
+
+//1s
 #pragma vector=TIMER0_A0_VECTOR
 __interrupt void Timer_A0(void)
 {
     TA0CCTL0 &= ~CCIFG;
+    receive_timeout++;
+    if(receive_timeout>10)
+    {
+        A7139_StrobeCmd(CMD_STBY);
+        delay_us(1);
+        A7139_StrobeCmd(CMD_PLL);
+        delay_us(1);
+        A7139_StrobeCmd(CMD_RX);
+        delay_us(1);
+        receive_timeout = 0;
+    }
 
 }

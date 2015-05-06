@@ -53,14 +53,18 @@ uint8 Pop_T(void)
         return TQ_EMPTY;
     }
 }
+void Senduart()
+{
+
+}
 uint8 Process_Event()
 {
     uint8 current_event;
     current_event = Pop_T();
     switch(current_event)
     {
-      case EVENT_SEND_BEACON:
-        SendBeacon();
+      case EVENT_SEND_UART:
+        Senduart();
         break;
     }
     return current_event;

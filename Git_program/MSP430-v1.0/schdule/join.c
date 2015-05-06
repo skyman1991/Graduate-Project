@@ -5,7 +5,7 @@ uint8 StartChannel = CHANNEL_1;
 uint8 EndChannel = CHANNEL_16;
 ChannelTable ScanChannel[CHANNEL_NUM];
 JoinRequestPacketStruct JoinRequestPacket;
-EndPointDeviceStruct EndPointDevice;
+
 uint8 DataSendBuffer[MAX_PACK_LENGTH];
 uint8 Scan_Channel(uint8 startch,uint8 endch)
 {
@@ -79,6 +79,7 @@ void SortChannel()
 {
     bubble(ScanChannel,CHANNEL_NUM);
     EndPointDevice.channel = ScanChannel[0].channel_num;
+    EndPointDevice.backup_channel = ScanChannel[1].channel_num;
     EndPointDevice.cluster_id = ScanChannel[0].cluster_id;
     EndPointDevice.des_cluster_id = ScanChannel[0].cluster_id;
     A7139_SetFreq(ChannelList[EndPointDevice.channel]);
@@ -108,4 +109,10 @@ void SendJoinRequest()
 {
     CreatJoinRequest();
     SendPack(DataSendBuffer,JOINREQUEST_PACK_LENGTH);
+}
+
+void WaitToCSMA()
+{
+    EN_TIMER1;
+    
 }

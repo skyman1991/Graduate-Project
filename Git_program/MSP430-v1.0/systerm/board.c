@@ -44,5 +44,5 @@ void halBoardInit(void)
     Interrupt_Init();
     Init_TQ();
     AD_cal();
-    EndPointDevice.pyh_address = PHY_ADDRESS;
+    
 }

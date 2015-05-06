@@ -1,5 +1,5 @@
 [DebugChecksum]
-Checksum=-1702571282
+Checksum=-1139463149
 [Stack]
 FillEnabled=0
 OverflowWarningsEnabled=1
@@ -44,17 +44,14 @@ Fmt0=ChannelTable-channel_free	3	0
 Fmt1=ChannelTable-channel_num	3	0
 Fmt2=ChannelTable-channel_rssi	3	0
 Fmt3=ChannelTable-cluster_id	3	0
-Fmt4=EndPointDeviceStruct-channel	3	0
-Fmt5=EndPointDeviceStruct-cluster_id	3	0
-Fmt6=EndPointDeviceStruct-cluster_innernum	3	0
-Fmt7=EndPointDeviceStruct-des_cluster_id	3	0
-Fmt8=EndPointDeviceStruct-pyh_address	3	0
-Fmt9=struct __Unnamed_2_213-	3	0
-Fmt10=struct __Unnamed_2_213-ack_en	3	0
-Fmt11=struct __Unnamed_2_213-des_cluster_id	3	0
-Fmt12=struct __Unnamed_2_213-des_cluster_innernum	3	0
-Fmt13=struct __Unnamed_2_213-length	3	0
-Fmt14=struct __Unnamed_2_213-pack_type	3	0
+Fmt4=EndPointDeviceStruct-backup_channel	3	0
+Fmt5=EndPointDeviceStruct-channel	3	0
+Fmt6=EndPointDeviceStruct-cluster_id	3	0
+Fmt7=EndPointDeviceStruct-cluster_innernum	3	0
+Fmt8=EndPointDeviceStruct-des_cluster_id	3	0
+Fmt9=EndPointDeviceStruct-device_type	3	0
+Fmt10=EndPointDeviceStruct-free_node	3	0
+Fmt11=EndPointDeviceStruct-pyh_address	3	0
 [array_types]
 Fmt0=uint8 [20]	3	0
 Fmt1=uint8 [32]	4	0
@@ -71,8 +68,7 @@ LoggingEnabled=_ 0
 LogFile=_ ""
 [Breakpoints]
 Bp0=_ "STD_CODE" "{E:\Program Files (x86)\IAR Systems\Embedded Workbench MSP430 7.2}.54.5" 0 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\main.c}.17.5" 1 0 0 0 "" 0 ""
-Count=2
+Count=1
 [FET]
 Clock mode=39
 Extended Clock mode=1

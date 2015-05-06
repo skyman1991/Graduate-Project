@@ -14,6 +14,13 @@ uint8 CreatBeacon()
 		BeaconPacket.ack_en = ACK_EN;									//不需要应答
 		BeaconPacket.free_num = 16;											//空闲节点数量
 	
+		DataSendBuffer[0] = BeaconPacket.length ;
+    DataSendBuffer[1] = BeaconPacket.pack_type<<2|BeaconPacket.ack_en<<1;
+    DataSendBuffer[2] = BeaconPacket.cluster_id;
+    DataSendBuffer[3] = BeaconPacket.cluster_innernum;
+    DataSendBuffer[4] = BeaconPacket.des_cluster_id;
+    DataSendBuffer[5] = BeaconPacket.des_cluster_innernum;
+    DataSendBuffer[6] = BeaconPacket.free_num;
 		
 		return 1;
 }
@@ -27,7 +34,7 @@ void SendBeacon(void)
 {
 		A7139_StrobeCmd(CMD_PLL);
 		delay_us(1);
-		A7139_WriteFIFO(&BeaconPacket.length,BEACON_PACK_LENGTH);
+		A7139_WriteFIFO(DataSendBuffer,BEACON_PACK_LENGTH);
 	  delay_us(1);
 	  A7139_StrobeCmd(CMD_TX);
 		delay_ms(11);

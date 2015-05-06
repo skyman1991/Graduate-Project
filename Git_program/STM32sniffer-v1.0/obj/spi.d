@@ -29,3 +29,4 @@
 ..\OBJ\spi.o: ..\Schdule\scan.h
 ..\OBJ\spi.o: ..\Schdule\ProcessEvent.h
 ..\OBJ\spi.o: ..\Schdule\beacon.h
+..\OBJ\spi.o: ..\Schdule\unpack.h

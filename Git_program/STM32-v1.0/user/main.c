@@ -1,7 +1,9 @@
 #include "common.h"
+uint8 DataSendBuffer[MAX_PACK_LENGTH];
 int main(void)
 {	 
-	  DisableInterrupt();
+	  uint8 test[64],i;
+		DisableInterrupt();
 		sys_init();
 		EnableInterrupt();
 
@@ -10,12 +12,18 @@ int main(void)
 				Process_Event();
 		}
 	
+	
+	
+// 		for(i=0;i<64;i++)
+// 		{
+// 				test[i]=i;
+// 		}
 /********************send test***********************/ 	 
 // 		while(1)
 // 		{
 // 				A7139_StrobeCmd(CMD_PLL);
 // 				delay_us(1);
-// 			  A7139_WriteFIFO(test,32);
+// 			  A7139_WriteFIFO(test,MAX_PACK_LENGTH);
 // 				delay_us(1);
 // 				A7139_StrobeCmd(CMD_TX);
 // 		    delay_us(1);

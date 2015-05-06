@@ -1,5 +1,5 @@
-#ifndef _TASKQ_h_
-#define _TASKQ_h_
+#ifndef _PROCESS_h_
+#define _PROCESS_h_
 
 #include "common.h"
 
@@ -9,6 +9,7 @@
 #define    TQ_EMPTY        2
 #define    EVENT_SCAN_CHANNEL    3
 #define    EVENT_SEND_BEACON     4
+#define    EVENT_SEND_UART       5
 
 extern void Init_TQ(void);
 extern uint8 PostTask(uint8 event);

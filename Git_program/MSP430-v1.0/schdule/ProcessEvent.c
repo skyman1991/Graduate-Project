@@ -60,7 +60,9 @@ uint8 Process_Event()
     current_event = Pop_T();
     switch(current_event)
     {
-
+      case BEACON_HANDLER:
+        BeaconHandler(DataRecv);
+        break;
     }
     return current_event;
 }

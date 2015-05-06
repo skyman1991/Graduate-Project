@@ -54,17 +54,18 @@ void TIM4_IRQHandler(void)   //100us
 void EXTI9_5_IRQHandler(void)
 {
     int i=0;
-		u8 length = 0;
 		EXTI->PR |= EXTI_Line6;
     /************3.6ms*************/
     //	  LED2_OFF();
-	  A7139_ReadFIFO(&length,1);
-		delay_us(1);
-    A7139_ReadFIFO(DataRecv,length);
+    A7139_ReadFIFO(DataRecv,MAX_PACK_LENGTH);
     delay_us(1);
     A7139_StrobeCmd(CMD_RX);
     delay_us(1);
-		Usart1_PutData(DataRecv,length);
+		Usart1_PutChar(0x7D);
+		Usart1_PutChar(0x7E);
+		Usart1_PutData(DataRecv,MAX_PACK_LENGTH);
+// 		Usart1_PutChar(0x0D);
+// 		Usart1_PutChar(0x0A);
 		//printf("\r\n");
 		//printf("%d \r\n",DataRecv);
 		//Usart1_PutData(DataRecv,PACK_LENGTH);

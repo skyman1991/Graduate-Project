@@ -12,9 +12,10 @@ int main(void)
     DisableInterrupt();
     sys_init();
     EnableInterrupt();
+
     while(1)
     {
-        
+        //Process_Event();
     }
     // 	  for(;;)
     // 		{

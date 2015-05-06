@@ -6,7 +6,8 @@ int main(void)
     int i=0;
     __disable_interrupt();
     halBoardInit();
-    
+    EndPointDevice.pyh_address = PHY_ADDRESS;
+    EndPointDevice.device_type = DEVICE;
     for(i=0;i<MAX_PACK_LENGTH;i++)
     {
        normal_test[i]=i; 
@@ -14,7 +15,7 @@ int main(void)
     
     Scan_Channel(StartChannel,EndChannel);
     SortChannel();
-    SendJoinRequest();
+//    SendJoinRequest();
     __enable_interrupt();
     
     for(;;)

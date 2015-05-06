@@ -252,24 +252,28 @@ class Application(ttk.Notebook):
     
     def ShowData(self):
         
-        self.tab3.rowconfigure(0, weight=4)
+        self.tab3.rowconfigure(0, weight=60)
         self.tab3.rowconfigure(1, weight=1)
         self.tab3.columnconfigure(0, weight=1)
         self.tab3.columnconfigure(1, weight=1)
         self.tab3.columnconfigure(2, weight=1)
         self.tab3.columnconfigure(3, weight=1)
+        self.tab3.columnconfigure(4, weight=1)
 #         接收frame        
         receivegroup = tk.LabelFrame(self.tab3, text="接收区")
-        receivegroup.grid(row=0, column=0, columnspan=3, sticky=tk.N + tk.S + tk.E + tk.W)
-#         停止键
-        stopbutton = ttk.Button(self.tab3, text='暂停', command=self.pause)
-        stopbutton.grid(row=1, column=1, sticky=tk.W)
+        receivegroup.grid(row=0, column=0, columnspan=4, sticky=tk.N + tk.S + tk.E + tk.W)
 #         继续键
         runbutton = ttk.Button(self.tab3, text='继续', command=self.restart)
         runbutton.grid(row=1, column=0, sticky=tk.E)
+#         停止键
+        stopbutton = ttk.Button(self.tab3, text='暂停', command=self.pause)
+        stopbutton.grid(row=1, column=1, sticky=tk.W)
 #         打开键
         openbutton = ttk.Button(self.tab3, text='打开txt数据', command=self.opentxt)
-        openbutton.grid(row=1, column=1, sticky=tk.E)
+        openbutton.grid(row=1, column=2, sticky=tk.E)
+#         清空键
+        clearbutton = ttk.Button(self.tab3, text='清空', command=self.cleartext)
+        clearbutton.grid(row=1,column=2,sticky = tk.W)
 #         接收显示区
         receivegroup.rowconfigure(0, weight=1)
         receivegroup.columnconfigure(0, weight=1)
@@ -284,27 +288,25 @@ class Application(ttk.Notebook):
 #         receivelb.grid(row=0, column=0,sticky=tk.N+tk.S+tk.E+tk.W)
 #         发送Frame
         sendgroup = tk.LabelFrame(self.tab3, text="发送区")
-        sendgroup.grid(row=0, column=3, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W)
+        sendgroup.grid(row=0, column=4, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W)
 #         发送键
         sendbutton = ttk.Button(self.tab3, text='发送', command=self.SendData)
-        sendbutton.grid(row=1, column=3, sticky=tk.E)
+        sendbutton.grid(row=1, column=4, sticky=tk.E)
 #         发送输入框
         sendgroup.rowconfigure(0, weight=1)
         sendgroup.columnconfigure(0, weight=1)
-        inputbuf = tk.Entry(self.tab3, width=20)
-        inputbuf.grid(row=1, column=3, sticky=tk.W)
+        inputbuf = tk.Entry(self.tab3, width=15)
+        inputbuf.grid(row=1, column=4, sticky=tk.W)
 #         发送显示区
-        
         inputtext = tk.Text(sendgroup)
         inputtext.grid(row=0, column=0, sticky=tk.N + tk.S + tk.E + tk.W)
         inputsb = tk.Scrollbar(inputtext)
         inputsb.pack(side=tk.RIGHT, fill=tk.Y)
         inputsb.config(command=inputtext.yview)
         inputtext.config(yscrollcommand=inputsb.set)
-        
 #         速率选择
         speedgroup = tk.LabelFrame(self.tab3, text="接收速率选择")
-        speedgroup.grid(row=1, column=2, columnspan=1, sticky=tk.W)
+        speedgroup.grid(row=1, column=3, columnspan=1, sticky=tk.W)
         speedgroup.rowconfigure(0)
         speedgroup.rowconfigure(1)
         
@@ -343,6 +345,9 @@ class Application(ttk.Notebook):
             self.receivetext.insert(1.0, chars)
         except:
             pass
+        
+    def cleartext(self):
+        self.receivetext.delete(1.0, tk.END)
     
     def opentxt(self):
         self.pause()

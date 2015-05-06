@@ -35,7 +35,7 @@
 ### ADS-LD Output File: '..\OBJ\SPI.axf'
 ### ADS-LD Command File: '..\OBJ\SPI.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '..\OBJ\SPI.lnp', Handle=0x00001234
+### Creating CmdFile '..\OBJ\SPI.lnp', Handle=0x00000398
 ### Writing '.lnp' file
 ### ADS-LD Command file '..\OBJ\SPI.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

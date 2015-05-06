@@ -34,11 +34,16 @@ void time_init(void)
 //  TA1CTL |= MC0; //增计数   
 //  
   
-  TA1CTL = TASSEL_2 + ID0 + TACLR ; //ACLK=32768Hz ,清除tar ,2分频
+  TA1CTL = TASSEL_2 + ID0 + TACLR + MC0; //ACLK=32768Hz ,清除tar ,2分频
   //TA1CCTL0 = CCIE; //
-  TA1CCR0 = 795;//1ms   7956
+  TA1CCR0 = 795;//100us
   
-  TA1CTL |= MC0; //增计数   
+  
+  
+  TA0CTL = TASSEL_1 + MC_1; 
+  TA0CCR0 = 33000;
+  TA0CCTL0 = CCIE; 
+  
   
   
   

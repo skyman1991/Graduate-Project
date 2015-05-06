@@ -30,3 +30,4 @@
 ..\OBJ\a7139_config.o: ..\Schdule\scan.h
 ..\OBJ\a7139_config.o: ..\Schdule\ProcessEvent.h
 ..\OBJ\a7139_config.o: ..\Schdule\beacon.h
+..\OBJ\a7139_config.o: ..\Schdule\unpack.h

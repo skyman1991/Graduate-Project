@@ -436,11 +436,6 @@
               <FilePath>..\HARDWARE\SPI\spi.h</FilePath>
             </File>
             <File>
-              <FileName>common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HARDWARE\common.h</FilePath>
-            </File>
-            <File>
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
@@ -563,22 +558,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>trsdata</GroupName>
+          <GroupName>main</GroupName>
           <Files>
+            <File>
+              <FileName>common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\common.h</FilePath>
+            </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>trsdata.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\trsdata\trsdata.c</FilePath>
-            </File>
-            <File>
-              <FileName>trsdata.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\trsdata\trsdata.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -614,6 +604,16 @@
               <FileName>scan.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Schdule\scan.h</FilePath>
+            </File>
+            <File>
+              <FileName>unpack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Schdule\unpack.c</FilePath>
+            </File>
+            <File>
+              <FileName>unpack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Schdule\unpack.h</FilePath>
             </File>
           </Files>
         </Group>
