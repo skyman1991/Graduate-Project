@@ -1,0 +1,74 @@
+# coding=utf-8
+import Tkinter as tk
+import ttk
+
+class CarStopRoot(tk.Tk):
+    def __init__(self,root, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+        
+        self.locat = 0
+        self.carnum = 0
+        self.datamode = 0
+        self.updatamode = 1
+        self.menu = root.rootmenu
+        self.root = root
+        self.app = root.appFrame
+        
+        self.locat = ""
+        self.title("停车设置")
+#         self.geometry('400x400')
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.rowconfigure(0, weight=1) 
+        self.rowconfigure(1, weight=1)
+        self.rowconfigure(2, weight=1)
+        self.rowconfigure(4, weight=1)
+        self.rowconfigure(5, weight=1)
+        self.rowconfigure(6, weight=1)
+        
+        carnumlabel = tk.Label(self, text="车位数量:")
+        carnumlabel.grid(sticky=tk.W)
+        self.carnumspinbox = tk.Spinbox(self, from_=4, to=50, width=10)
+
+        self.carnumspinbox.grid(row=0, column=1)
+        carlolabel = tk.Label(self, text="车位位置:")
+        carlolabel.grid(row=2, column=0,sticky=tk.W)
+        self.carlocatecbox = ttk.Combobox(self, width=10)
+        self.carlocatecbox['value'] = ("方兴大厦", "其他")
+        self.carlocatecbox.set(self.menu.carlocatecboxbuf)
+        self.carlocatecbox.grid(row=2, column=1,sticky=tk.W)
+        
+        tk.Label(self, text="数据上传:").grid(row=3, column=0)
+        self.updatamodecbox = ttk.Combobox(self,width=10)
+        self.updatamodecbox.grid(row=3,column=1)
+        self.updatamodecbox['value']=("开启","不开启")
+        self.updatamodecbox.set(self.menu.updatamodecboxbuf)
+        
+        tk.Label(self, text="数据源:").grid(row=4, column=0)
+        self.datamodecbox = ttk.Combobox(self,width=10)
+        self.datamodecbox.grid(row=4,column=1)
+        self.datamodecbox['value']=("串口数据","网络数据")
+        self.datamodecbox.set(self.menu.datamodecboxbuf)
+        ttk.Button(self, text="确认", command=self.carstopconfirm).grid(row=5, column=0, columnspan=2)
+        
+    def showupdata(self, *args, **kwargs):
+        self.carlocatecbox.set(self.menu.carlocatecboxbuf)
+        self.updatamodecbox.set(self.menu.updatamodecboxbuf)
+        self.datamodecbox.set(self.menu.datamodecboxbuf)
+  
+    def carstopconfirm(self):
+        self.locat = self.carlocatecbox.current()
+        self.carnum = int(self.carnumspinbox.get())
+        self.datamode = self.datamodecbox.current()
+        self.updatamode = self.updatamodecbox.current()
+        
+        self.menu.carlocatecboxbuf = self.carlocatecbox.get()
+        self.menu.datamodecboxbuf = self.datamodecbox.get()
+        self.menu.updatamodecboxbuf = self.updatamodecbox.get()
+        global root
+        self.app.DrawParking()
+        try:
+            self.destroy()
+        except:
+            pass
+

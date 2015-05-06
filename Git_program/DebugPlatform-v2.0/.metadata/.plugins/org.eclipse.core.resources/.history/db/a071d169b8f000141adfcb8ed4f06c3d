@@ -1,0 +1,25 @@
+#coding=utf-8
+import sys
+from Tkinter import *
+
+myApp = Tk()
+#create a string variable
+ment = StringVar()
+#set the size of window
+myApp.geometry('1280x768')
+myApp.title('Myapp')
+
+#create the menubar
+menubar = Menu(myApp)
+#create the file component of that menubar
+filemenu = Menu(menubar, tearoff=0)
+#Add the sub headings to the file menu
+filemenu.add_command(label="New", command=myNew)
+filemenu.add_command(label="Open", command=myOpen)
+filemenu.add_command(label="Save As...")
+filemenu.add_command(label="Close", command=mQuit)
+
+#add menubar to the window
+myApp.config(menu=menubar)
+
+myApp.mainloop()

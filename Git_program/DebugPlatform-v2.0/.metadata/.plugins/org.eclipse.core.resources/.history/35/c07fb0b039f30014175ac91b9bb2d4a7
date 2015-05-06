@@ -1,0 +1,183 @@
+# coding=utf-8
+import time
+import threading
+import serial
+import os 
+import tkMessageBox as tkmes
+import urllib2 
+class myThread (threading.Thread):   
+    
+    def __init__(self, threadID, name, port, baud,rootframe,filename):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.thread_stop = True
+        self.port = port
+        self.baud = baud
+        self.uart= serial.Serial(port = self.port,baudrate = self.baud)
+        self.statusbar = rootframe
+        self.showdata = rootframe
+        self.stopcar = rootframe
+        self.menu = rootframe.rootmenu
+        
+        self.carstoproot = self.menu.carstoproot
+        
+        self.count = 0
+        self.filename = filename
+        
+        
+        self.file = open(self.filename,'w')
+        self.radiovalue = 0
+        self.netreceive = threading.Thread(target = self.netupdate)
+        self.netreceive.setDaemon(True)
+        self.threadstartflag = 0
+        self.content={}
+         
+        
+    def run(self):                   
+        print "thread " + self.name
+        self.currenttab = 1
+        self.fastmodecount = 0
+        self.fastmodedatabuf=''
+        self.datatoshow=''
+        self.databuf=''
+        databuf=''
+        count = 0
+        while(1):
+            while(self.thread_stop == False):
+                try:
+                    self.currenttab = self.showdata.appFrame.index('current')
+                except:
+                    pass
+                self.uart.write("type:beacon,freenum:16")
+                buf = self.uart.read(self.uart.inWaiting())
+                if buf !="":
+                    databuf = buf
+                    count+=1
+                self.statusbar.status.setdata('RX:%s Count:%s',databuf,count)
+                time.sleep(0.05)
+                
+                
+#                 if self.currenttab != 5: 
+#                     if self.menu.datasourcecboxvalue == 0:
+#                         self.relayhandler()
+#                     elif self.menu.datasourcecboxvalue == 2:
+#                         self.snifferhandler()
+#                     else:
+#                         time.sleep(1)
+                
+                
+                
+    def closeuart(self):
+        self.uart.close()
+        
+    def clsoefile(self):
+        self.file.close()
+        
+    def openfile(self):
+        self.file = open(self.filename,'w')
+    
+    def netupdate(self):
+        while(1):
+            response=urllib2.urlopen("http://123.57.11.98:8080/mm/get_new")
+            content=eval(response.read())
+            self.content = content
+            time.sleep(1)
+            
+    def relayhandler(self):
+        a=0
+        self.count = self.count + 1
+        '''暂时测试用'''
+#                 buf = self.uart.read(self.uart.inWaiting())
+#                 if buf !="":
+#                     databuf = buf
+        self.databuf = self.uart.read(8);
+        self.datatoshow=''
+        for i in self.databuf:
+            a+=1
+            if(a%2==1):
+                self.datatoshow =  self.datatoshow+str(ord(i))+"|"
+            else:
+                self.datatoshow =  self.datatoshow+str(ord(i))+","
+        
+        '''datatoshow暂时测试用'''
+        showbuf = 'RX:'+ self.datatoshow[:-1] + "    count:" + str(self.count)
+        
+        self.statusbar.status.setdata('%s',showbuf)
+        
+
+#                 print self.showdata.appFrame.tabs()
+        self.radiovalue  = self.showdata.appFrame.radiovalue.get()
+        if(self.currenttab == 2):
+#                   低速模式
+            if self.radiovalue  == 0:  
+                '''datatoshow暂时测试用'''
+                self.showdata.appFrame.updatetext(self.datatoshow[:-1]+"\n")
+                try:
+                    self.file.write(showbuf+'\n')
+                except:
+                    pass
+                time.sleep(0.05)
+                
+#                   高速模式      
+            elif self.radiovalue  == 1:
+                try:
+                    self.file.write(showbuf+'\n')
+                except:
+                    pass
+                self.fastmodecount = self.fastmodecount + 1
+                if(self.fastmodecount == 200):
+                    self.fastmodecount = 0
+                    print len(self.fastmodedatabuf)
+#                             self.showdata.appFrame.updatetext(self.fastmodedatabuf)
+                    self.fastmodedatabuf = ''
+                else:
+                    self.fastmodedatabuf = self.fastmodedatabuf + self.databuf +"\n"
+                    
+                time.sleep(0.005)
+        elif self.currenttab==0:
+            if self.stopcar.appFrame.carnum==0:
+                self.statusbar.status.setstatus('%s',"未配置停车个数")
+            else:
+                if self.carstoproot.datamode == 0:
+                    self.stopcar.appFrame.stopcar(self.datatoshow[:-1])
+                    self.statusbar.status.setstatus('%s',"串口数据")
+                else:
+                    if self.threadstartflag == 0:
+                        self.threadstartflag = 1
+                        self.netreceive.start()
+                    comtent=self.content
+                    try:
+                        self.databuf=''
+                        if comtent['err_code'] == 0: 
+                            for items in comtent['data']:
+                                self.databuf = self.databuf+str(items['name']+'|'+items['value']+',')   
+                            self.stopcar.appFrame.stopcar(self.databuf[:-1])  
+                             
+                            self.statusbar.status.setstatus('%s',"网络数据:"+self.databuf[:-1])
+                        else:
+                            self.statusbar.status.setstatus('%s',"数据返回错误")
+                    except:
+                        pass
+            
+
+            if self.carstoproot.updatamode == 0:
+                urllib2.urlopen("http://123.57.11.98:8080/mm/set_new?data="+self.datatoshow[:-1])
+                urllib2.urlopen("http://123.57.11.98:8080/mm/set?data=" + self.datatoshow[:-1])
+            time.sleep(0.05)
+        else:
+            time.sleep(0.05)
+
+    def snifferhandler(self):
+        databuf=''
+#         self.uart.write("type:beacon,freenum:16")
+        buf = self.uart.read(self.uart.inWaiting())
+        if buf !="":
+            databuf = buf
+            if self.radiovalue  == 0:  
+                '''datatoshow暂时测试用'''
+#                 self.showdata.appFrame.updatetext(databuf+"\n")
+                pass
+        time.sleep(0.05)
+
+

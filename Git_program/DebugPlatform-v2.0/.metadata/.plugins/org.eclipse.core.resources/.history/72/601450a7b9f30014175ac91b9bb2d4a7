@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/form/carstop.py=utf-8
+encoding//src/form/mainform.py=utf-8
+encoding//src/form/mythread.py=utf-8
+encoding//src/form/relaythread.py=utf-8
+encoding//src/form/snifferthread.py=utf-8
+encoding//src/form/uart.py=utf-8

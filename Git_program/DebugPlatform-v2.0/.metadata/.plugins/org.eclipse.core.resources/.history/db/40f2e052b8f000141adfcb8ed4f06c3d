@@ -1,0 +1,12 @@
+#coding=utf-8
+import sys
+from Tkinter import *
+
+myApp = Tk()
+#create a string variable
+ment = StringVar()
+#set the size of window
+myApp.geometry('1280x768')
+myApp.title('Myapp')
+
+myApp.mainloop()

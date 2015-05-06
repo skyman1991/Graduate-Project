@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;DebugPlatform/src/form/form&apos; to &apos;form.py&apos;" description="Rename resource &apos;form&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/form/form" name="form.py" stamp="1430559299028" updateReferences="true"/>
+</session>

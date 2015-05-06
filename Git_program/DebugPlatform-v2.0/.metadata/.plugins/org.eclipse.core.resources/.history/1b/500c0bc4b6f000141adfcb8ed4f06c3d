@@ -1,0 +1,10 @@
+#coding=utf-8
+from Tkinter import *
+
+root = Tk()
+
+w = NoteBook(root)
+f = Frame(root)
+l = Label(f,Text="test")
+w.add(f)
+w.pack()
