@@ -1,8 +1,0 @@
-#coding=utf-8
-import Tkinter
-
- top = Tkinter.Tk()
- top.resizable(False, False)
- label = Tkinter.Label(top, text='tk.resizable(False, False)')
- label.pack();
- Tkinter.mainloop()
