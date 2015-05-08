@@ -2,37 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="串口数据" key="selection"/>
+		<item value="UartRoot" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="串口数据"/>
-			<item value="yellow"/>
-			<item value="方兴大厦"/>
-			<item value="中继"/>
-			<item value="txtfilename"/>
 			<item value="UartRoot"/>
-			<item value="串口未"/>
-			<item value="datasourcecboxbuf"/>
+			<item value="note"/>
+			<item value="bind"/>
+			<item value="&lt;&lt;"/>
+			<item value="TclError"/>
+			<item value="print &quot;3&quot;"/>
+			<item value="pass"/>
+			<item value="print &quot;4&quot;"/>
 		</list>
 		<list key="replacehistory">
+			<item value="print &quot;6&quot;"/>
+			<item value="print &quot;5&quot;"/>
+			<item value="print &quot;4&quot;"/>
+			<item value="print &quot;3&quot;"/>
+			<item value="print &quot;2&quot;"/>
+			<item value="print &quot;1&quot;"/>
 			<item value="menu"/>
 			<item value="carstoproot"/>
-			<item value="datamodecbox"/>
-			<item value="updatamodecbox"/>
-			<item value="carlocatecbox"/>
-			<item value="stopbitcbox"/>
-			<item value="databitcbox"/>
-			<item value="bordratecbox"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="343" key="DIALOG_WIDTH"/>
 		<item value="1|Microsoft YaHei UI|12.75|0|WINDOWS|1|-17|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
 		<item value="461" key="DIALOG_HEIGHT"/>
-		<item value="179" key="DIALOG_X_ORIGIN"/>
-		<item value="139" key="DIALOG_Y_ORIGIN"/>
+		<item value="1300" key="DIALOG_X_ORIGIN"/>
+		<item value="244" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

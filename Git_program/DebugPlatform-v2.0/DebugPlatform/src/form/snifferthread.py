@@ -26,6 +26,7 @@ class myThread (threading.Thread):
         self.filename = filename
         self.file = open(self.filename,'w')
         self.radiovalue = self.app.radiovalue.get()
+        self.currenttab = 0
         
     def closefile(self):
         self.file.close()
@@ -36,22 +37,27 @@ class myThread (threading.Thread):
     def beacon(self):
         return "Beacon: 需要应答:" + str((self.data[1]&0x02)>>1) + \
         "  簇ID:" + str(self.data[2])+"  簇内编号:"+str(self.data[3])+'  目的簇ID:'+str(self.data[4]) + \
-        '  目的簇内编号；'+str(self.data[5]) + '  空闲负载:'+str(self.data[6])
+        '  目的簇内编号；'+str(self.data[5]) + '  空闲负载:'+str(self.data[6])+"  RSSI:"+str(self.data[12])
     
     def unpack(self):
         type = (self.data[1]&0xFC)>>2
         if type == 1:
             return self.beacon()
+        else:
+            return 'unkonw type:'+str(self.data)
     
     def run(self):
         count = 0               
         while(1): 
             while(self.thread_stop == False):
-                try:
-                    self.currenttab = self.root.appFrame.index('current')
-                except:
-                    pass
-                 
+#                 try:
+#                     self.currenttab = self.root.appFrame.index('current')
+#                 except TclError:
+#                     print "3"+error
+#                     self.currenttab = 2
+#                 print type(self.root.appFrame.index('current'))
+#                 if self.root.appFrame.index('current')==type(3):
+#                     self.currenttab = self.root.appFrame.index('current')
                 if self.currenttab == 2:
 #                     self.uart.write("type:beacon,freenum:16")
                     buf = self.uart.read(1)
@@ -60,7 +66,7 @@ class myThread (threading.Thread):
                             buf = self.uart.read(1)
                             if len(buf)!= 0:
                                 if ord(buf)==0x7E:
-                                    buf = self.uart.read(12)
+                                    buf = self.uart.read(13)
                                     self.data=[]
                                     count+=1
                                     for v in buf:
@@ -74,7 +80,7 @@ class myThread (threading.Thread):
                                             self.file.write(self.unpack()+"\n")
                                             self.file.write('RX:%s Count:%s\n' % (self.data,count))
                                         except:
-                                            pass
+                                            print "4"
                             
                             
                             

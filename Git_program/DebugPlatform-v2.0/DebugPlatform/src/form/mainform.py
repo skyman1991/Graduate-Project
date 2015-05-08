@@ -70,7 +70,7 @@ class MenuBar(tk.Menu):
         self.add_cascade(label="帮助", menu=helpmenu)
         helpmenu.add_command(label="完善中", command=self.callback)
         self.bordratecboxbuf='115200'
-        self.datasourcecboxbuf='中继'
+        self.datasourcecboxbuf='sniffer'
         self.datasourcecboxvalue = 5
         self.opened_uart=[]
            
@@ -165,6 +165,14 @@ class Application(ttk.Notebook):
         self.root = root
         self.menu = root.rootmenu
         
+        self.bind("<<NotebookTabChanged>>", self.updatetab)
+    
+    def updatetab(self,event):
+        try:
+            self.menu.uartform.snifferthread.currenttab = self.index('current')
+        except:
+            print "6"
+        
     def StopStatus(self):             
         self.canvas = tk.Canvas(self.tab1, width=self.width, height=self.height)
         self.canvas.grid(sticky=tk.W + tk.E)
@@ -207,9 +215,12 @@ class Application(ttk.Notebook):
                 
     def stopcar(self, move):
         count = 0
-        if len(self.stoptext) > 0:
-            for text in self.stoptext:
-                self.canvas.delete(text)
+        try:
+            if len(self.stoptext) > 0:
+                for text in self.stoptext:
+                    self.canvas.delete(text)
+        except:
+            print "5"
 #         for i in range(self.carnum):
 #             self.stoptext.append(self.canvas.create_text(0,0))
         if self.carnum > 20:
@@ -344,7 +355,7 @@ class Application(ttk.Notebook):
         try:
             self.receivetext.insert(1.0, chars)
         except:
-            pass
+            print "6"
         
     def cleartext(self):
         self.receivetext.delete(1.0, tk.END)

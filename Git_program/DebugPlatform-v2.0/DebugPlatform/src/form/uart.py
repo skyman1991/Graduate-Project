@@ -108,6 +108,12 @@ class UartRoot(tk.Tk):
     def OpenUart(self):
 #         mainform.root.status.set("%s",'sdf')
         try:
+            self.parent_menu.opened_uart.append(self.comnumbox.get())
+            self.IsOpen(0)
+            self.parent.status.setstatus('%s', self.comnumbox.get() + '已打开')
+            self.parent_menu.bordratecboxbuf = self.bordratecbox.get()
+            self.parent_menu.datasourcecboxbuf = self.datasourcecbox.get()
+            self.parent_menu.datasourcecboxvalue = self.datasourcecbox.current()
 #             中继
             if self.datasourcecbox.current() == 0:
                 self.relaythread = relaythread.myThread(rootframe=self.parent,threadID=0, name='relay', port=self.comnumbox.get(), baud=self.bordratecbox.get())
@@ -118,19 +124,11 @@ class UartRoot(tk.Tk):
                 self.snifferthread = snifferthread.myThread(rootframe=self.parent,threadID=1, name='sniffer', port=self.comnumbox.get(), baud=self.bordratecbox.get(),filename = self.txtfilname)
                 self.snifferthread.setDaemon(True)
                 self.snifferthread.start()
-                print 'sniffer'
 #                 self.uartthread.thread_stop = False
 #             self.uartthread = mythread.myThread(rootframe=self.parent, filename=self.txtfilname, threadID=1, name='uart', port=self.comnumbox.get(), baud=self.bordratecbox.get())
 #             self.uartthread.setDaemon(True)
 #             self.uartthread.start()
-            self.parent_menu.opened_uart.append(self.comnumbox.get())
-            self.IsOpen(0)
             
-            
-            self.parent.status.setstatus('%s', self.comnumbox.get() + '已打开')
-            self.parent_menu.bordratecboxbuf = self.bordratecbox.get()
-            self.parent_menu.datasourcecboxbuf = self.datasourcecbox.get()
-            self.parent_menu.datasourcecboxvalue = self.datasourcecbox.current()
         except serial.SerialException, error:
             self.errtext = str(error)
             text = tk.Label(self, text="串口被占用！")
@@ -142,8 +140,12 @@ class UartRoot(tk.Tk):
             if self.comnumbox.get() in self.parent_menu.opened_uart:
                 self.parent_menu.opened_uart.remove(self.comnumbox.get())
             self.IsOpen(0)
-            self.uartthread.thread_stop = True
-            self.uartthread.closeuart()
+            if self.datasourcecbox.current() == 0:
+                self.relaythread.uart.close()
+            else:
+                self.snifferthread.thread_stop = True
+                self.snifferthread.uart.close()
+                
             self.parent.status.setstatus('%s', self.comnumbox.get() + '已关闭')
         except NameError:
             self.parent.status.setstatus('%s', '串口未打开')

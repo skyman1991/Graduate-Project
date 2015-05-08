@@ -57,7 +57,7 @@ class myThread (threading.Thread):
             try:
                 self.currenttab = self.showdata.appFrame.index('current')
             except:
-                pass
+                print "1"
             if self.currenttab==0:
                 if ord(self.uart.read(1))==0x7D:
                     if ord(self.uart.read(1))==0x7E:
@@ -92,7 +92,7 @@ class myThread (threading.Thread):
                             else:
                                 self.statusbar.status.setstatus('%s',"数据返回错误")
                         except:
-                            pass
+                            print "2"
             
                 
            
