@@ -1,0 +1,31 @@
+..\OBJ\scan.o: ..\Schdule\scan.c
+..\OBJ\scan.o: ..\HARDWARE\common.h
+..\OBJ\scan.o: ..\HARDWARE\LED\led.h
+..\OBJ\scan.o: ..\SYSTEM\sys\sys.h
+..\OBJ\scan.o: ..\USER\stm32f10x.h
+..\OBJ\scan.o: ..\CORE\core_cm3.h
+..\OBJ\scan.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdint.h
+..\OBJ\scan.o: ..\USER\system_stm32f10x.h
+..\OBJ\scan.o: ..\USER\stm32f10x_conf.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h
+..\OBJ\scan.o: ..\USER\stm32f10x.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\misc.h
+..\OBJ\scan.o: ..\SYSTEM\delay\delay.h
+..\OBJ\scan.o: ..\HARDWARE\KEY\key.h
+..\OBJ\scan.o: ..\SYSTEM\usart\usart.h
+..\OBJ\scan.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdio.h
+..\OBJ\scan.o: ..\HARDWARE\SPI\spi.h
+..\OBJ\scan.o: ..\HARDWARE\A7139\A7139.h
+..\OBJ\scan.o: ..\HARDWARE\common.h
+..\OBJ\scan.o: ..\HARDWARE\TIMER\timer.h
+..\OBJ\scan.o: ..\HARDWARE\A7139\A7139_CONFIG.h
+..\OBJ\scan.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\OBJ\scan.o: ..\HARDWARE\interrupt\interrupt.h
+..\OBJ\scan.o: ..\Schdule\scan.h
+..\OBJ\scan.o: ..\Schdule\ProcessEvent.h
+..\OBJ\scan.o: ..\Schdule\beacon.h

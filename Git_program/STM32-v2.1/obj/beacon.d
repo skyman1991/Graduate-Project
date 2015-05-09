@@ -1,0 +1,32 @@
+..\OBJ\beacon.o: ..\Schdule\beacon.c
+..\OBJ\beacon.o: ..\HARDWARE\common.h
+..\OBJ\beacon.o: ..\HARDWARE\LED\led.h
+..\OBJ\beacon.o: ..\SYSTEM\sys\sys.h
+..\OBJ\beacon.o: ..\USER\stm32f10x.h
+..\OBJ\beacon.o: ..\CORE\core_cm3.h
+..\OBJ\beacon.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdint.h
+..\OBJ\beacon.o: ..\USER\system_stm32f10x.h
+..\OBJ\beacon.o: ..\USER\stm32f10x_conf.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_fsmc.h
+..\OBJ\beacon.o: ..\USER\stm32f10x.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\misc.h
+..\OBJ\beacon.o: ..\SYSTEM\delay\delay.h
+..\OBJ\beacon.o: ..\HARDWARE\KEY\key.h
+..\OBJ\beacon.o: ..\SYSTEM\usart\usart.h
+..\OBJ\beacon.o: E:\Program Files (x86)\Keil\Keil 4.54\ARM\RV31\Inc\stdio.h
+..\OBJ\beacon.o: ..\HARDWARE\SPI\spi.h
+..\OBJ\beacon.o: ..\HARDWARE\A7139\A7139.h
+..\OBJ\beacon.o: ..\HARDWARE\common.h
+..\OBJ\beacon.o: ..\HARDWARE\TIMER\timer.h
+..\OBJ\beacon.o: ..\HARDWARE\A7139\A7139_CONFIG.h
+..\OBJ\beacon.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\OBJ\beacon.o: ..\HARDWARE\interrupt\interrupt.h
+..\OBJ\beacon.o: ..\Schdule\join.h
+..\OBJ\beacon.o: ..\Schdule\ProcessEvent.h
+..\OBJ\beacon.o: ..\Schdule\beacon.h
+..\OBJ\beacon.o: ..\Schdule\device.h
