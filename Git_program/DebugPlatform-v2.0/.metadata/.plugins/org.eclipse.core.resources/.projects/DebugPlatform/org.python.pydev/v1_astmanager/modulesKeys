@@ -1,5 +1,0 @@
-MODULES_MANAGER_V2
-form.mainform|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\src\form\mainform.py
-form.relaythread|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\src\form\relaythread.py
-form.snifferthread|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\src\form\snifferthread.py
-form.uart|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\src\form\uart.py
