@@ -4272,3 +4272,146 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2015-05-08 17:52:45.870 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-05-08 17:52:56.117
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-05-08 17:52:56.118
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2015-05-09 15:46:57.301 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-05-09 15:47:08.272
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-05-09 15:47:08.319
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.python.pydev.shared_core 4 4 2015-05-09 18:13:31.791
+!MESSAGE ERROR reading shell.
+ProcessInfo:
+
+ - Executed: D:\Python\Python27\python.exe -u D:\eclipse\plugins\org.python.pydev_4.0.0.201504132356\pysrc\pycompletionserver.py 14932
+
+ - Environment:
+ACTEL_FOR_ALTIUM_OVERRIDE= 
+ALLUSERSPROFILE=C:\ProgramData
+APPDATA=C:\Users\Administrator\AppData\Roaming
+COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+COMMONPROGRAMFILES=C:\Program Files\Common Files
+COMMONPROGRAMW6432=C:\Program Files\Common Files
+COMPUTERNAME=小虾米
+COMSPEC=C:\Windows\system32\cmd.exe
+FP_NO_HOST_CHECK=NO
+HOMEDRIVE=C:
+HOMEPATH=\Users\Administrator
+LOCALAPPDATA=C:\Users\Administrator\AppData\Local
+LOGONSERVER=\\小虾米
+MOZ_PLUGIN_PATH=e:\Program Files (x86)\Foxit Software\Foxit Reader\plugins\
+NUMBER_OF_PROCESSORS=8
+OS=Windows_NT
+PATH=D:/Java/jre 1.8.0_45/bin/server;D:/Java/jre 1.8.0_45/bin;D:/Java/jre 1.8.0_45/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;d:\MATLAB\R2013a\runtime\win64;d:\MATLAB\R2013a\bin;E:\Program Files (x86)\QuickTime\QTSystem\;D:\Python\Python27;D:\Python\Python27\Scripts;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\TekVISA\BIN;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;D:\eclipse;
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY
+PROCESSOR_ARCHITECTURE=AMD64
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+PROCESSOR_LEVEL=6
+PROCESSOR_REVISION=3c03
+PROGRAMDATA=C:\ProgramData
+PROGRAMFILES(X86)=C:\Program Files (x86)
+PROGRAMFILES=C:\Program Files
+PROGRAMW6432=C:\Program Files
+PROMPT=$P$G
+PSMODULEPATH=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+PUBLIC=C:\Users\Public
+PYTHONPATH=D:\eclipse\plugins\org.python.pydev_4.0.0.201504132356\pysrc\pydev_sitecustomize;D:\Python\Python27\DLLs;D:\Python\Python27\lib;D:\Python\Python27\lib\lib-tk;D:\Python\Python27;D:\Python\Python27\lib\site-packages;D:\Python\Python27\lib\site-packages\win32;D:\Python\Python27\lib\site-packages\win32\lib;D:\Python\Python27\lib\site-packages\Pythonwin
+SESSIONNAME=Console
+SYSTEMDRIVE=C:
+SYSTEMROOT=C:\Windows
+TEMP=C:\Users\ADMINI~1\AppData\Local\Temp
+TMP=C:\Users\ADMINI~1\AppData\Local\Temp
+USERDOMAIN=小虾米
+USERDOMAIN_ROAMINGPROFILE=小虾米
+USERNAME=Administrator
+USERPROFILE=C:\Users\Administrator
+VS100COMNTOOLS=D:\Microsoft Visual Studio\Microsoft Visual Studio 10.0\Common7\Tools\
+VS110COMNTOOLS=D:\Microsoft Visual Studio\Microsoft Visual Studio 11.0\Common7\Tools\
+VS120COMNTOOLS=D:\Microsoft Visual Studio\Microsoft Visual Studio 12.0\Common7\Tools\
+VXIPNPPATH64=C:\Program Files\IVI Foundation\VISA\
+VXIPNPPATH=C:\Program Files (x86)\IVI Foundation\VISA\
+WINDIR=C:\Windows
+XILINX_FOR_ALTIUM_OVERRIDE= 
+
+ - Working Dir:
+D:\eclipse\plugins\org.python.pydev_4.0.0.201504132356\pysrc
+
+ - OS:
+Windows 8
+
+ - Std output:
+
+
+ - Err output:
+
+!STACK 0
+java.nio.channels.ClosedByInterruptException
+	at java.nio.channels.spi.AbstractInterruptibleChannel.end(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.write(Unknown Source)
+	at java.nio.channels.Channels.writeFullyImpl(Unknown Source)
+	at java.nio.channels.Channels.writeFully(Unknown Source)
+	at java.nio.channels.Channels.access$000(Unknown Source)
+	at java.nio.channels.Channels$1.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.write(AbstractShell.java:544)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.writeAndGetResults(AbstractShell.java:691)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getImportCompletions(AbstractShell.java:756)
+	at org.python.pydev.editor.codecompletion.revisited.modules.CompiledModule.createInnerFromServer(CompiledModule.java:331)
+	at org.python.pydev.editor.codecompletion.revisited.modules.CompiledModule.getGlobalTokens(CompiledModule.java:531)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.internalGenerateGetCompletionsForModule(AbstractASTManager.java:732)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getCompletionsForModule(AbstractASTManager.java:557)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getCompletionsForModule(AbstractASTManager.java:526)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getCompletionsForModule(AbstractASTManager.java:518)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getCompletionsForModule(AbstractASTManager.java:509)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.internalGenerateGetCompletionsForModule(AbstractASTManager.java:740)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getCompletionsForModule(AbstractASTManager.java:557)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getCompletionsForModule(AbstractASTManager.java:526)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getCompletionsForModule(AbstractASTManager.java:518)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findGlobalTokDef(SourceModule.java:1020)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinitionsFromModAndTok(SourceModule.java:969)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:951)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:664)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:177)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:79)
+	at org.python.pydev.editor.hover.PyTextHover.getDocstringHover(PyTextHover.java:198)
+	at org.python.pydev.editor.hover.PyTextHover.getHoverInfo(PyTextHover.java:142)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)

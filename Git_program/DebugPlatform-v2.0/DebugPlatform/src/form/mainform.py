@@ -6,6 +6,8 @@ import tkMessageBox as tkmes
 import os
 import tkFont
 import carstop
+import time
+from __main__ import time
 
 class MainRoot(tk.Tk):
     """Container for all frames within the application"""
@@ -171,7 +173,7 @@ class Application(ttk.Notebook):
         try:
             self.menu.uartform.snifferthread.currenttab = self.index('current')
         except:
-            print "6"
+            print "7"
         
     def StopStatus(self):             
         self.canvas = tk.Canvas(self.tab1, width=self.width, height=self.height)
@@ -341,15 +343,20 @@ class Application(ttk.Notebook):
             snifferthread.thread_stop = True
         except NameError:
             tkmes.showwarning("错误", "串口未启动!")
+        time.sleep(1)
+        self.menu.snifferthread.uart.close()
   
     def restart(self):
         snifferthread = self.menu.uartform.snifferthread
         try:
+            self.menu.snifferthread.openuart()
             snifferthread.thread_stop = False
+            snifferthread.data=[]
             self.menu.uartform.snifferthread.openfile()
 #             uartthread.openfile()
         except NameError:
             tkmes.showwarning("错误", "串口未启动!")
+        
         
     def updatetext(self, chars):
         try:
