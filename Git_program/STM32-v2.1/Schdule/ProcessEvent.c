@@ -68,6 +68,9 @@ uint8 Process_Event()
 			case EVENT_JOINREQUESTACKOK_HANDLER:
 				JoinRequestACKOKHandler();
 				break;
+			case EVENT_DATA_HANDLER:
+				DataHandler();
+				break;
     }
     return current_event;
 }

@@ -3,8 +3,8 @@
 
 #define    MAX_PACK_LENGTH      12
 #define    MAX_DEVICE_NUM       254
-#define    WRITE_PHY_ADDRESS    0
-#define    PHY_ADDRESS          0x0001
+
+
 
 
 

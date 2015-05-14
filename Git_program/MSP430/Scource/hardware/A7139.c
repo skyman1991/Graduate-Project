@@ -746,6 +746,7 @@ void SendPack()
     while(GIO1);
     halLedSet(1);
 }
+
 void A7139_Sleep(void)
 {
     A7139_StrobeCmd(CMD_SLEEP);

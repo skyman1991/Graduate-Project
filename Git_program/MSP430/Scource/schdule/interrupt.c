@@ -1,6 +1,6 @@
 #include "common.h"
 uint8   Receive_Timeout = 0;            //接收超时重启
-int     Frame_Time = 0;                 //超帧内计时
+uint32     Frame_Time = 0;                 //超帧内计时
 void Interrupt_Init(void)
 {
     P1DIR &=~ pinGIO2.pin_bm;

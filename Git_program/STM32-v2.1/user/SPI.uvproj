@@ -615,6 +615,16 @@
               <FileType>5</FileType>
               <FilePath>..\Schdule\device.h</FilePath>
             </File>
+            <File>
+              <FileName>tdma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Schdule\tdma.c</FilePath>
+            </File>
+            <File>
+              <FileName>tdma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Schdule\tdma.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

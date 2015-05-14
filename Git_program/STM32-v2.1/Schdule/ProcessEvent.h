@@ -9,13 +9,16 @@
 #define    TQ_EMPTY        2
 
 //event handler define
-#define    EVENT_SCAN_CHANNEL             	3
-#define    EVENT_BEACON_SEND              	4
-#define    EVENT_BEACON_HANDLER           	5
-#define    EVENT_JOINREQUEST_SEND         	6
-#define    EVENT_JOINREQUEST_HANDLER      	7
-#define    EVENT_JOINREQUESTACK_HANDLER   	8
-#define    EVENT_JOINREQUESTACKOK_HANDLER   9
+#define    EVENT_SCAN_CHANNEL             3
+#define    EVENT_BEACON_SEND              4
+#define    EVENT_BEACON_HANDLER           5
+#define    EVENT_JOINREQUEST_SEND         6
+#define    EVENT_JOINREQUEST_HANDLER      7
+#define    EVENT_JOINREQUESTACK_HANDLER   8
+#define    EVENT_JOINREQUESTACKOK_HANDLER 9
+#define    EVENT_DATA_SEND                10
+#define    EVENT_DATA_HANDLER             11
+
 extern void Init_TQ(void);
 extern uint8 PostTask(uint8 event);
 extern uint8 Process_Event(void);

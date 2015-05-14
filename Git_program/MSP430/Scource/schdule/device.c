@@ -10,11 +10,18 @@ uint8 Unpack(uint8 *type)
     type++;
     return (*type&0xFC)>>2;
 }
+
 void CSMABackOff()
 {
-    uint16 back_off_time = 0;
+    uint32 back_off_time = 0;
+    uint32 wait_time = 0;
+    uint32 q,w;
+    //wait_time = ((MAX_DEVICE_NUM - EndPointDevice.free_node)*SLOT_LENGTH)/10;
+    q=MAX_DEVICE_NUM - EndPointDevice.free_node;
+    w=q*SLOT_LENGTH;
+    wait_time=w/100;
     
-    while(Frame_Time*10<=(MAX_DEVICE_NUM - EndPointDevice.free_node)*SLOT_LENGTH);      //等待到达CSMA时隙 超帧内时间<=负载数*时隙长度
+    while(Frame_Time<=wait_time);      //等待到达CSMA时隙 超帧内时间<=负载数*时隙长度
     CSMA_BackOff_Random = (rand()*TAR)%(EndPointDevice.csma_length*BACKOFF_DIV);        //退避时间   随机数*TIMERA计数%csma时隙个数/5 
     back_off_time = BACKOFF_PERIOD*CSMA_BackOff_Random;
     delayus(back_off_time);
@@ -52,7 +59,6 @@ void BeaconHandler(uint8 beacon[])
     
     if(EndPointDevice.connected == 0)                   //未连接，发送加入请求
     {
-        
         PostTask(EVENT_JOINREQUEST_SEND);
     }
     else                                                //已连接，执行TDMA过程
@@ -69,7 +75,7 @@ uint8 PackValid(void)
         DataRecvBuffer[3]==EndPointDevice.cluster_innernum)||
        (DataRecvBuffer[2]==BROADCAST&&
         DataRecvBuffer[3]==BROADCAST)||
-       (phy_address==PHY_ADDRESS))
+       (phy_address==EndPointDevice.pyh_address))
         return 1;
     else
         return 0;

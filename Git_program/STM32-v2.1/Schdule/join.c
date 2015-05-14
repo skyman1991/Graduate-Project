@@ -31,14 +31,16 @@ void CreateJoinRequectACK(uint8 joinstatus,uint8 accept,uint8 id,uint32 des_addr
 		
 		DataSendBuffer[0] = JoinRequestACKPacket.length;
 		DataSendBuffer[1] = JoinRequestACKPacket.pack_type<<2|JoinRequestACKPacket.ack_en<<1|JoinRequestACKPacket.accept;
-		DataSendBuffer[2] = JoinRequestACKPacket.src_cluster_id;
-		DataSendBuffer[3] = JoinRequestACKPacket.src_cluster_innernum;
-		DataSendBuffer[4] = JoinRequestACKPacket.des_phy_address>>24;
-		DataSendBuffer[5] = JoinRequestACKPacket.des_phy_address>>16;
-		DataSendBuffer[6] = JoinRequestACKPacket.des_phy_address>>8;
-		DataSendBuffer[7] = JoinRequestACKPacket.des_phy_address;
-		DataSendBuffer[8] = JoinRequestACKPacket.cluster_id;
-		DataSendBuffer[9] = JoinRequestACKPacket.cluster_innernum;
+		DataSendBuffer[2] = JoinRequestACKPacket.des_phy_address>>8;
+		DataSendBuffer[3] = JoinRequestACKPacket.des_phy_address;
+		DataSendBuffer[4] = JoinRequestACKPacket.src_cluster_id;
+		DataSendBuffer[5] = JoinRequestACKPacket.src_cluster_innernum;
+		DataSendBuffer[6] = JoinRequestACKPacket.cluster_id;
+		DataSendBuffer[7] = JoinRequestACKPacket.cluster_innernum;
+		DataSendBuffer[8] = 0;
+		DataSendBuffer[9] = 0;
+		DataSendBuffer[10] = 0;
+		DataSendBuffer[11] = 0;
 }
 
 void JoinRequestHandler()
@@ -48,7 +50,7 @@ void JoinRequestHandler()
 		uint8 joinstatus = 0;
 	  uint8 accept = 0;
 		uint8 current_node_num = RootDevice.connected_devece_count;
-		new_node_pyh_address = DataRecvBuffer[2]<<24|DataRecvBuffer[3]<<16|DataRecvBuffer[4]<<8|DataRecvBuffer[5];
+		new_node_pyh_address = DataRecvBuffer[4]<<8|DataRecvBuffer[5];
 	  for(i=0;i<RootDevice.connected_devece_count;i++)
 		{
 				if(RootDevice.endpoint_device[i].pyh_address == new_node_pyh_address)	//该设备已经入网
@@ -72,8 +74,8 @@ void JoinRequestHandler()
 }
 void JoinRequestACKOKHandler()
 {
-		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_id = DataRecvBuffer[2];
-		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_innernum = DataRecvBuffer[3];
+		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_id = DataRecvBuffer[4];
+		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_innernum = DataRecvBuffer[5];
 	  RootDevice.endpoint_device[RootDevice.connected_devece_count].pyh_address = new_node_pyh_address;
 		RootDevice.connected_devece_count++;
 		RootDevice.free_node = MAX_NODE_NUM-RootDevice.connected_devece_count;

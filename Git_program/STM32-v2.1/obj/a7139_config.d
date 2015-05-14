@@ -31,3 +31,4 @@
 ..\OBJ\a7139_config.o: ..\Schdule\ProcessEvent.h
 ..\OBJ\a7139_config.o: ..\Schdule\beacon.h
 ..\OBJ\a7139_config.o: ..\Schdule\device.h
+..\OBJ\a7139_config.o: ..\Schdule\tdma.h

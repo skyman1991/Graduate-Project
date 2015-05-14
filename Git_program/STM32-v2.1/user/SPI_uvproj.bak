@@ -605,6 +605,16 @@
               <FileType>5</FileType>
               <FilePath>..\Schdule\join.h</FilePath>
             </File>
+            <File>
+              <FileName>device.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Schdule\device.c</FilePath>
+            </File>
+            <File>
+              <FileName>device.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Schdule\device.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

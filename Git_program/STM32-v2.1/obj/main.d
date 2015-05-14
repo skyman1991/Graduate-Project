@@ -30,3 +30,4 @@
 ..\OBJ\main.o: ..\Schdule\ProcessEvent.h
 ..\OBJ\main.o: ..\Schdule\beacon.h
 ..\OBJ\main.o: ..\Schdule\device.h
+..\OBJ\main.o: ..\Schdule\tdma.h

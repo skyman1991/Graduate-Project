@@ -24,8 +24,8 @@ void Interrupt_Init(void)
   	EXTI_Init(&EXTI_InitStructure);																	//根据EXTI_InitStruct中指定的参数初始化外设EXTI寄存器
 
   	NVIC_InitStructure.NVIC_IRQChannel = EXTI9_5_IRQn;						//使能按键KEY1,KEY0所在的外部中断通道
-  	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;		//抢占优先级2 
-  	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;						//子优先级1 
+  	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;		//抢占优先级2 
+  	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;						//子优先级1 
   	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;									//使能外部中断通道
   	NVIC_Init(&NVIC_InitStructure);  	  														//根据NVIC_InitStruct中指定的参数初始化外设NVIC寄存器
 
@@ -46,6 +46,7 @@ void TIM3_IRQHandler(void)   //500ms
 {
     TIM_ClearITPendingBit(TIM3, TIM_IT_Update  );  //清除TIMx更新中断标志 
     PostBeacon();
+		Frame_Time = 0;
 		//BeaconSendFlag = 1;
 		time_out++;
 		if(time_out > TIMEOUT)
@@ -71,6 +72,7 @@ void TIM3_IRQHandler(void)   //500ms
 void TIM4_IRQHandler(void)   //100us
 {
     TIM_ClearITPendingBit(TIM4, TIM_IT_Update  );  //清除TIMx更新中断标志 
+	  Frame_Time++;
 }
 /*******************************************************************************
 * Function Name  : EXTI9_5_IRQHandler
@@ -83,22 +85,28 @@ uint8 rssisee = 0;
 void EXTI9_5_IRQHandler(void)
 {
     EXTI->PR |= EXTI_Line6;
-    //	  LED2_OFF();
     A7139_ReadFIFO(DataRecvBuffer,MAX_PACK_LENGTH);
-    delay_us(1);
-    A7139_StrobeCmd(CMD_RX);
-    delay_us(1);
+
+    RXMode();
+
 		time_out = 0;
-		LED2_REV();
-		switch (Unpack(DataRecvBuffer))
+		if(PackValid())
 		{
-				case JOINREQUEST_TYPE:
-					PostTask(EVENT_JOINREQUEST_HANDLER);
-					break;
-				case JOINREQUESTACKOK_TYPE:
-					PostTask(EVENT_JOINREQUESTACKOK_HANDLER);
-					break;
+				LED2_REV();
+				switch (Unpack(DataRecvBuffer))
+				{
+						case JOINREQUEST_TYPE:
+							PostTask(EVENT_JOINREQUEST_HANDLER);
+							break;
+						case JOINREQUESTACKOK_TYPE:
+							PostTask(EVENT_JOINREQUESTACKOK_HANDLER);
+							break;
+						case DATA_TYPE:
+							PostTask(EVENT_DATA_HANDLER);
+							break;
+				}
 		}
+		
    
 }
 void DisableInterrupt()
