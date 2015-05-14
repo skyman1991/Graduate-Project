@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\Flash\flash.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\Net\net.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RX\RX.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\TX\TX.ewp</path>
+  </project>
+  <batchBuild/>
+</workspace>
+
+
