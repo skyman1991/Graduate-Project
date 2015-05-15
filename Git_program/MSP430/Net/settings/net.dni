@@ -46,7 +46,7 @@ Counter0=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [EEM Cycle Counter 1]
 Counter1=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [DebugChecksum]
-Checksum=1794882515
+Checksum=1221183472
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -66,16 +66,8 @@ Fmt10=EndPointDeviceStruct-free_node	3	0
 Fmt11=EndPointDeviceStruct-pyh_address	4	0
 Fmt12=EndPointDeviceStruct-state	4	0
 Fmt13=EndPointDeviceStruct-time_stamp	3	0
-[Log file]
-LoggingEnabled=_ 0
-LogFile=_ ""
-Category=_ 0
-[TermIOLog]
-LoggingEnabled=_ 0
-LogFile=_ ""
 [Breakpoints]
-Bp0=_ "STD_CODE" "{$PROJ_DIR$\..\Scource\schdule\tdma.c}.8.9" 0 0 0 0 "" 0 ""
-Count=1
+Count=0
 [FET]
 Clock mode=39
 Extended Clock mode=1
@@ -96,6 +88,13 @@ SP=0
 SR=0
 all registers=0
 File name=
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
 [Aliases]
 Count=0
 SuppressDialog=0

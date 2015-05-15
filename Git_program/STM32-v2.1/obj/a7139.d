@@ -31,3 +31,4 @@
 ..\OBJ\a7139.o: ..\Schdule\beacon.h
 ..\OBJ\a7139.o: ..\Schdule\device.h
 ..\OBJ\a7139.o: ..\Schdule\tdma.h
+..\OBJ\a7139.o: ..\HARDWARE\FLASH\flash.h

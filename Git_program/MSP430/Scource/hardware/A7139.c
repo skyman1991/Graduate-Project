@@ -760,4 +760,10 @@ void A7139_Wake(void)
     A7139_StrobeCmd(CMD_STBY);
     delay_ms(2);
 }
+void A7139_WakeToRecv(void)
+{
+    A7139_Wake();
+    RXMode();
+}
+
 

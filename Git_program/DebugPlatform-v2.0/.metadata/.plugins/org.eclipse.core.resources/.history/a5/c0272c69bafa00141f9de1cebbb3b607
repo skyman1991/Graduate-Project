@@ -1,0 +1,247 @@
+# coding=utf-8
+import Tkinter as tk
+import serial
+import ttk
+import _winreg as winreg
+import itertools
+import tkMessageBox as tkmes
+import threading
+import struct
+import time
+class GetSerialPorts(object):
+    # list contains all port device info
+    portList = []
+    IterationError=''
+    def enumerate_serial_ports(self):
+        """ Uses the Win32 registry to return a iterator of serial 
+            (COM) ports existing on this computer.
+        """
+        path = 'HARDWARE\\DEVICEMAP\\SERIALCOMM'
+        try:
+            key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
+        except WindowsError:
+            raise self.IterationError
+        self.portList=[]
+        for i in itertools.count():
+            try:
+                val = winreg.EnumValue(key, i)
+                self.portList.append(val)
+            except EnvironmentError:
+                break
+
+        winreg.CloseKey(key)
+
+    def port_list(self):
+        self.portList=[]
+        for x in range(len(self.portList)):
+            tmp = self.portList[x]
+            print tmp[0]
+            print str(tmp[1])
+            
+class MainRoot(tk.Tk):
+    """Container for all frames within the application"""
+    
+    def __init__(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+        self.portlistsort=[]
+        self.data=[]
+        self.text1=[]
+        self.text2=[]
+        self.text3=[]
+        self.text4=[]
+        self.text5=[]
+        self.text6=[]
+        self.text7=[]
+        self.text8=[]
+        self.text9=[]
+        self.text10=[]
+        
+        # initialize menu
+        self.title("温度监测")
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
+        ttk.Label(self,text = "端口号:").grid(row = 0,column = 0,sticky = tk.E)
+        ttk.Label(self,text = "波特率:").grid(row = 0,column = 2)
+        self.comnumcomb = ttk.Combobox(self,width=10)
+        self.comnumcomb.grid(row = 0,column = 1)
+        self.buardcomb = ttk.Combobox(self,width=10)
+        self.buardcomb.set("115200")
+        self.buardcomb.grid(row = 0,column = 3)
+        self.scanbutt = ttk.Button(self,text = "搜索",command = self.GetPort)
+        self.scanbutt.grid(row = 0,column = 4)
+        self.openbutt = ttk.Button(self,text="打开",command = self.OpenUart)
+        self.openbutt.grid(row = 0,column = 5)
+        self.datacanv = tk.Canvas(self,width=1000, height=550)
+        self.datacanv.grid(row = 1,column = 0,columnspan = 6)
+        
+        self.datacanv.create_text(50,50,text = "节点1:")
+        self.datacanv.create_text(50,100,text = "节点2:")
+        self.datacanv.create_text(50,150,text = "节点3:")
+        self.datacanv.create_text(50,200,text = "节点4:")
+        self.datacanv.create_text(50,250,text = "节点5:")
+        self.datacanv.create_text(50,300,text = "节点6:")
+        self.datacanv.create_text(50,350,text = "节点7:")
+        self.datacanv.create_text(50,400,text = "节点8:")
+        self.datacanv.create_text(50,450,text = "节点9:")
+        self.datacanv.create_text(50,500,text = "节点10:")
+        for i in range(8):
+            self.text1.append(self.datacanv.create_text((i+1)*100+80+i*10,50,text="0"))
+            self.text2.append(self.datacanv.create_text((i+1)*100+80+i*10,100,text="0"))
+            self.text3.append(self.datacanv.create_text((i+1)*100+80+i*10,150,text="0"))
+            self.text4.append(self.datacanv.create_text((i+1)*100+80+i*10,200,text="0"))
+            self.text5.append(self.datacanv.create_text((i+1)*100+80+i*10,250,text="0"))
+            self.text6.append(self.datacanv.create_text((i+1)*100+80+i*10,300,text="0"))
+            self.text7.append(self.datacanv.create_text((i+1)*100+80+i*10,350,text="0"))
+            self.text8.append(self.datacanv.create_text((i+1)*100+80+i*10,400,text="0"))
+            self.text9.append(self.datacanv.create_text((i+1)*100+80+i*10,450,text="0"))
+            self.text10.append(self.datacanv.create_text((i+1)*100+80+i*10,500,text="0"))
+        self.datacanv.create_text(50,0,text = "Count:")
+            
+    def GetPort(self):
+        uartportlist = GetSerialPorts()
+        uartportlist.enumerate_serial_ports()
+        if len(uartportlist.portList)==0:
+            tkmes.showwarning("警告", "未发现串口")
+        else:
+            for portnum in range(len(uartportlist.portList)):
+                self.portlistsort.append(str(uartportlist.portList[portnum][1]))
+            self.portlistsort = sorted(self.portlistsort)
+            self.comnumcomb['value'] = self.portlistsort
+            self.comnumcomb.set(self.portlistsort[0])
+            return self.portlistsort
+
+    def OpenUart(self):
+        try:
+            self.port = self.comnumcomb.get()
+            self.baud = self.buardcomb.get()
+            self.uart= serial.Serial(port = self.port,baudrate = self.baud)
+            self.showdata = threading.Thread(target = self.DataUpdate)
+            self.showdata.setDaemon(True)
+            self.showdata.start()
+        except:
+            tkmes.showwarning("警告", "串口被占用")
+
+
+    def DataUpdate(self):
+#         s='\xC3\x66\xE1\x2D'
+#         print str(struct.unpack('!f',s)[0])[:8]
+        while(1):
+            buf = self.uart.read(1)
+            if(len(buf)!=0):
+                if(ord(buf)==0x7E):
+                    buf = self.uart.read(47)
+                    for v in buf:
+                        self.data.append(v)
+                    nodenum = ord(self.data[14])
+                    data1 = self.data[18]+self.data[17]+self.data[16]+self.data[15]
+                    data2 = self.data[22]+self.data[21]+self.data[20]+self.data[19]
+                    data3 = self.data[26]+self.data[25]+self.data[24]+self.data[23]
+                    data4 = self.data[30]+self.data[29]+self.data[28]+self.data[27]
+                    data5 = self.data[34]+self.data[33]+self.data[32]+self.data[31]
+                    data6 = self.data[38]+self.data[37]+self.data[36]+self.data[35]
+                    data7 = self.data[42]+self.data[41]+self.data[40]+self.data[39]
+                    data8 = self.data[46]+self.data[45]+self.data[44]+self.data[43]
+
+                    data1 = str(struct.unpack('!f',data1)[0])[:8]
+                    data2 = str(struct.unpack('!f',data2)[0])[:8]
+                    data3 = str(struct.unpack('!f',data3)[0])[:8]
+                    data4 = str(struct.unpack('!f',data4)[0])[:8]
+                    data5 = str(struct.unpack('!f',data5)[0])[:8]
+                    data6 = str(struct.unpack('!f',data6)[0])[:8]
+                    data7 = str(struct.unpack('!f',data7)[0])[:8]
+                    data8 = str(struct.unpack('!f',data8)[0])[:8]
+                    if nodenum == 1:
+                        self.datacanv.itemconfig(self.text1[0], text = data1)
+                        self.datacanv.itemconfig(self.text1[1], text = data2)
+                        self.datacanv.itemconfig(self.text1[2], text = data3)
+                        self.datacanv.itemconfig(self.text1[3], text = data4)
+                        self.datacanv.itemconfig(self.text1[4], text = data5)
+                        self.datacanv.itemconfig(self.text1[5], text = data6)
+                        self.datacanv.itemconfig(self.text1[6], text = data7)
+                        self.datacanv.itemconfig(self.text1[7], text = data8)
+                    elif nodenum == 2:
+                        self.datacanv.itemconfig(self.text2[0], text = data1)
+                        self.datacanv.itemconfig(self.text2[1], text = data2)
+                        self.datacanv.itemconfig(self.text2[2], text = data3)
+                        self.datacanv.itemconfig(self.text2[3], text = data4)
+                        self.datacanv.itemconfig(self.text2[4], text = data5)
+                        self.datacanv.itemconfig(self.text2[5], text = data6)
+                        self.datacanv.itemconfig(self.text2[6], text = data7)
+                        self.datacanv.itemconfig(self.text2[7], text = data8)
+                    elif nodenum == 3:
+                        self.datacanv.itemconfig(self.text3[0], text = data1)
+                        self.datacanv.itemconfig(self.text3[1], text = data2)
+                        self.datacanv.itemconfig(self.text3[2], text = data3)
+                        self.datacanv.itemconfig(self.text3[3], text = data4)
+                        self.datacanv.itemconfig(self.text3[4], text = data5)
+                        self.datacanv.itemconfig(self.text3[5], text = data6)
+                        self.datacanv.itemconfig(self.text3[6], text = data7)
+                        self.datacanv.itemconfig(self.text3[7], text = data8)
+                    elif nodenum == 4:
+                        self.datacanv.itemconfig(self.text4[0], text = data1)
+                        self.datacanv.itemconfig(self.text4[1], text = data2)
+                        self.datacanv.itemconfig(self.text4[2], text = data3)
+                        self.datacanv.itemconfig(self.text4[3], text = data4)
+                        self.datacanv.itemconfig(self.text4[4], text = data5)
+                        self.datacanv.itemconfig(self.text4[5], text = data6)
+                        self.datacanv.itemconfig(self.text4[6], text = data7)
+                        self.datacanv.itemconfig(self.text4[7], text = data8)
+                    elif nodenum == 5:
+                        self.datacanv.itemconfig(self.text5[0], text = data1)
+                        self.datacanv.itemconfig(self.text5[1], text = data2)
+                        self.datacanv.itemconfig(self.text5[2], text = data3)
+                        self.datacanv.itemconfig(self.text5[3], text = data4)
+                        self.datacanv.itemconfig(self.text5[4], text = data5)
+                        self.datacanv.itemconfig(self.text5[5], text = data6)
+                        self.datacanv.itemconfig(self.text5[6], text = data7)
+                        self.datacanv.itemconfig(self.text5[7], text = data8)
+                    elif nodenum == 6:
+                        self.datacanv.itemconfig(self.text6[0], text = data1)
+                        self.datacanv.itemconfig(self.text6[1], text = data2)
+                        self.datacanv.itemconfig(self.text6[2], text = data3)
+                        self.datacanv.itemconfig(self.text6[3], text = data4)
+                        self.datacanv.itemconfig(self.text6[4], text = data5)
+                        self.datacanv.itemconfig(self.text6[5], text = data6)
+                        self.datacanv.itemconfig(self.text6[6], text = data7)
+                        self.datacanv.itemconfig(self.text6[7], text = data8)
+                    elif nodenum == 7:
+                        self.datacanv.itemconfig(self.text7[0], text = data1)
+                        self.datacanv.itemconfig(self.text7[1], text = data2)
+                        self.datacanv.itemconfig(self.text7[2], text = data3)
+                        self.datacanv.itemconfig(self.text7[3], text = data4)
+                        self.datacanv.itemconfig(self.text7[4], text = data5)
+                        self.datacanv.itemconfig(self.text7[5], text = data6)
+                        self.datacanv.itemconfig(self.text7[6], text = data7)
+                        self.datacanv.itemconfig(self.text7[7], text = data8)
+                    elif nodenum == 8:
+                        self.datacanv.itemconfig(self.text8[0], text = data1)
+                        self.datacanv.itemconfig(self.text8[1], text = data2)
+                        self.datacanv.itemconfig(self.text8[2], text = data3)
+                        self.datacanv.itemconfig(self.text8[3], text = data4)
+                        self.datacanv.itemconfig(self.text8[4], text = data5)
+                        self.datacanv.itemconfig(self.text8[5], text = data6)
+                        self.datacanv.itemconfig(self.text8[6], text = data7)
+                        self.datacanv.itemconfig(self.text8[7], text = data8)
+                    elif nodenum == 9:
+                        self.datacanv.itemconfig(self.text9[0], text = data1)
+                        self.datacanv.itemconfig(self.text9[1], text = data2)
+                        self.datacanv.itemconfig(self.text9[2], text = data3)
+                        self.datacanv.itemconfig(self.text9[3], text = data4)
+                        self.datacanv.itemconfig(self.text9[4], text = data5)
+                        self.datacanv.itemconfig(self.text9[5], text = data6)
+                        self.datacanv.itemconfig(self.text9[6], text = data7)
+                        self.datacanv.itemconfig(self.text9[7], text = data8)
+                    elif nodenum == 10:
+                        self.datacanv.itemconfig(self.text10[0], text = data1)
+                        self.datacanv.itemconfig(self.text10[1], text = data2)
+                        self.datacanv.itemconfig(self.text10[2], text = data3)
+                        self.datacanv.itemconfig(self.text10[3], text = data4)
+                        self.datacanv.itemconfig(self.text10[4], text = data5)
+                        self.datacanv.itemconfig(self.text10[5], text = data6)
+                        self.datacanv.itemconfig(self.text10[6], text = data7)
+                        self.datacanv.itemconfig(self.text10[7], text = data8)
+
+                    
+if __name__ == '__main__':
+    root = MainRoot()
+    root.mainloop()

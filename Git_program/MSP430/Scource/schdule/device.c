@@ -14,6 +14,23 @@ uint8 Unpack(uint8 *type)
 void CSMABackOff()
 {
     uint32 back_off_time = 0;
+//    uint32 wait_time = 0;
+//    uint32 q,w;
+//    //wait_time = ((MAX_DEVICE_NUM - EndPointDevice.free_node)*SLOT_LENGTH)/10;
+//    q=MAX_DEVICE_NUM - EndPointDevice.free_node;
+//    w=q*SLOT_LENGTH;
+//    wait_time=w/100;
+//    
+//    while(Frame_Time<=wait_time);      //等待到达CSMA时隙 超帧内时间<=负载数*时隙长度
+//    
+    CSMA_BackOff_Random = (rand()*TAR)%(EndPointDevice.csma_length*BACKOFF_DIV);        //退避时间   随机数*TIMERA计数%csma时隙个数/10
+    back_off_time = BACKOFF_PERIOD*CSMA_BackOff_Random;
+    delayus(back_off_time);
+}
+
+uint8 SendByCSMA(u8 *buff,uint8 length)
+{
+    uint8 cca_value = 0;
     uint32 wait_time = 0;
     uint32 q,w;
     //wait_time = ((MAX_DEVICE_NUM - EndPointDevice.free_node)*SLOT_LENGTH)/10;
@@ -22,16 +39,9 @@ void CSMABackOff()
     wait_time=w/100;
     
     while(Frame_Time<=wait_time);      //等待到达CSMA时隙 超帧内时间<=负载数*时隙长度
-    CSMA_BackOff_Random = (rand()*TAR)%(EndPointDevice.csma_length*BACKOFF_DIV);        //退避时间   随机数*TIMERA计数%csma时隙个数/5 
-    back_off_time = BACKOFF_PERIOD*CSMA_BackOff_Random;
-    delayus(back_off_time);
-}
-  
-uint8 SendByCSMA(u8 *buff,uint8 length)
-{
-    uint8 cca_value = 0;
+    TIME1_LOW;
     CSMABackOff();
-    
+    TIME1_HIGH;
     cca_value = (A7139_GetRSSI()+A7139_GetRSSI())/2;
             
     if(cca_value<CCA)

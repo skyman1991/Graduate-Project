@@ -31,3 +31,4 @@
 ..\OBJ\key.o: ..\Schdule\beacon.h
 ..\OBJ\key.o: ..\Schdule\device.h
 ..\OBJ\key.o: ..\Schdule\tdma.h
+..\OBJ\key.o: ..\HARDWARE\FLASH\flash.h

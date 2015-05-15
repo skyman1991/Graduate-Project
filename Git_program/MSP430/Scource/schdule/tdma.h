@@ -19,4 +19,5 @@ extern DataPacketStruct DataPacket;
 
 extern void DataSend(void);
 extern void DataACKHandler();
+extern void CSMADataResend();
 #endif

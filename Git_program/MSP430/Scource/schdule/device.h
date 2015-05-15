@@ -4,7 +4,10 @@
 #define    SLOT_LENGTH     20000     //单位us
 #define    BACKOFF_DIV     10
 #define    BACKOFF_PERIOD  SLOT_LENGTH/BACKOFF_DIV
-#define    WAKE_TIME       2000
+#define    WAKE_TIME       2000    //SLEEP唤醒需要2ms
+#define    DATAACK_TIMEOUT 60      //ack接收超时，决定是否进入csma重发阶段
+
+#define    SLEEP_EN        0
 
 #define    CCA   90     //载波监测阈值
 #define    CSMA_BACKOFF_TIME 8

@@ -75,6 +75,12 @@ uint8 Process_Event()
       case EVENT_DATAACK_HANDLER:
         DataACKHandler();
         break;
+      case EVENT_WAKE_A7139:
+        A7139_WakeToRecv();
+        break;
+      case EVENT_CSMA_RESEND:
+        CSMADataResend();
+        break;
     }
     return current_event;
 }

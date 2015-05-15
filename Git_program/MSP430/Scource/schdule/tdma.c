@@ -1,19 +1,36 @@
 #include "common.h"
 DataPacketStruct DataPacket;
 uint16 ab_slot_num = 0;
-void RecvDataACK(uint32 time)
+uint32 send_time = 0;
+void RecvDataACK()
 {
-    while(GIO2)
+    send_time = Frame_Time;
+    while(GIO2==0)
     {
-        if(Frame_Time>time+10)
-            TIME1_HIGH;
+        if(Frame_Time>send_time+DATAACK_TIMEOUT)             //60为DataACK接收超时，在收到ACK时不会进入if内
+        {
+            TIME1_LOW;
             EndPointDevice.data_ack = 0;
             RXMode();
-            TIME1_LOW;
+            TIME1_HIGH;
+            PostTask(EVENT_CSMA_RESEND);
             return;
+        }
+        
+            
     }
+    
     A7139_ReadFIFO(DataRecvBuffer,MAX_PACK_LENGTH);
     RXMode();
+    if(PackValid()&&(Unpack(DataRecvBuffer) == DATAACK_TYPE)) //如果收到正确的ACK
+       DataACKHandler();        
+    else                                                        //否则进入CSMA阶段
+    {
+        PostTask(EVENT_CSMA_RESEND);
+        EndPointDevice.data_ack = 0;
+    }
+        
+       
 }
 void CreatSendData()
 {
@@ -48,7 +65,7 @@ void DataSend(void)
 {
     uint32 a,b,c;             //防止第一个节点为负
     uint32 before_slot_wake = WAKE_TIME;
-    uint32 send_time = 0;
+
     //before_slot_wake = (((EndPointDevice.cluster_innernum-1)*SLOT_LENGTH)-WAKE_TIME)+5000;
     //为什么写一起就不对！！！
     a = (EndPointDevice.cluster_innernum-1);
@@ -62,12 +79,12 @@ void DataSend(void)
     A7139_Wake();
     CreatSendData();
     TIME1_HIGH;
-    send_time = Frame_Time;
     SendPack();
     RXMode();
-    RecvDataACK(send_time);
-    if(PackValid()&&(Unpack(DataRecvBuffer) == DATAACK_TYPE)) 
-       DataACKHandler();
+    RecvDataACK();
+#if (SLEEP_EN)
+    A7139_Sleep();
+#endif
     EN_INT;
 }
 void DataACKHandler()
@@ -75,4 +92,8 @@ void DataACKHandler()
     EndPointDevice.time_stamp = DataSendBuffer[6]<<8|DataSendBuffer[7];
     EndPointDevice.data_ack = 1;
     TIME1_LOW;
+}
+void CSMADataResend()
+{
+    SendByCSMA(DataSendBuffer,MAX_PACK_LENGTH);
 }

@@ -75,6 +75,7 @@ void bubble(ChannelTable *a,uint8 n)
     }
     
 } 
+
 void SortChannel()
 {
     bubble(ScanChannel,CHANNEL_NUM);
@@ -88,6 +89,7 @@ void SortChannel()
     A7139_Cal();                    
     delay_us(1);
 }
+
 void CreatJoinRequest()
 {
     JoinRequestPacket.length = JOINREQUEST_PACK_LENGTH;
@@ -141,6 +143,7 @@ void CreatJoinRequestACKOK()
     DataSendBuffer[10] = 0;
     DataSendBuffer[11] = 0;           
 }
+
 void JoinRequestACKHandler()
 {
     uint8 accept = 0;

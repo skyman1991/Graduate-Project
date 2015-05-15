@@ -2,16 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="sniffer" key="selection"/>
+		<item value="itemconfig" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="itemconfig"/>
+			<item value="create_text"/>
+			<item value="config"/>
+			<item value="UartRoot"/>
+			<item value="command"/>
+			<item value="GetSerialPorts"/>
 			<item value="sniffer"/>
 			<item value="NetSniffer"/>
-			<item value="抓包"/>
-			<item value="canvas"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -19,8 +23,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="343" key="DIALOG_WIDTH"/>
 		<item value="1|Microsoft YaHei UI|12.75|0|WINDOWS|1|-17|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
-		<item value="455" key="DIALOG_HEIGHT"/>
-		<item value="910" key="DIALOG_X_ORIGIN"/>
-		<item value="256" key="DIALOG_Y_ORIGIN"/>
+		<item value="447" key="DIALOG_HEIGHT"/>
+		<item value="294" key="DIALOG_X_ORIGIN"/>
+		<item value="297" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

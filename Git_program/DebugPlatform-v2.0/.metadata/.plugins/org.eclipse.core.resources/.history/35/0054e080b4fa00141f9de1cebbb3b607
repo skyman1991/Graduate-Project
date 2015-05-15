@@ -1,0 +1,175 @@
+# coding=utf-8
+import Tkinter as tk
+import serial
+import ttk
+import _winreg as winreg
+import itertools
+import tkMessageBox as tkmes
+import threading
+import struct
+import time
+class GetSerialPorts(object):
+    # list contains all port device info
+    portList = []
+    IterationError=''
+    def enumerate_serial_ports(self):
+        """ Uses the Win32 registry to return a iterator of serial 
+            (COM) ports existing on this computer.
+        """
+        path = 'HARDWARE\\DEVICEMAP\\SERIALCOMM'
+        try:
+            key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
+        except WindowsError:
+            raise self.IterationError
+        self.portList=[]
+        for i in itertools.count():
+            try:
+                val = winreg.EnumValue(key, i)
+                self.portList.append(val)
+            except EnvironmentError:
+                break
+
+        winreg.CloseKey(key)
+
+    def port_list(self):
+        self.portList=[]
+        for x in range(len(self.portList)):
+            tmp = self.portList[x]
+            print tmp[0]
+            print str(tmp[1])
+            
+class MainRoot(tk.Tk):
+    """Container for all frames within the application"""
+    
+    def __init__(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
+        self.portlistsort=[]
+        self.data=[]
+        self.text1=[]
+        self.text2=[]
+        self.text3=[]
+        self.text4=[]
+        self.text5=[]
+        self.text6=[]
+        self.text7=[]
+        self.text8=[]
+        self.text9=[]
+        self.text10=[]
+        
+        # initialize menu
+        self.title("温度监测")
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
+        ttk.Label(self,text = "端口号:").grid(row = 0,column = 0,sticky = tk.E)
+        ttk.Label(self,text = "波特率:").grid(row = 0,column = 2)
+        self.comnumcomb = ttk.Combobox(self,width=10)
+        self.comnumcomb.grid(row = 0,column = 1)
+        self.buardcomb = ttk.Combobox(self,width=10)
+        self.buardcomb.set("115200")
+        self.buardcomb.grid(row = 0,column = 3)
+        self.scanbutt = ttk.Button(self,text = "搜索",command = self.GetPort)
+        self.scanbutt.grid(row = 0,column = 4)
+        self.openbutt = ttk.Button(self,text="打开",command = self.OpenUart)
+        self.openbutt.grid(row = 0,column = 5)
+        self.datacanv = tk.Canvas(self,width=1000, height=550)
+        self.datacanv.grid(row = 1,column = 0,columnspan = 6)
+        
+        self.datacanv.create_text(50,50,text = "节点1:")
+        self.datacanv.create_text(50,100,text = "节点2:")
+        self.datacanv.create_text(50,150,text = "节点3:")
+        self.datacanv.create_text(50,200,text = "节点4:")
+        self.datacanv.create_text(50,250,text = "节点5:")
+        self.datacanv.create_text(50,300,text = "节点6:")
+        self.datacanv.create_text(50,350,text = "节点7:")
+        self.datacanv.create_text(50,400,text = "节点8:")
+        self.datacanv.create_text(50,450,text = "节点9:")
+        self.datacanv.create_text(50,500,text = "节点10:")
+        for i in range(8):
+            self.text1.append(self.datacanv.create_text((i+1)*100+80+i*10,50,text="0"))
+            self.text2.append(self.datacanv.create_text((i+1)*100+80+i*10,100,text="0"))
+            self.text3.append(self.datacanv.create_text((i+1)*100+80+i*10,150,text="0"))
+            self.text4.append(self.datacanv.create_text((i+1)*100+80+i*10,200,text="0"))
+            self.text5.append(self.datacanv.create_text((i+1)*100+80+i*10,250,text="0"))
+            self.text6.append(self.datacanv.create_text((i+1)*100+80+i*10,300,text="0"))
+            self.text7.append(self.datacanv.create_text((i+1)*100+80+i*10,350,text="0"))
+            self.text8.append(self.datacanv.create_text((i+1)*100+80+i*10,400,text="0"))
+            self.text9.append(self.datacanv.create_text((i+1)*100+80+i*10,450,text="0"))
+            self.text10.append(self.datacanv.create_text((i+1)*100+80+i*10,500,text="0"))
+            
+            
+        
+    
+    def GetPort(self):
+        uartportlist = GetSerialPorts()
+        uartportlist.enumerate_serial_ports()
+        if len(uartportlist.portList)==0:
+            tkmes.showwarning("警告", "未发现串口")
+        else:
+            for portnum in range(len(uartportlist.portList)):
+                self.portlistsort.append(str(uartportlist.portList[portnum][1]))
+            self.portlistsort = sorted(self.portlistsort)
+            self.comnumcomb['value'] = self.portlistsort
+            self.comnumcomb.set(self.portlistsort[0])
+            return self.portlistsort
+
+    def OpenUart(self):
+        try:
+            self.port = self.comnumcomb.get()
+            self.baud = self.buardcomb.get()
+            self.uart= serial.Serial(port = self.port,baudrate = self.baud)
+            self.showdata = threading.Thread(target = self.DataUpdate)
+            self.showdata.setDaemon(True)
+            self.showdata.start()
+        except:
+            tkmes.showwarning("警告", "串口被占用")
+
+
+    def DataUpdate(self):
+        s='\x00\x00\x48\x43'
+        print struct.unpack('!f',s)
+        print struct.unpack('!f', '43480000'.decode('hex'))[0]
+        while(1):
+#             time.sleep(1)
+#             self.uart.write("7E 00 2D 90 00 13 A2 00 40 8B C7 8C FF FE C1 01 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 2D E1 66 C3 D9")
+#             string = '7E 00 2D 90 00 13 A2 00 40 8B C7 8C FF FE C1 01 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 00 00 48 43 2D E1 66 C3 D9'
+#             self.stringbuf = string.split(" ")
+#             for v in self.stringbuf:
+#                 self.uart.write(v)
+            buf = self.uart.read(1)
+            if(len(buf)!=0):
+                if(ord(buf)==0x7E):
+                    buf = self.uart.read(47)
+                    for v in buf:
+                        self.data.append(v)
+                    nodenum = ord(self.data[14])
+                    print self.data
+                    self.datafloat = self.data[15]+self.data[16]+self.data[17]+self.data[18]
+                    print self.datafloat
+                    print struct.unpack('!f',self.datafloat)[0]
+                    if nodenum == 1:
+                        self.datacanv.itemconfig(self.text1[0], text = "65535.65535")
+                    elif nodenum == 2:
+                        self.datacanv.itemconfig(self.text2[0], text = "65535.65535")
+                    elif nodenum == 3:
+                        self.datacanv.itemconfig(self.text3[0], text = "65535.65535")
+                    elif nodenum == 4:
+                        self.datacanv.itemconfig(self.text4[0], text = "65535.65535")
+                    elif nodenum == 5:
+                        self.datacanv.itemconfig(self.text5[0], text = "65535.65535")
+                    elif nodenum == 6:
+                        self.datacanv.itemconfig(self.text6[0], text = "65535.65535")
+                    elif nodenum == 7:
+                        self.datacanv.itemconfig(self.text7[0], text = "65535.65535")
+                    elif nodenum == 8:
+                        self.datacanv.itemconfig(self.text8[0], text = "65535.65535")
+                    elif nodenum == 9:
+                        self.datacanv.itemconfig(self.text9[0], text = "65535.65535")
+                    elif nodenum == 10:
+                        self.datacanv.itemconfig(self.text10[0], text = "65535.65535")
+                    
+                    
+                    
+                    
+if __name__ == '__main__':
+    root = MainRoot()
+    root.mainloop()

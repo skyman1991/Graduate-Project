@@ -31,3 +31,4 @@
 ..\OBJ\join.o: ..\Schdule\beacon.h
 ..\OBJ\join.o: ..\Schdule\device.h
 ..\OBJ\join.o: ..\Schdule\tdma.h
+..\OBJ\join.o: ..\HARDWARE\FLASH\flash.h
