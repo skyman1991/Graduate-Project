@@ -2,19 +2,19 @@
 DataPacketStruct DataPacket;
 uint16 ab_slot_num = 0;
 uint32 send_time = 0;
-void RecvDataACK()
+uint8 RecvDataACK()
 {
     send_time = Frame_Time;
     while(GIO2==0)
     {
         if(Frame_Time>send_time+DATAACK_TIMEOUT)             //60为DataACK接收超时，在收到ACK时不会进入if内
         {
-            TIME1_LOW;
+            //TIME1_LOW;
             EndPointDevice.data_ack = 0;
             RXMode();
-            TIME1_HIGH;
+            //TIME1_HIGH;
             PostTask(EVENT_CSMA_RESEND);
-            return;
+            return 0;
         }
         
             
@@ -23,11 +23,15 @@ void RecvDataACK()
     A7139_ReadFIFO(DataRecvBuffer,MAX_PACK_LENGTH);
     RXMode();
     if(PackValid()&&(Unpack(DataRecvBuffer) == DATAACK_TYPE)) //如果收到正确的ACK
-       DataACKHandler();        
+    {
+        DataACKHandler();
+        return 1;
+    }
     else                                                        //否则进入CSMA阶段
     {
         PostTask(EVENT_CSMA_RESEND);
         EndPointDevice.data_ack = 0;
+        return 0;
     }
         
        
@@ -60,12 +64,12 @@ void CreatSendData()
     DataSendBuffer[11] = 0;
 }
  
-
-void DataSend(void)
-{
     uint32 a,b,c;             //防止第一个节点为负
     uint32 before_slot_wake = WAKE_TIME;
+void DataSend(void)
+{
 
+    uint8 ack_flag = 0;
     //before_slot_wake = (((EndPointDevice.cluster_innernum-1)*SLOT_LENGTH)-WAKE_TIME)+5000;
     //为什么写一起就不对！！！
     a = (EndPointDevice.cluster_innernum-1);
@@ -76,22 +80,34 @@ void DataSend(void)
     DIS_INT;
     while(Frame_Time<=before_slot_wake);
     EndPointDevice.data_ack = 0;
+    //TIME1_LOW;
     A7139_Wake();
+
     CreatSendData();
-    TIME1_HIGH;
+    //TIME1_HIGH;
     SendPack();
     RXMode();
-    RecvDataACK();
-#if (SLEEP_EN)
-    A7139_Sleep();
-#endif
+    ack_flag = RecvDataACK();
+    if(ack_flag == 1)
+    {
+        A7139_Sleep();
+    }
+    else
+    {
+        TIME1_HIGH;
+        delay_ms(5);
+        TIME1_LOW;
+        delay_ms(5);
+        TIME1_HIGH;
+        
+    }
     EN_INT;
 }
 void DataACKHandler()
 {
     EndPointDevice.time_stamp = DataSendBuffer[6]<<8|DataSendBuffer[7];
     EndPointDevice.data_ack = 1;
-    TIME1_LOW;
+    //TIME1_LOW;
 }
 void CSMADataResend()
 {

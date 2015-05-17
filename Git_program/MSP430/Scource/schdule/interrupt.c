@@ -61,9 +61,13 @@ __interrupt void Timer_A (void)
     TA1CCTL0 &= ~CCIFG;
     Frame_Time++;
 #if (SLEEP_EN)
-    if(Frame_Time==4963)
+    if(Frame_Time==BEFOR_BEACON_WAKE)
+    {
         PostTask(EVENT_WAKE_A7139);
+    }
 #endif
+        
+
 }
 
 //1s

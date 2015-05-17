@@ -85,14 +85,16 @@ uint8 rssisee = 0;
 void EXTI9_5_IRQHandler(void)
 {
     EXTI->PR |= EXTI_Line6;
+		TIME2_HIGH;
     A7139_ReadFIFO(DataRecvBuffer,MAX_PACK_LENGTH);
-
+		TIME2_LOW;
     RXMode();
-
+		TIME2_HIGH;
 		time_out = 0;
 		if(PackValid())
 		{
 				LED2_REV();
+			  
 				switch (Unpack(DataRecvBuffer))
 				{
 						case JOINREQUEST_TYPE:
@@ -102,6 +104,7 @@ void EXTI9_5_IRQHandler(void)
 							PostTask(EVENT_JOINREQUESTACKOK_HANDLER);
 							break;
 						case DATA_TYPE:
+							TIME2_LOW;
 							PostTask(EVENT_DATA_HANDLER);
 							break;
 				}

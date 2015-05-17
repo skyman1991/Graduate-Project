@@ -1,13 +1,18 @@
 #ifndef _DEVICE_h_
 #define _DEVICE_h_
+/****************更改beacon周期需要重新调的参数*************/
+#define    BEACON_PERIOD     5000
+#define    BEFOR_BEACON_WAKE BEACON_PERIOD-150   //在beacon前1.5ms时唤醒芯片
 
+/**********************************************************/
 #define    SLOT_LENGTH     20000     //单位us
 #define    BACKOFF_DIV     10
 #define    BACKOFF_PERIOD  SLOT_LENGTH/BACKOFF_DIV
-#define    WAKE_TIME       2000    //SLEEP唤醒需要2ms
-#define    DATAACK_TIMEOUT 60      //ack接收超时，决定是否进入csma重发阶段
+#define    WAKE_TIME         4000    //SLEEP唤醒需要2ms
 
-#define    SLEEP_EN        0
+#define    DATAACK_TIMEOUT 300      //ack接收超时，决定是否进入csma重发阶段
+
+#define    SLEEP_EN        1
 
 #define    CCA   90     //载波监测阈值
 #define    CSMA_BACKOFF_TIME 8

@@ -749,7 +749,10 @@ void SendPack()
 
 void A7139_Sleep(void)
 {
+#if (SLEEP_EN)
+    TIME1_HIGH;
     A7139_StrobeCmd(CMD_SLEEP);
+#endif
 }
 void A7139_DeepSleep(void)
 {
@@ -758,7 +761,8 @@ void A7139_DeepSleep(void)
 void A7139_Wake(void)
 {
     A7139_StrobeCmd(CMD_STBY);
-    delay_ms(2);
+    delay_ms(4);
+    TIME1_LOW;
 }
 void A7139_WakeToRecv(void)
 {
