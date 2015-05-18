@@ -44,7 +44,7 @@
         <expressions>
           
           
-        <item>EndPointDevice</item><item>before_slot_wake</item><item>Frame_Time</item><item>DataSendBuffer</item><item>DataRecvBuffer</item><item>wait_time</item><item>TQ</item><item>send_time</item><item>Data_Change_Flag</item><item>Receive_Timeout</item><item></item></expressions>
+        <item>EndPointDevice</item><item>before_slot_wake</item><item>Frame_Time</item><item>DataSendBuffer</item><item>DataRecvBuffer</item><item>wait_time</item><item>TQ</item><item>send_time</item><item>Data_Change_Flag</item><item>Receive_Timeout</item><item/></expressions>
         <col-names>
           
           
