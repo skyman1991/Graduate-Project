@@ -68,12 +68,12 @@ void CreatSendData()
     DataSendBuffer[11] = 0;
 }
  
-
-void DataSend(void)
-{
     uint32 a,b,c;             //防止第一个节点为负
     uint32 before_slot_wake = WAKE_TIME;
     uint8 ack_flag = 0;
+void DataSend(void)
+{
+
     //before_slot_wake = (((EndPointDevice.cluster_innernum-1)*SLOT_LENGTH)-WAKE_TIME)+5000;
     //为什么写一起就不对！！！
     a = (EndPointDevice.cluster_innernum-1);
@@ -85,6 +85,7 @@ void DataSend(void)
     while(Frame_Time<=before_slot_wake);
     EndPointDevice.data_ack = 0;
     //TIME1_LOW;
+
     A7139_Wake();
 
     CreatSendData();
@@ -119,4 +120,5 @@ void DataACKHandler()
 void CSMADataResend()
 {
     SendByCSMA(DataSendBuffer,MAX_PACK_LENGTH);
+    A7139_Sleep();
 }

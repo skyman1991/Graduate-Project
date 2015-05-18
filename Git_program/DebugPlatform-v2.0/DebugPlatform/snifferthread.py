@@ -146,7 +146,7 @@ class myThread (threading.Thread):
 #                                             print "update error"
                                         self.dataintext = self.unpack()
                                         self.dataintextbuf=str(self.count)+"--"+self.dataintext+"\n"+self.dataintextbuf
-                                        print str(self.count)+"--"+self.dataintext
+#                                         print str(self.count)+"--"+self.dataintext
                                         self.file.write(self.dataintext+"\n")
                                         self.file.write('RX:%s Count:%s\n' % (self.data,self.count))
                                         if self.count%1000==0:

@@ -3,6 +3,7 @@ uint8 DataSendBuffer[MAX_PACK_LENGTH];
 uint8 DataRecvBuffer[MAX_PACK_LENGTH];
 RootDeviceStruct RootDevice;
 uint16 Frame_Time = 0;
+uint8 Power_Mode = 1;
 uint8 Unpack(uint8 *type)
 {
     type++;

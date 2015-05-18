@@ -33,6 +33,22 @@ void Interrupt_Init(void)
 		delay_us(2);
 		A7139_StrobeCmd(CMD_RX);
 		delay_us(2);
+		
+		
+		//GPIOA.0 中断线以及中断初始化配置 上升沿触发 PA0  WK_UP
+		GPIO_EXTILineConfig(GPIO_PortSourceGPIOC,GPIO_PinSource3); 
+		EXTI_InitStructure.EXTI_Line=EXTI_Line3;
+		EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;	
+  	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+		EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+  	EXTI_Init(&EXTI_InitStructure);																	//根据EXTI_InitStruct中指定的参数初始化外设EXTI寄存器
+
+  	NVIC_InitStructure.NVIC_IRQChannel = EXTI3_IRQn;						//使能按键KEY1,KEY0所在的外部中断通道
+  	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;		//抢占优先级2 
+  	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;						//子优先级1 
+  	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;									//使能外部中断通道
+  	NVIC_Init(&NVIC_InitStructure); 
+		
 
 }
 /*******************************************************************************
@@ -110,6 +126,18 @@ void EXTI9_5_IRQHandler(void)
 		}
 		
    
+}
+uint8 mode = 0;
+void EXTI3_IRQHandler(void)
+{
+		EXTI->PR |= EXTI_Line3;
+		if(mode==254)
+			mode = 0;
+		mode++;
+		if(mode%2==0)
+			Power_Mode = 1;
+		else
+			Power_Mode = 0;
 }
 void DisableInterrupt()
 {

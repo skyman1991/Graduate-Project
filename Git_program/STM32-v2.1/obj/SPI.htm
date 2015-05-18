@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\SPI.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\SPI.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Sun May 17 20:19:12 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Mon May 18 12:06:26 2015
 <BR><P>
 <H3>Maximum Stack Usage =        136 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -45,7 +45,7 @@ Function Pointers
  <LI><a href="#[34]">EXTI15_10_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[13]">EXTI1_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[14]">EXTI2_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
- <LI><a href="#[15]">EXTI3_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
+ <LI><a href="#[15]">EXTI3_IRQHandler</a> from interrupt.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[16]">EXTI4_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[23]">EXTI9_5_IRQHandler</a> from interrupt.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[10]">FLASH_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
@@ -616,7 +616,7 @@ Global Symbols
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendBeacon
 </UL>
 
-<P><STRONG><a name="[a4]"></a>Interrupt_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, interrupt.o(.text))
+<P><STRONG><a name="[a4]"></a>Interrupt_Init</STRONG> (Thumb, 166 bytes, Stack size 16 bytes, interrupt.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Interrupt_Init &rArr; A7139_StrobeCmd &rArr; SPIx_WriteByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EXTILineConfig
@@ -656,6 +656,9 @@ Global Symbols
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RXMode
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;A7139_ReadFIFO
 </UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
+</UL>
+<P><STRONG><a name="[15]"></a>EXTI3_IRQHandler</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, interrupt.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[d7]"></a>DisableInterrupt</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, interrupt.o(.text))
@@ -849,9 +852,6 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[14]"></a>EXTI2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
-</UL>
-<P><STRONG><a name="[15]"></a>EXTI3_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[16]"></a>EXTI4_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
@@ -1538,7 +1538,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[da]"></a>CreatBeacon</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, beacon.o(.text))
+<P><STRONG><a name="[da]"></a>CreatBeacon</STRONG> (Thumb, 142 bytes, Stack size 0 bytes, beacon.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PostBeacon
 </UL>
 

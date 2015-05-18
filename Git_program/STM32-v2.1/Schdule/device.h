@@ -54,6 +54,7 @@ extern uint8 DataSendBuffer[MAX_PACK_LENGTH];
 extern uint8 DataRecvBuffer[MAX_PACK_LENGTH];
 extern RootDeviceStruct RootDevice;
 extern uint16 Frame_Time;
+extern uint8 Power_Mode;
 
 extern uint8 Unpack(uint8 *type);
 #endif 

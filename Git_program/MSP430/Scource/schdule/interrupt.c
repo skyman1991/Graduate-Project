@@ -50,6 +50,7 @@ __interrupt void port1_ISR(void)
                 break;
             }
             halLedClear(1);
+            TIME1_HIGH;
         }
         
 
@@ -97,7 +98,7 @@ __interrupt void Timer_A0(void)
     {
         PostTask(EVENT_COLLECT_DATA);
         Receive_Timeout++;
-        if(Receive_Timeout==5)
+        if(Receive_Timeout>=(EndPointDevice.cluster_innernum))
         {
             Receive_Timeout = 0;
             Data_Change_Flag = 1;

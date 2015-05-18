@@ -738,7 +738,7 @@ void RXMode()
 }
 void SendPack()
 {
-    TIME1_HIGH;
+
     EndPointDevice.state = CMD_TX;
     A7139_StrobeCmd(CMD_PLL);
     delay_us(1);
@@ -748,24 +748,30 @@ void SendPack()
     while(GIO1);
     halLedSet(1);
     TIME1_LOW;
+
 }
 
 void A7139_Sleep(void)
 {
 #if (SLEEP_EN)
-    //TIME1_HIGH;
+    TIME1_HIGH;
     A7139_StrobeCmd(CMD_SLEEP);
 #endif
 }
 void A7139_DeepSleep(void)
 {
+
     A7139_StrobeCmd(CMD_DEEP_SLEEP);
 }
 void A7139_Wake(void)
 {
+   
     A7139_StrobeCmd(CMD_STBY);
-    delay_ms(4);
+    delay_us(1);
+    A7139_StrobeCmd(CMD_PLL);
     TIME1_LOW;
+    delay_ms(4);
+    
 }
 void A7139_WakeToRecv(void)
 {
@@ -777,6 +783,7 @@ void A7139_Deep_Wake(void)
     A7139_StrobeCmd(CMD_STBY);
     A7139_Init(ChannelList[EndPointDevice.channel]);
     RXMode();
+
 }
 
 
