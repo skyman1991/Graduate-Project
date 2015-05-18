@@ -58,6 +58,7 @@ typedef struct{
     uint8 state;                        //当前状态
     uint8 time_stamp;                   //时间戳
     uint8 data_ack;                     //数据ack
+    uint8 power;			//是否开启低功耗
 }EndPointDeviceStruct;
 
 extern EndPointDeviceStruct EndPointDevice;
@@ -65,9 +66,15 @@ extern uint8 Unpack(uint8 *type);
 extern void BeaconHandler(uint8 beacon[]);
 extern uint8 PackValid(void);
 extern uint8 SendByCSMA(u8 *buff,uint8 length);
+extern void CollectData();
 
 
 extern uint8 DataRecvBuffer[MAX_PACK_LENGTH];
 extern uint8 DataSendBuffer[MAX_PACK_LENGTH];
+extern uint8 Power_Mode;
+extern uint8 Data_Change_Flag;
+extern int AD_middle_value;
+extern int16 AD_Value;
+extern uint8 Car_Flag;
 
 #endif

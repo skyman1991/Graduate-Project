@@ -18,6 +18,9 @@
 #define    EVENT_JOINREQUESTACKOK_HANDLER 9
 #define    EVENT_DATA_SEND                10
 #define    EVENT_DATA_HANDLER             11
+#define    EVENT_DATAACK_HANDLER          12
+#define    EVENT_WAKE_A7139               13
+#define    EVENT_CSMA_RESEND              14
 
 extern void Init_TQ(void);
 extern uint8 PostTask(uint8 event);

@@ -25,6 +25,11 @@ uint8 RecvDataACK()
     if(PackValid()&&(Unpack(DataRecvBuffer) == DATAACK_TYPE)) //如果收到正确的ACK
     {
         DataACKHandler();
+        if(EndPointDevice.power == 1)
+        {
+            A7139_DeepSleep();
+            DIS_INT;
+        }
         return 1;
     }
     else                                                        //否则进入CSMA阶段
@@ -38,7 +43,6 @@ uint8 RecvDataACK()
 }
 void CreatSendData()
 {
-    uint8 data = 0x54;
         
     DataPacket.pack_length = DATA_PACK_LENGTH;
     DataPacket.pack_type = DATA_TYPE;
@@ -48,7 +52,7 @@ void CreatSendData()
     DataPacket.src_cluster_id = EndPointDevice.cluster_id;
     DataPacket.src_cluster_innernum = EndPointDevice.cluster_innernum;
     DataPacket.ab_slot_num = Frame_Time;
-    DataPacket.data = data;
+    DataPacket.data = Car_Flag;
     
     DataSendBuffer[0] = DataPacket.pack_length;
     DataSendBuffer[1] = DataPacket.pack_type<<2|DataPacket.ack_en<<1;
@@ -64,11 +68,11 @@ void CreatSendData()
     DataSendBuffer[11] = 0;
 }
  
-    uint32 a,b,c;             //防止第一个节点为负
-    uint32 before_slot_wake = WAKE_TIME;
+
 void DataSend(void)
 {
-
+    uint32 a,b,c;             //防止第一个节点为负
+    uint32 before_slot_wake = WAKE_TIME;
     uint8 ack_flag = 0;
     //before_slot_wake = (((EndPointDevice.cluster_innernum-1)*SLOT_LENGTH)-WAKE_TIME)+5000;
     //为什么写一起就不对！！！
@@ -94,14 +98,17 @@ void DataSend(void)
     }
     else
     {
-        TIME1_HIGH;
-        delay_ms(5);
-        TIME1_LOW;
-        delay_ms(5);
-        TIME1_HIGH;
+        EN_INT;
+        
+        //TIME1_HIGH;
+        //delay_ms(5);
+        //TIME1_LOW;
+        //delay_ms(5);
+        //TIME1_HIGH;
         
     }
-    EN_INT;
+    if((EndPointDevice.power == 0))
+        EN_INT;
 }
 void DataACKHandler()
 {

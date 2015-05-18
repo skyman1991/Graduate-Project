@@ -81,6 +81,9 @@ uint8 Process_Event()
       case EVENT_CSMA_RESEND:
         CSMADataResend();
         break;
+      case EVENT_COLLECT_DATA:
+        CollectData();
+        break;
     }
     return current_event;
 }

@@ -105,4 +105,5 @@ extern void A7139_Sleep(void);
 extern void A7139_DeepSleep(void);
 extern void A7139_Wake(void);
 extern void A7139_WakeToRecv(void);
+extern void A7139_Deep_Wake(void);
 #endif

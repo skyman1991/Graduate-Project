@@ -30,7 +30,8 @@ __interrupt void port1_ISR(void)
         A7139_StrobeCmd(CMD_RX);
         delay_us(2);
         EndPointDevice.state = CMD_RX;
-
+        
+        
         if(PackValid())
         {
             switch (Unpack(DataRecvBuffer))
@@ -50,6 +51,8 @@ __interrupt void port1_ISR(void)
             }
             halLedClear(1);
         }
+        
+
         Receive_Timeout = 0;   
     } 
 }
@@ -75,17 +78,31 @@ __interrupt void Timer_A (void)
 __interrupt void Timer_A0(void)
 {
     TA0CCTL0 &= ~CCIFG;
-    Receive_Timeout++;
-    if(Receive_Timeout>10)
+    if(EndPointDevice.power == 0)
     {
-        EndPointDevice.state = CMD_STBY;
-        A7139_StrobeCmd(CMD_STBY);
-        delay_us(1);
-        A7139_StrobeCmd(CMD_PLL);
-        delay_us(1);
-        A7139_StrobeCmd(CMD_RX);
-        delay_us(1);
-        Receive_Timeout = 0;
+        Receive_Timeout++;
+        if(Receive_Timeout>10)
+        {
+            EndPointDevice.state = CMD_STBY;
+            A7139_StrobeCmd(CMD_STBY);
+            delay_us(1);
+            A7139_StrobeCmd(CMD_PLL);
+            delay_us(1);
+            A7139_StrobeCmd(CMD_RX);
+            delay_us(1);
+            Receive_Timeout = 0;
+        }
     }
+    else if(EndPointDevice.power == 1)
+    {
+        PostTask(EVENT_COLLECT_DATA);
+        Receive_Timeout++;
+        if(Receive_Timeout==5)
+        {
+            Receive_Timeout = 0;
+            Data_Change_Flag = 1;
+        }
+    }
+    
 
 }

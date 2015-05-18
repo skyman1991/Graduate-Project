@@ -41,6 +41,7 @@ class myThread (threading.Thread):
     
     def beacon(self):
         return "Beacon: 应答:" + str((self.data[1]&0x02)>>1) + \
+            "  能耗:" + str(self.data[1]&0x01)+\
             "  目的簇ID:" + str(self.data[2])+\
             "  目的编号:"+str(self.data[3])+\
             '  簇ID:'+str(self.data[4]) + \

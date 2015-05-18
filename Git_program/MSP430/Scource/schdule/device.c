@@ -5,6 +5,13 @@ uint8   DataSendBuffer[MAX_PACK_LENGTH];
 
 uint16  CSMA_BackOff_Random = 0;
 uint8   CSMA_BackOff_Count = 0;
+
+uint8   Power_Mode = 2;  //1:每个时隙不发送时休眠   2：数据变化时唤醒发送，其他时间休眠
+uint8   Data_Change_Flag = 0;//数据发生变化时  该位置一
+int16 AD_Value;
+int AD_middle_value = 0;
+uint8 Car_Flag = 0;
+uint8 Car_Flag_Memory = 0;
 uint8 Unpack(uint8 *type)
 {
     type++;
@@ -66,7 +73,7 @@ void BeaconHandler(uint8 beacon[])
 {
     EndPointDevice.free_node = beacon[6];
     EndPointDevice.csma_length = (MAX_DEVICE_NUM - EndPointDevice.free_node)/3+1;
-    
+    EndPointDevice.power = beacon[1]&0x01;
     if(EndPointDevice.connected == 0)                   //未连接，发送加入请求
     {
         PostTask(EVENT_JOINREQUEST_SEND);
@@ -74,9 +81,11 @@ void BeaconHandler(uint8 beacon[])
     else                                                //已连接，执行TDMA过程
     {
         //TIME1_HIGH;
-
-        A7139_Sleep();
-
+        if(EndPointDevice.power == 0)
+        {
+            A7139_Sleep();
+        }
+        
         PostTask(EVENT_DATA_SEND);
     }
 }
@@ -93,4 +102,41 @@ uint8 PackValid(void)
         return 1;
     else
         return 0;
+}
+
+void CollectData()
+{
+//    AD_Value=SampleChannel(0x02);
+//    if(AD_middle_value-AD_Value>50)
+//    {
+//        halLedSet(1);//NKJFK-GPHP7-G8C3J-P6JXR-HQRJR
+//        Car_Flag = 1;
+//    }
+//    else if(AD_Value-AD_middle_value>50)
+//    {
+//        halLedSet(1);//NKJFK-GPHP7-G8C3J-P6JXR-HQRJR
+//        Car_Flag = 1;
+//    }
+//    else
+//    {
+//        halLedClear(1);
+//        Car_Flag = 0;
+//    }
+//    if(Car_Flag_Memory!=Car_Flag)
+//    {
+//        Data_Change_Flag = 1;
+//        PostTask(EVENT_DATA_SEND);
+//    }
+//    else
+//    {
+//        Data_Change_Flag = 0;
+//    }
+//    Car_Flag_Memory = Car_Flag;
+    
+    if(Data_Change_Flag == 1)
+    {
+        Data_Change_Flag = 0;
+        A7139_Deep_Wake();
+        EN_INT;
+    }
 }

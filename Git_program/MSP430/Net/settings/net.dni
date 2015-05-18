@@ -46,7 +46,7 @@ Counter0=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [EEM Cycle Counter 1]
 Counter1=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [DebugChecksum]
-Checksum=-1297435353
+Checksum=-2083731795
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -63,9 +63,12 @@ Fmt7=EndPointDeviceStruct-des_cluster_id	3	0
 Fmt8=EndPointDeviceStruct-des_cluster_innernum	3	0
 Fmt9=EndPointDeviceStruct-device_type	3	0
 Fmt10=EndPointDeviceStruct-free_node	3	0
-Fmt11=EndPointDeviceStruct-pyh_address	4	0
-Fmt12=EndPointDeviceStruct-state	4	0
-Fmt13=EndPointDeviceStruct-time_stamp	3	0
+Fmt11=EndPointDeviceStruct-power	3	0
+Fmt12=EndPointDeviceStruct-pyh_address	4	0
+Fmt13=EndPointDeviceStruct-state	4	0
+Fmt14=EndPointDeviceStruct-time_stamp	3	0
+[watch_formats]
+Fmt0={W}1:Data_Change_Flag	3	0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""

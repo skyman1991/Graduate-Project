@@ -158,12 +158,22 @@ void JoinRequestACKHandler()
         CreatJoinRequestACKOK();
         SendPack();
         RXMode();
+        if(EndPointDevice.power == 1)  //执行低功耗模式
+        {
+            A7139_DeepSleep();
+            DIS_INT;
+        }
     }
     else if((accept == 1)&&(ackok==0))                          //接受入网，不需要回复ACK-OK
     {
         EndPointDevice.cluster_id = DataRecvBuffer[6];
         EndPointDevice.cluster_innernum = DataRecvBuffer[7];
         EndPointDevice.connected = 1;
+        if(EndPointDevice.power == 1)  //执行低功耗模式
+        {
+            A7139_DeepSleep();
+            DIS_INT;
+        }
     }
     else
     {}

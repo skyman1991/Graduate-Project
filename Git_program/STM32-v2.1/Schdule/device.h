@@ -6,7 +6,10 @@
 #define    MAX_NODE_NUM  254
 
 #define    ACK_EN     1
-#define    ACK_DIS    0
+#define    ACK_DIS    0 
+
+#define 	 LOW_POWER  0
+
 
 //packet type define
 #define    BEACON_TYPE              1

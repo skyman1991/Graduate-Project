@@ -230,6 +230,7 @@ uint8 A7139_Init(float rfFreq)
     A7139_SetFreq(rfFreq);	  //set Freq
     delay_ms(10);
     A7139_Cal();
+    delay_ms(10);
     Correct_State();	
     A7139_StrobeCmd(CMD_STBY);
     
@@ -737,6 +738,7 @@ void RXMode()
 }
 void SendPack()
 {
+    TIME1_HIGH;
     EndPointDevice.state = CMD_TX;
     A7139_StrobeCmd(CMD_PLL);
     delay_us(1);
@@ -745,12 +747,13 @@ void SendPack()
     A7139_StrobeCmd(CMD_TX);
     while(GIO1);
     halLedSet(1);
+    TIME1_LOW;
 }
 
 void A7139_Sleep(void)
 {
 #if (SLEEP_EN)
-    TIME1_HIGH;
+    //TIME1_HIGH;
     A7139_StrobeCmd(CMD_SLEEP);
 #endif
 }
@@ -767,6 +770,12 @@ void A7139_Wake(void)
 void A7139_WakeToRecv(void)
 {
     A7139_Wake();
+    RXMode();
+}
+void A7139_Deep_Wake(void)
+{
+    A7139_StrobeCmd(CMD_STBY);
+    A7139_Init(ChannelList[EndPointDevice.channel]);
     RXMode();
 }
 

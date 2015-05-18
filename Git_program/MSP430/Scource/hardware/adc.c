@@ -11,9 +11,6 @@
  */
 #include "adc.h"
 #include "common.h"
-uint8 AD_flag=1;
-Uint16 AD_curvalue;
-Uint16 AD_avevalue;
 
 /*******************************************
 º¯ÊýÃû³Æ£ºSampleChannel(Uint16 ChannelNox)
@@ -50,16 +47,16 @@ __interrupt void ADC10_ISR(void)
 {
    __bic_SR_register_on_exit(CPUOFF);         // Clear CPUOFF bit from 0(SR)  
 }
-int ad_cal_value = 0;
+
 void AD_cal()
 {
     int i=0;
     for(i=0;i<16;i++)
     {
-          ad_cal_value += SampleChannel(0x02);
+          AD_middle_value += SampleChannel(0x02);
     
     }
-    ad_cal_value = ad_cal_value>>4;
+    AD_middle_value = AD_middle_value>>4;
     halLedSet(1);
     delay_ms(1000);
     halLedClear(1);
@@ -73,48 +70,4 @@ void AD_cal()
     halLedClear(1);
     delay_ms(50);
 }
-int16 AD_delatvalue;
-int16 AD_actvalue;
-void Sensor_status_Value(void)
-{
 
-
-    AD_actvalue=SampleChannel(0x02);
-    if(ad_cal_value-AD_actvalue>50)
-    {
-        halLedSet(1);//NKJFK-GPHP7-G8C3J-P6JXR-HQRJR
-        AD_flag = 1;
-        AD_avevalue=1;
-    }
-    else if(AD_actvalue-ad_cal_value>50)
-    {
-        halLedSet(1);//NKJFK-GPHP7-G8C3J-P6JXR-HQRJR
-        AD_flag = 1;
-        AD_avevalue=1;
-    }
-    else
-    {
-        halLedClear(1);
-        AD_avevalue=0;
-    }
-        
-//    AD_delatvalue=AD_actvalue-AD_curvalue;
-//      if(AD_delatvalue<0)
-//      {
-//        AD_delatvalue=-AD_delatvalue;
-//      }
-//      if(AD_delatvalue>300)
-//      {
-//          halLedSet(1);//NKJFK-GPHP7-G8C3J-P6JXR-HQRJR
-//          AD_flag = 1;
-//          AD_avevalue=1;
-//          
-//          //count++;
-//      }
-//      else
-//      {
-//        halLedClear(1);
-//        AD_avevalue=0;
-//        //AD_flag = 0; 
-//      }  
-}
