@@ -2,6 +2,7 @@
 DataPacketStruct DataPacket;
 uint16 ab_slot_num = 0;
 uint32 send_time = 0;
+uint32 resend_count = 0;
 uint8 RecvDataACK()
 {
     send_time = Frame_Time;
@@ -10,6 +11,7 @@ uint8 RecvDataACK()
         if(Frame_Time>send_time+DATAACK_TIMEOUT)             //60为DataACK接收超时，在收到ACK时不会进入if内
         {
             //TIME1_LOW;
+            resend_count++;
             EndPointDevice.data_ack = 0;
             RXMode();
             //TIME1_HIGH;
@@ -51,8 +53,9 @@ void CreatSendData()
     DataPacket.des_cluster_innernum = EndPointDevice.des_cluster_innernum;
     DataPacket.src_cluster_id = EndPointDevice.cluster_id;
     DataPacket.src_cluster_innernum = EndPointDevice.cluster_innernum;
-    DataPacket.ab_slot_num = Frame_Time;
-    DataPacket.data = Car_Flag;
+    DataPacket.ab_slot_num = (uint16)resend_count>>8;
+    //DataPacket.data = Car_Flag;
+    DataPacket.data = (uint8)resend_count;
     
     DataSendBuffer[0] = DataPacket.pack_length;
     DataSendBuffer[1] = DataPacket.pack_type<<2|DataPacket.ack_en<<1;
@@ -71,6 +74,7 @@ void CreatSendData()
     uint32 a,b,c;             //防止第一个节点为负
     uint32 before_slot_wake = WAKE_TIME;
     uint8 ack_flag = 0;
+
 void DataSend(void)
 {
 

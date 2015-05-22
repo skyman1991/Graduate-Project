@@ -1986,10 +1986,10 @@
   <group>
     <name>schdule</name>
     <file>
-      <name>$PROJ_DIR$\..\Scource\schdule\device.c</name>
+      <name>$PROJ_DIR$\..\Scource\schdule\detect.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Scource\schdule\device.h</name>
+      <name>$PROJ_DIR$\..\Scource\schdule\detect.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\Scource\schdule\interrupt.c</name>
@@ -2002,6 +2002,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\Scource\schdule\join.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Scource\schdule\mac.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Scource\schdule\mac.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\Scource\schdule\ProcessEvent.c</name>

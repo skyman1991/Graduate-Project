@@ -1,6 +1,7 @@
 #include "common.h"
 uint8   Receive_Timeout = 0;            //接收超时重启
-uint32     Frame_Time = 0;                 //超帧内计时
+uint32  Frame_Time = 0;                 //超帧内计时
+uint16  Collect_Time = 0;               //采集计时
 void Interrupt_Init(void)
 {
     P1DIR &=~ pinGIO2.pin_bm;
@@ -68,6 +69,17 @@ __interrupt void Timer_A (void)
     if(Frame_Time==BEFOR_BEACON_WAKE)
     {
         PostTask(EVENT_WAKE_A7139);
+    }
+#endif
+#if (COLLECT_EN)
+    if(Start_Collect)
+    {
+        Collect_Time++;
+        if(Collect_Time == COLLECT_PERIOD)
+        {
+            Collect_Time = 0;
+            PostTask(EVENT_COLLECT_DATA);
+        } 
     }
 #endif
         

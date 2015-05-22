@@ -10,6 +10,8 @@ import time
 
 
 
+
+
 class MainRoot(tk.Tk):
     """Container for all frames within the application"""
     
@@ -166,6 +168,9 @@ class Application(ttk.Notebook):
         self.menu = root.rootmenu
         
         self.bind("<<NotebookTabChanged>>", self.updatetab)
+        
+        self.rooterimage = tk.PhotoImage(file = "image//rooter.gif")
+        self.sensorimage = tk.PhotoImage(file = "image//sensor.gif")
     
     def updatetab(self,event):
         try:
@@ -259,8 +264,23 @@ class Application(ttk.Notebook):
             count = count + 1 
         
     def NetStatus(self):
-        ttk.Label(self.tab2, text="网络拓扑").grid()
-    
+        canv=tk.Canvas(self.tab2,width=1320, height=600,bg="white")
+        canv.grid()
+        
+        canv.create_image(1320/2,50,image = self.rooterimage)
+        canv.create_image(100,400,image = self.sensorimage)
+        canv.create_line(1320/2,50,100,400,fill='green', dash=(100, 80))
+        canv.create_text(100,480,text = "01")
+        canv.create_image(400,400,image = self.sensorimage)
+        canv.create_line(1320/2,50,400,400,fill='green', dash=(100, 80))
+        canv.create_text(400,480,text = "02")
+        canv.create_image(800,400,image = self.sensorimage)
+        canv.create_line(1320/2,50,800,400,fill='green', dash=(100, 80))
+        canv.create_text(800,480,text = "03")
+        canv.create_image(1200,400,image = self.sensorimage)
+        canv.create_line(1320/2,50,1200,400,fill='red', dash=(100, 80))
+        canv.create_text(1200,480,text = "04")
+        
     def ShowData(self):
         
         self.tab3.rowconfigure(0, weight=60)

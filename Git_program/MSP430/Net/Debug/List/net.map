@@ -1,0 +1,3 @@
+Error[e16]: Segment DATA16_Z (size: 0x3a0 align: 0x1) is too long for segment definition. At least 0x1ac more bytes needed. The problem occurred while processing the segment placement command "-Z(DATA)DATA16_I,DATA16_Z,DATA16_N,TLS16_I=0200-03FF", where at the moment of placement the available memory ranges were "CODE:20b-3ff"
+   Reserved ranges relevant to this placement:
+   200-3ff              DATA16_I

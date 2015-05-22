@@ -30,10 +30,11 @@
 #include "interrupt.h"
 #include <stdio.h>
 #include <string.h>
-#include "device.h"
+#include "mac.h"
 #include <stdlib.h>
 #include "tdma.h"
 #include "flash.h"
+#include "detect.h"
 
 
 

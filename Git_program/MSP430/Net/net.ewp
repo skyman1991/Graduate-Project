@@ -754,7 +754,7 @@
         </option>
         <option>
           <name>SecondaryOutputFile</name>
-          <state></state>
+          <state>(None for the selected format)</state>
         </option>
         <option>
           <name>XDefines</name>
@@ -774,7 +774,7 @@
         </option>
         <option>
           <name>XList</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>SegmentMap</name>
@@ -806,7 +806,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>lnk0t.xcl</state>
+          <state>$TOOLKIT_DIR$\config\linker\lnk430f2132.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
@@ -894,7 +894,7 @@
         </option>
         <option>
           <name>xcProgramEntryLabel</name>
-          <state></state>
+          <state>__program_start</state>
         </option>
         <option>
           <name>DebugInformation</name>
@@ -934,7 +934,7 @@
         </option>
         <option>
           <name>ExtraOutputFile</name>
-          <state></state>
+          <state>net.a43</state>
         </option>
         <option>
           <name>ExtraOutputFormat</name>
@@ -2294,10 +2294,10 @@
   <group>
     <name>schdule</name>
     <file>
-      <name>$PROJ_DIR$\..\Scource\schdule\device.c</name>
+      <name>$PROJ_DIR$\..\Scource\schdule\detect.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\Scource\schdule\device.h</name>
+      <name>$PROJ_DIR$\..\Scource\schdule\detect.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\Scource\schdule\interrupt.c</name>
@@ -2310,6 +2310,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\Scource\schdule\join.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Scource\schdule\mac.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Scource\schdule\mac.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\Scource\schdule\ProcessEvent.c</name>

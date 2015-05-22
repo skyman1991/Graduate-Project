@@ -84,6 +84,9 @@ uint8 Process_Event()
       case EVENT_COLLECT_DATA:
         CollectData();
         break;
+      case EVENT_IDENTIFY_CAR:
+        IdentifyCar();
+        break;
     }
     return current_event;
 }

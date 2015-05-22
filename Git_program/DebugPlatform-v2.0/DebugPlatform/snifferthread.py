@@ -123,6 +123,22 @@ class myThread (threading.Thread):
 #                 print type(self.root.appFrame.index('current'))
 #                 if self.root.appFrame.index('current')==type(3):
 #                     self.currenttab = self.root.appFrame.index('current')
+                if self.currenttab == 1:
+                    buf = self.uart.read(1)
+                    if len(buf)!= 0:
+                        if ord(buf)==0x7D:
+                            buf = self.uart.read(1)
+                            if len(buf)!= 0:
+                                if ord(buf)==0x7E:
+                                    buf = self.uart.read(13)
+                                    self.data=[]
+                                    self.count+=1
+                                    for v in buf:
+                                        self.data.append(ord(v))
+                                    self.statusbar.status.setdata('RX:%s Count:%s',self.data,self.count) 
+                                    self.radiovalue = self.app.radiovalue.get()
+                                    self.unpack()
+                                    
                 if self.currenttab == 2:
 #                     self.uart.write("type:beacon,freenum:16")
                     buf = self.uart.read(1)
