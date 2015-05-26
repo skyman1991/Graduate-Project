@@ -8,9 +8,9 @@ Git_program/*.docx
 Git_program/*.xlsx
 Git_program/*.txt
 Document/visio/*
-Git_program/DebugPlatform-v2.0/DebugPlatform/src/form/*.pyc
-Git_program/DebugPlatform-v2.0/DebugPlatform/src/form/*.txt
-Git_program/DebugPlatform-v2.0/backups/*
-Git_program/DebugPlatform-v2.0/reference/*
-Git_program/DebugPlatform-v2.0/.metdata/*
+Git_program/DebugPlatform-v2.1/DebugPlatform/src/form/*.pyc
+Git_program/DebugPlatform-v2.1/DebugPlatform/src/form/*.txt
+Git_program/DebugPlatform-v2.1/backups/*
+Git_program/DebugPlatform-v2.1/reference/*
+Git_program/DebugPlatform-v2.1/.metdata/*
 470M/*
