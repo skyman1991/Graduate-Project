@@ -4,8 +4,16 @@
 
 #define COLLECT_EN  1           //是否开启数据采集
 #define COLLECT_PERIOD  1000   //采集周期  单位：100us
-#define COLLECT_WIDTH   300    //按30S计算，每秒采集10次
+#define COLLECT_WIDTH   20    //按30S计算，每秒采集10次
+#define OFFSET          3      //跳变检测距离
+#define THRESHOLD       100
+#define IDENTIFY_WIDTH  10
 
+typedef struct
+{
+    uint16 value;
+    uint16 num;
+}DataStruct;
 
 extern void CollectData();
 extern void IdentifyCar();

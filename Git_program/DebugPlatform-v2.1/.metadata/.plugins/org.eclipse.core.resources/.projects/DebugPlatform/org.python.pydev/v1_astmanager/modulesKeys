@@ -1,0 +1,7 @@
+MODULES_MANAGER_V2
+carstop|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\carstop.py
+main|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\main.py
+mainform|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\mainform.py
+relaythread|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\relaythread.py
+snifferthread|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\snifferthread.py
+uart|F:\Graduate\Git_program\DebugPlatform-v2.0\DebugPlatform\uart.py

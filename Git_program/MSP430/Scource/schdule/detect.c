@@ -3,9 +3,11 @@ int16 AD_Value;
 int AD_middle_value = 0;
 uint8 Car_Flag = 0;                             //识别结果
 uint8 Car_Flag_Memory = 0;                      //上一次识别结果
-uint16 Magnet_Value[COLLECT_WIDTH];             //传感器采集值
-uint8  Start_Collect = 1;       //是否开启采集
+uint16 CODE Magnet_Value[COLLECT_WIDTH];             //传感器采集值
+uint8 Start_Collect = 1;       //是否开启采集
 uint16 collect_count = 0;
+DataStruct CODE Magnet_Identify[IDENTIFY_WIDTH];
+
 void CollectData()
 {
     Magnet_Value[collect_count++] = SampleChannel(0x02);
@@ -53,7 +55,37 @@ void CollectData()
         EN_INT;
     }
 }
+void bubbledata(DataStruct *a,uint16 n) 
+{ 
+    uint16 i,j;
+    DataStruct temp;
+    for(i=0;i<n-1;i++) 
+    {
+        
+        for(j=i+1;j<n;j++) 
+            if(a[i].value<a[j].value) 
+            { 
+                temp=a[i];
+                a[i]=a[j]; 
+                a[j]=temp; 
+            }
+        
+    }
+    
+}
 void IdentifyCar()
 {
+    int i=0;
+    uint8 j=0;
+    for(i=0;i<COLLECT_WIDTH-OFFSET;i++)
+    {
+        if((Magnet_Value[i]-Magnet_Value[i+OFFSET]>THRESHOLD)||(Magnet_Value[i]-Magnet_Value[i+OFFSET]<THRESHOLD))
+        {
+            Magnet_Identify[j].num = i;
+            Magnet_Identify[j].value = (Magnet_Value[i]+Magnet_Value[i+OFFSET])>>1;
+        }  
+    }
+    bubbledata(Magnet_Identify,IDENTIFY_WIDTH);
+    
 
 }

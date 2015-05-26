@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>DebugPlatform</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.python.pydev.PyDevBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.python.pydev.pythonNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>carstop.py</name>
+			<type>1</type>
+			<location>F:/Graduate/Git_program/DebugPlatform-v2.0/DebugPlatform/carstop.py</location>
+		</link>
+		<link>
+			<name>mainform.py</name>
+			<type>1</type>
+			<location>F:/Graduate/Git_program/DebugPlatform-v2.0/DebugPlatform/mainform.py</location>
+		</link>
+		<link>
+			<name>relaythread.py</name>
+			<type>1</type>
+			<location>F:/Graduate/Git_program/DebugPlatform-v2.0/DebugPlatform/relaythread.py</location>
+		</link>
+		<link>
+			<name>snifferthread.py</name>
+			<type>1</type>
+			<location>F:/Graduate/Git_program/DebugPlatform-v2.0/DebugPlatform/snifferthread.py</location>
+		</link>
+		<link>
+			<name>uart.py</name>
+			<type>1</type>
+			<location>F:/Graduate/Git_program/DebugPlatform-v2.0/DebugPlatform/uart.py</location>
+		</link>
+	</linkedResources>
+</projectDescription>
