@@ -1,0 +1,14 @@
+# coding=utf-8
+import threading
+import serial
+import time
+class myThread (threading.Thread):   
+    def __init__(self, threadID, name, port, baud,rootframe):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.root = rootframe
+        
+    def run(self):
+        time.sleep(1)
+        print "a"
+        

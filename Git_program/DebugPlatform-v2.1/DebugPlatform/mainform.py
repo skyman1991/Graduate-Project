@@ -173,17 +173,24 @@ class Application(ttk.Notebook):
         self.menu = root.rootmenu
         
         
-        self.bind("<<NotebookTabChanged>>", self.updatetab)
         
+        self.bind("<<NotebookTabChanged>>", self.updatetab)
+        self.ADValue = []
         self.rooterimage = tk.PhotoImage(file = "image//rooter.gif")
         self.sensorimage = tk.PhotoImage(file = "image//sensor.gif")
         self.canvasline=[]          #绘图曲线
         self.cavasverticalline=[]   #绿色竖线
         self.canvasidentifyline=[]  #识别出竖线
+        self.identifyuartopen = 0
     
     def updatetab(self,event):
         try:
             self.menu.uartform.snifferthread.currenttab = self.index('current')
+            
+        except:
+            print "7"
+        try:
+            self.menu.uartform.identifythread.currenttab = self.index('current')
         except:
             print "7"
         
@@ -422,8 +429,17 @@ class Application(ttk.Notebook):
         self.dataopenbutton = ttk.Button(self.tab4,text = "读取文件",command = self.Opendata)
         self.dataopenbutton.grid(row = 1,column = 1,sticky=tk.E)
         self.dataidentifybutton = ttk.Button(self.tab4,text = "识别",command = self.Identifydata)
-        self.dataidentifybutton.grid(row = 1,column = 2)
-
+        self.dataidentifybutton.grid(row = 1,column = 2,sticky=tk.W)
+        
+#         self.dataautobutton = ttk.Button(self.tab4,text="自动",command = self.Autodata,bg="green")
+#         self.dataautobutton.grid(row=1,column=2,sticky=tk.E)
+        
+        self.dataRPbutton = tk.Button(self.tab4,command = self.RPdata,background = "red",text="开启自动识别")
+        self.dataRPbutton.grid(row=1,column=3,sticky=tk.W)
+        self.dataclearbutton = tk.Button(self.tab4,text="清屏",command = self.Cleardata)
+        self.dataclearbutton.grid(row=1,column=3,sticky=tk.E,padx=70)
+        
+        
         receivegroup = tk.LabelFrame(self.tab4, text="识别结果")
         receivegroup.grid(row=0, column=0, columnspan=4, sticky=tk.N + tk.S + tk.E + tk.W)
 
@@ -456,7 +472,29 @@ class Application(ttk.Notebook):
         inputsb.pack(side=tk.RIGHT, fill=tk.Y)
         inputsb.config(command=self.datatext.yview)
         self.datatext.config(yscrollcommand=inputsb.set)
-
+        
+    def Cleardata(self):
+        if(self.identifyuartopen==0):
+            tkmes.showerror("错误！", "串口没有打开，无法开启自动模式！\n请手动载入数据或打开串口！")
+            return
+        
+    def RPdata(self):
+        if(self.identifyuartopen==0):
+            tkmes.showerror("错误！", "串口没有打开，无法开启自动模式！\n请手动载入数据或打开串口！")
+            return 
+        self.identifythread = self.menu.uartform.identifythread
+        if self.identifythread.thread_stop == False:
+            self.identifythread.thread_stop = True
+            self.dataRPbutton.configure(background = "red",text = "开启自动识别")
+            self.dataidentifybutton.configure(state=tk.NORMAL)
+            self.dataopenbutton.configure(state=tk.NORMAL)
+        else:
+            self.identifythread.thread_stop = False
+            self.dataRPbutton.configure(background = "green",text = "停止自动识别")
+            self.dataidentifybutton.configure(state=tk.DISABLED)
+            self.dataopenbutton.configure(state=tk.DISABLED)
+        
+    
     
     def Selectdata(self):
         dlg = win32ui.CreateFileDialog(1) # 1表示打开文件对话框
@@ -468,7 +506,7 @@ class Application(ttk.Notebook):
         
     def Opendata(self):
         data=[]
-        self.ADValue = []
+        
         
 #         self.datapath = "F:\\Graduate\\Test\\data\\1.txt"
         try:
@@ -527,6 +565,9 @@ class Application(ttk.Notebook):
         self.ADindexN=[]
         self.ADindexvalueN=[]
         i=0
+        if len(self.ADValue)==0:
+            tkmes.showerror("错误！", "没有数据！")
+            return 
         ''' 识别算法1 检测跳变沿
         while (i<len(self.ADValue)-offset):
             if(((self.ADValue[i] - self.ADValue[i+offset]>threshold)and(self.ADValue[i] - self.ADValue[i+offset]<4096)) or ((self.ADValue[i] - self.ADValue[i+offset]<-threshold)and(self.ADValue[i] - self.ADValue[i+offset]>-4096))):

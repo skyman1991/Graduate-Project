@@ -1,0 +1,15 @@
+# coding=utf-8
+import threading
+import serial
+import time
+class myThread (threading.Thread):   
+    def __init__(self, threadID, name, port, baud,rootframe):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.root = rootframe
+        self.currenttab = 0
+        
+    def run(self):
+        while(1):
+            if self.currenttab == 3:
+                pass

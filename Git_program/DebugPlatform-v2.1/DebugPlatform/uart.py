@@ -8,6 +8,7 @@ import time
 import relaythread
 import snifferthread
 import threading
+import identifythread
 
 class GetSerialPorts(object):
     # list contains all port device info
@@ -85,7 +86,7 @@ class UartRoot(tk.Tk):
         
         ttk.Label(self, text="数据源类型:", padding=5).grid(row=4)
         self.datasourcecbox = ttk.Combobox(self, width=10)
-        self.datasourcecbox['value'] = ("中继","Sniffer")
+        self.datasourcecbox['value'] = ("中继","Sniffer","识别")
         self.datasourcecbox.set(self.parent_menu.datasourcecboxbuf)
         self.datasourcecbox.grid(row=4, column=1)
         
@@ -121,7 +122,7 @@ class UartRoot(tk.Tk):
                 self.relaythread.setDaemon(True)
                 self.relaythread.start()
 #             sniffer   
-            else:
+            elif self.datasourcecbox.current() == 1:
                 self.snifferthread = snifferthread.myThread(rootframe=self.parent,threadID=1, name='sniffer', port=self.comnumbox.get(), baud=self.bordratecbox.get(),filename = self.txtfilname)
                 self.parent_menu.snifferthread = self.snifferthread
                 self.snifferthread.setDaemon(True)
@@ -129,6 +130,10 @@ class UartRoot(tk.Tk):
                 self.updatethread = threading.Thread(target=self.snifferthread.updatetext)
                 self.updatethread.setDaemon(True)
                 self.updatethread.start()
+            elif self.datasourcecbox.current() == 2:
+                self.identifythread = identifythread.myThread(rootframe=self.parent,threadID=1, name='identify',port=self.comnumbox.get(), baud=self.bordratecbox.get())
+                self.identifythread.setDaemon(True)
+                self.identifythread.start()
             
         except serial.SerialException, error:
             self.errtext = str(error)
@@ -143,7 +148,7 @@ class UartRoot(tk.Tk):
             self.IsOpen(0)
             if self.datasourcecbox.current() == 0:
                 self.relaythread.uart.close()
-            else:
+            elif self.datasourcecbox.current() == 1:
                 self.parent_menu.snifferthread.thread_stop = True
                 self.parent_menu.snifferthread.uart.close()
                 
