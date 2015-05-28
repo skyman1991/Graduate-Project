@@ -100,6 +100,7 @@ class UartRoot(tk.Tk):
         self.uartstatus.grid(row=6, column=0)
         self.IsOpen(0)
         self.txtfilname = "sniffer-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
+        self.txtidentifyfilname = "F:\\Graduate\\Test\\data\\identify\\identify-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
 
         
     def showupdate(self):
@@ -131,7 +132,7 @@ class UartRoot(tk.Tk):
                 self.updatethread.setDaemon(True)
                 self.updatethread.start()
             elif self.datasourcecbox.current() == 2:
-                self.identifythread = identifythread.myThread(rootframe=self.parent,threadID=1, name='identify',port=self.comnumbox.get(), baud=self.bordratecbox.get())
+                self.identifythread = identifythread.myThread(rootframe=self.parent,threadID=1, name='identify',port=self.comnumbox.get(), baud=self.bordratecbox.get(),filename = self.txtidentifyfilname)
                 self.identifythread.setDaemon(True)
                 self.identifythread.start()
             
