@@ -1,3 +1,0 @@
-import os
-file = os.open("F:\\test\\abc.txt", "w")
-file.write("hello") 
