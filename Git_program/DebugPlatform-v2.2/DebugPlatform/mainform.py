@@ -32,6 +32,7 @@ class MainRoot(tk.Tk):
         self.appcanvas = tk.Canvas(self)
         self.appFrame = Application(root=self)
         self.appFrame.pack(side='top', fill='both', expand='True')
+        
 
     def ShowData(self):
         self.appFrame.ShowData() 
@@ -122,6 +123,7 @@ class MenuBar(tk.Menu):
         self.uartform.protocol("WM_DELETE_WINDOW", self.uart_shutdown_ttk_repeat)  # 防止退出报错
         '''删掉了mainloop'''
         self.uartform.mainloop()
+
     
     def netsettings(self):
         pass
@@ -131,7 +133,7 @@ class MenuBar(tk.Menu):
         Parameter：
             none
         Function：
-                                停车设置选项界面
+             停车设置选项界面
         Autor:xiaoxiami 2015.5.29
         Others：
         '''
@@ -179,6 +181,7 @@ class StatusBar(ttk.Frame):
         
         self.labelicon = ttk.Label(self, relief='sunken', anchor='w')
         self.labelicon.grid(row=0, column=1, sticky=tk.W + tk.E + tk.N + tk.S)
+
        
     def setstatus(self, defformat, *args):
         '''
@@ -973,7 +976,8 @@ class Application(ttk.Notebook):
             self.canvasidentifyline.append(self.datacavas.create_line(v*offset, 0, v*offset, 512, fill="orange"))
         for v in self.ADindexN:
             self.canvasidentifyline.append(self.datacavas.create_line(v*offset, 0, v*offset, 512, fill="purple"))
-                     
+
+
     def Showdetaildata(self, event):
         '''
         Parameter：
