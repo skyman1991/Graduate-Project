@@ -8,8 +8,8 @@ Git_program/*.docx
 Git_program/*.xlsx
 Git_program/*.txt
 Document/visio/*
-Git_program/DebugPlatform-v2.2/DebugPlatform/src/form/*.pyc
-Git_program/DebugPlatform-v2.2/DebugPlatform/src/form/*.txt
+Git_program/DebugPlatform-v2.2/DebugPlatform/*.pyc
+Git_program/DebugPlatform-v2.2/DebugPlatform/*.txt
 Git_program/DebugPlatform-v2.2/backups/
 Git_program/DebugPlatform-v2.2/reference/
 Git_program/DebugPlatform-v2.2/.metdata/
