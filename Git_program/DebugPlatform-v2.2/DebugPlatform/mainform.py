@@ -32,7 +32,7 @@ class MainRoot(tk.Tk):
         self.appcanvas = tk.Canvas(self)
         self.appFrame = Application(root=self)
         self.appFrame.pack(side='top', fill='both', expand='True')
-        
+
 
     def ShowData(self):
         self.appFrame.ShowData() 
