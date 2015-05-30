@@ -53,9 +53,10 @@ void CreatSendData()
     DataPacket.des_cluster_innernum = EndPointDevice.des_cluster_innernum;
     DataPacket.src_cluster_id = EndPointDevice.cluster_id;
     DataPacket.src_cluster_innernum = EndPointDevice.cluster_innernum;
-    DataPacket.ab_slot_num = (uint16)resend_count>>8;
-    //DataPacket.data = Car_Flag;
-    DataPacket.data = (uint8)resend_count;
+    
+    DataPacket.ab_slot_num = (uint16)Ave_Slop>>8;
+    DataPacket.data = Car_Flag;
+    //DataPacket.data = (uint8)Ave_Slop;
     
     DataSendBuffer[0] = DataPacket.pack_length;
     DataSendBuffer[1] = DataPacket.pack_type<<2|DataPacket.ack_en<<1;
@@ -71,13 +72,13 @@ void CreatSendData()
     DataSendBuffer[11] = 0;
 }
  
-    uint32 a,b,c;             //防止第一个节点为负
-    uint32 before_slot_wake = WAKE_TIME;
-    uint8 ack_flag = 0;
+    
 
 void DataSend(void)
 {
-
+    uint32 a,b,c;             //防止第一个节点为负
+    uint32 before_slot_wake = WAKE_TIME;
+    uint8 ack_flag = 0;
     //before_slot_wake = (((EndPointDevice.cluster_innernum-1)*SLOT_LENGTH)-WAKE_TIME)+5000;
     //为什么写一起就不对！！！
     a = (EndPointDevice.cluster_innernum-1);

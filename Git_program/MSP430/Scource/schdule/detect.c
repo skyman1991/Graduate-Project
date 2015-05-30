@@ -6,7 +6,7 @@ uint8 Car_Flag_Memory = 0;                      //上一次识别结果
 uint16 CODE Magnet_Value[COLLECT_WIDTH];             //传感器采集值
 uint8 Start_Collect = 1;       //是否开启采集
 uint16 collect_count = 0;
-DataStruct CODE Magnet_Identify[IDENTIFY_WIDTH];
+int Ave_Slop = 0;
 
 void CollectData()
 {
@@ -15,11 +15,11 @@ void CollectData()
     {
         collect_count = 0;
         Start_Collect = 0;
+        PostTask(EVENT_IDENTIFY_CAR);
     }
     else
     {
         Start_Collect = 1;
-        PostTask(EVENT_IDENTIFY_CAR);
     }
 //    AD_Value=SampleChannel(0x02);
 //    if(AD_middle_value-AD_Value>50)
@@ -48,12 +48,13 @@ void CollectData()
 //    }
 //    Car_Flag_Memory = Car_Flag;
     
-    if(Data_Change_Flag == 1)
-    {
-        Data_Change_Flag = 0;
-        A7139_Deep_Wake();
-        EN_INT;
-    }
+//非低功耗模式测试先注释掉
+//    if(Data_Change_Flag == 1)
+//    {
+//        Data_Change_Flag = 0;
+//        A7139_Deep_Wake();
+//        EN_INT;
+//    }
 }
 void bubbledata(DataStruct *a,uint16 n) 
 { 
@@ -76,16 +77,29 @@ void bubbledata(DataStruct *a,uint16 n)
 void IdentifyCar()
 {
     int i=0;
-    uint8 j=0;
-    for(i=0;i<COLLECT_WIDTH-OFFSET;i++)
+    //当前长度为5，长度变化需要修改此处。
+
+    Ave_Slop = (int)((Magnet_Value[1]-Magnet_Value[0]))+
+               (int)((Magnet_Value[2]-Magnet_Value[0]))/2+
+               (int)((Magnet_Value[3]-Magnet_Value[0]))/3+
+               (int)((Magnet_Value[4]-Magnet_Value[0]))/4;
+    Ave_Slop = Ave_Slop/COLLECT_WIDTH;
+    Start_Collect = 1;
+    if(Ave_Slop>SLOP_THRESHLOD)
     {
-        if((Magnet_Value[i]-Magnet_Value[i+OFFSET]>THRESHOLD)||(Magnet_Value[i]-Magnet_Value[i+OFFSET]<THRESHOLD))
-        {
-            Magnet_Identify[j].num = i;
-            Magnet_Identify[j].value = (Magnet_Value[i]+Magnet_Value[i+OFFSET])>>1;
-        }  
+        Car_Flag = 1;
+        halLedSet(1);
     }
-    bubbledata(Magnet_Identify,IDENTIFY_WIDTH);
-    
+    else if(Ave_Slop<-SLOP_THRESHLOD)
+    {
+        Car_Flag = 1;
+        halLedSet(1);
+    }
+    else
+    {
+        Car_Flag = 0;
+        halLedClear(1);
+    }
+        
 
 }

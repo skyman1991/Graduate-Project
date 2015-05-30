@@ -50,7 +50,7 @@ __interrupt void port1_ISR(void)
                 PostTask(EVENT_DATAACK_HANDLER);
                 break;
             }
-            halLedClear(1);
+            //halLedClear(1);
             TIME1_HIGH;
         }
         
@@ -71,11 +71,11 @@ __interrupt void Timer_A (void)
         PostTask(EVENT_WAKE_A7139);
     }
 #endif
-#if (COLLECT_EN)
+#if (COLLECT_EN)                                //开启数据采集
     if(Start_Collect)
     {
         Collect_Time++;
-        if(Collect_Time == COLLECT_PERIOD)
+        if(Collect_Time == COLLECT_PERIOD)              //0.5s采集一次
         {
             Collect_Time = 0;
             PostTask(EVENT_COLLECT_DATA);
@@ -91,7 +91,7 @@ __interrupt void Timer_A (void)
 __interrupt void Timer_A0(void)
 {
     TA0CCTL0 &= ~CCIFG;
-    if(EndPointDevice.power == 0)
+    if(EndPointDevice.power == 0)                       //超时没有接收到重启
     {
         Receive_Timeout++;
         if(Receive_Timeout>10)
@@ -106,16 +106,15 @@ __interrupt void Timer_A0(void)
             Receive_Timeout = 0;
         }
     }
-    else if(EndPointDevice.power == 1)
+    //测试低功耗时候使用
+    else if(EndPointDevice.power == 1)                  
     {
         PostTask(EVENT_COLLECT_DATA);
         Receive_Timeout++;
-        if(Receive_Timeout>=(EndPointDevice.cluster_innernum))
+        if(Receive_Timeout>=(EndPointDevice.cluster_innernum))//若节点时间等于节点编号时发送数据
         {
             Receive_Timeout = 0;
             Data_Change_Flag = 1;
         }
     }
-    
-
 }

@@ -33,7 +33,6 @@ class MainRoot(tk.Tk):
         self.appFrame = Application(root=self)
         self.appFrame.pack(side='top', fill='both', expand='True')
 
-
     def ShowData(self):
         self.appFrame.ShowData() 
          
@@ -243,6 +242,7 @@ class Application(ttk.Notebook):
         
         self.root = root
         self.menu = root.rootmenu
+        self.admiddleflag = 0
         
         
         
@@ -257,6 +257,8 @@ class Application(ttk.Notebook):
         self.identifyuartopen = 0
         self.drawonceym = 0
         self.zoomenable = 0
+        self.admiddleline = [] #中值曲线
+        self.datacanvaswidth = 0 #canvas宽度 最后一个x坐标值
         
     def updatetab(self, event):
         '''
@@ -484,9 +486,6 @@ class Application(ttk.Notebook):
         tk.Radiobutton(speedgroup, variable=self.radiovalue, text='低速：接收区显示数据', value=0).grid()
         tk.Radiobutton(speedgroup, variable=self.radiovalue, text='高速：数据存储在txt中', value=1).grid()
 
-#         inputlb = tk.Listbox(sendgroup)
-#         inputlb.grid(row=0, column=0,sticky=tk.N+tk.S+tk.E+tk.W)
-
     def DrawSensor(self):
         pass
     
@@ -650,8 +649,6 @@ class Application(ttk.Notebook):
         inputsb.config(command=self.datatext.yview)
         self.datatext.config(yscrollcommand=inputsb.set)
 
-#   识别界面清空按钮    
-    
     def Cleardata(self):
         '''
         Parameter：
@@ -672,9 +669,7 @@ class Application(ttk.Notebook):
         self.canvasoval=[]
         self.datacavas.config(scrollregion=(0, 0, 0, 512))
         self.datatext.delete(0.0, tk.END)
-        
-#   暂停继续按钮    
-    
+
     def RPdata(self):
         '''
         Parameter：
@@ -805,6 +800,8 @@ class Application(ttk.Notebook):
         self.datacavas.bind("<Button-1>", self.Showdetaildata)
         self.datacavas.bind("<B1-Motion>", self.Showdetaildata)
         self.datacavas.bind("<Control-Key>",self.Zoom)
+        self.datacavas.bind("<KeyPress-Down>",self.minusmiddle)
+        self.datacavas.bind("<KeyPress-Up>",self.addmiddle)
         self.datacavas.focus_set()
 
     def Zoom(self,event):
@@ -829,8 +826,7 @@ class Application(ttk.Notebook):
 
         self.datascale.set(self.datascalevalue)
         self.datascalelabel.config(text=str(self.datascalevalue))
-        
-       
+
     def Zoomcallback(self,event):
         '''
         Parameter：
@@ -861,6 +857,9 @@ class Application(ttk.Notebook):
         Others：
         '''
         offset = int(self.datascale.get())
+        if self.admiddleflag == 0:
+            self.admiddle = 512 - value[0]/2
+            self.admiddleflag = 1
         for v in value:
             if(v > 1024):
                 v = 1024
@@ -869,14 +868,14 @@ class Application(ttk.Notebook):
             ym = self.drawonceym
             
             self.canvasline.append(self.datacavas.create_line(xm, ym, xm + offset, y, fill="red"))
+            self.admiddleline.append(self.datacavas.create_line(xm, self.admiddle, xm + offset, self.admiddle, fill="darkblue"))
             self.drawonceym = y
             count += 1
         self.datacavas.config(scrollregion=(0, 0, count * offset, 512))
+        self.datacanvaswidth = count * offset
         self.datacavas.xview(tk.MOVETO, 1.0)
         self.Identifyonce(Magnet_Value=value, x=xm, y=ym)
 
-#     求斜率的算法
-    
     def Slop(self,Magnet_Value):
         '''
         Parameter：
@@ -890,7 +889,6 @@ class Application(ttk.Notebook):
         Ave_Slop = ((Magnet_Value[1] - Magnet_Value[0])) + ((Magnet_Value[2] - Magnet_Value[0])) / 2 + ((Magnet_Value[3] - Magnet_Value[0])) / 3 + ((Magnet_Value[4] - Magnet_Value[0])) / 4
         Ave_Slop = Ave_Slop / 5
         return Ave_Slop
-# 自动模式使用的识别
     
     def Identifyonce(self, Magnet_Value, x, y):
         '''
@@ -977,7 +975,6 @@ class Application(ttk.Notebook):
         for v in self.ADindexN:
             self.canvasidentifyline.append(self.datacavas.create_line(v*offset, 0, v*offset, 512, fill="purple"))
 
-
     def Showdetaildata(self, event):
         '''
         Parameter：
@@ -996,6 +993,43 @@ class Application(ttk.Notebook):
             self.cavasverticalline.append(self.datacavas.create_line(x1, 0, x1, 512, fill="green"))
             self.statusbar.setdata("%s", "X:" + str(x1/offset) + ",Y:" + str(self.ADValue[x1/offset]))
             self.datatext.see(float(str(x1/offset) + ".0"))
+
+    def minusmiddle(self,event):
+        '''
+        Parameter：
+            event：bind事件
+        Function：
+            将显示中值的线下移
+        Autor:xiaoxiami 2015.5.30
+        Others：实际坐标与canvas相反，最大y值为512
+        '''
+        if self.admiddle>510:
+            return
+        self.admiddle += 2
+        for v in self.admiddleline:
+            self.datacavas.delete(v)
+        self.admiddleline = []
+
+        self.admiddleline.append(self.datacavas.create_line(0, self.admiddle, self.datacanvaswidth, self.admiddle, fill="darkblue"))
+
+
+    def addmiddle(self,event):
+        '''
+        Parameter：
+            event：bind事件
+        Function：
+            将显示中值的线上移
+        Autor:xiaoxiami 2015.5.30
+        Others：实际坐标与canvas相反，最小y值为0
+        '''
+        if self.admiddle<2:
+            return
+        self.admiddle -= 2
+        for v in self.admiddleline:
+            self.datacavas.delete(v)
+        self.admiddleline = []
+
+        self.admiddleline.append(self.datacavas.create_line(0, self.admiddle, self.datacanvaswidth, self.admiddle, fill="darkblue"))
 
         
 if __name__ == '__main__':
