@@ -105,18 +105,16 @@ class UartRoot(tk.Tk):
         self.datasourcecbox['value'] = ("中继","Sniffer","识别")
         self.datasourcecbox.set(self.parent_menu.datasourcecboxbuf)
         self.datasourcecbox.grid(row=4, column=1)
-        
-        uartopenbutton = ttk.Button(self, text='打开串口', command=self.OpenUart)
-        uartopenbutton.grid(row=5, column=1)
-        uartclosebutton = ttk.Button(self, text='关闭串口', command=self.CloseUart)
-        uartclosebutton.grid(row=6, column=1)
+        self.uartopenbutton = ttk.Button(self, text='打开串口', command=self.Choseuart)
+        self.uartopenbutton.grid(row=5, column=1)
 
         self.uartstatus = tk.Canvas(self, width=20, height=20, background='black')
         self.statusrec = self.uartstatus.create_rectangle(0, 0, 20, 20, fill='red')      
-        self.uartstatus.grid(row=6, column=0)
+        self.uartstatus.grid(row=5, column=0)
         self.IsOpen(0)
         self.txtfilname = "sniffer-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
         self.txtidentifyfilname = "F:\\Graduate\\Test\\data\\identify\\identify-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
+        self.buttonstatus = 0
 
     def showupdate(self):
         '''
@@ -130,6 +128,14 @@ class UartRoot(tk.Tk):
         self.bordratecbox.set(self.parent_menu.bordratecboxbuf)
         self.datasourcecbox.set(self.parent_menu.datasourcecboxbuf)
         self.IsOpen(0)
+
+    def Choseuart(self):
+        if self.buttonstatus == 1:
+            self.CloseUart()
+        elif self.buttonstatus == 0:
+            self.OpenUart()
+        self.IsOpen()
+
     
     def OpenUart(self):
         '''
@@ -140,18 +146,17 @@ class UartRoot(tk.Tk):
         Autor:xiaoxiami 2015.5.29
         Others：
         '''
+
 #         mainform.root.status.set("%s",'sdf')
+
         try:
-            self.parent_menu.opened_uart.append(self.comnumbox.get())
-            self.IsOpen(0)
-            self.parent.status.setstatus('%s', self.comnumbox.get() + '已打开')
-            self.parent_menu.bordratecboxbuf = self.bordratecbox.get()
-            self.parent_menu.datasourcecboxbuf = self.datasourcecbox.get()
-            self.parent_menu.datasourcecboxvalue = self.datasourcecbox.current()
+
 #             中继
             if self.datasourcecbox.current() == 0:
                 self.relaythread = relaythread.myThread(rootframe=self.parent,threadID=0, name='relay', port=self.comnumbox.get(), baud=self.bordratecbox.get())
                 self.relaythread.setDaemon(True)
+                self.relaythread.Createuart()
+                self.relaythread.uart.open()
                 self.relaythread.start()
 #             sniffer   
             elif self.datasourcecbox.current() == 1:
@@ -166,7 +171,15 @@ class UartRoot(tk.Tk):
             elif self.datasourcecbox.current() == 2:
                 self.identifythread = identifythread.myThread(rootframe=self.parent,threadID=1, name='identify',port=self.comnumbox.get(), baud=self.bordratecbox.get(),filename = self.txtidentifyfilname)
                 self.identifythread.setDaemon(True)
+                self.identifythread.Creatuart()
+                self.identifythread.uart.open()
                 self.identifythread.start()
+            self.parent_menu.opened_uart.append(self.comnumbox.get())
+            self.IsOpen(0)
+            self.parent.status.setstatus('%s', self.comnumbox.get() + '已打开')
+            self.parent_menu.bordratecboxbuf = self.bordratecbox.get()
+            self.parent_menu.datasourcecboxbuf = self.datasourcecbox.get()
+            self.parent_menu.datasourcecboxvalue = self.datasourcecbox.current()
             
         except serial.SerialException, error:
             self.errtext = str(error)
@@ -183,21 +196,38 @@ class UartRoot(tk.Tk):
         Autor:xiaoxiami 2015.5.29
         Others：
         '''
+        if self.comnumbox.get() in self.parent_menu.opened_uart:
+            self.parent_menu.opened_uart.remove(self.comnumbox.get())
+        self.IsOpen()
+        if self.datasourcecbox.current() == 0:
+            self.relaythread.uart.close()
+            self.relaythread.killthread=True
+        elif self.datasourcecbox.current() == 1:
+            self.parent_menu.snifferthread.thread_stop = True
+            self.parent_menu.snifferthread.uart.close()
+        elif self.datasourcecbox.current() == 2:
+            self.identifythread.uart.close()
+            self.identifythread.thread_stop = True
+        self.parent.status.setstatus('%s', self.comnumbox.get() + '已关闭')
+        return
         try:
             if self.comnumbox.get() in self.parent_menu.opened_uart:
                 self.parent_menu.opened_uart.remove(self.comnumbox.get())
             self.IsOpen(0)
             if self.datasourcecbox.current() == 0:
                 self.relaythread.uart.close()
+                self.relaythread.killthread=True
             elif self.datasourcecbox.current() == 1:
                 self.parent_menu.snifferthread.thread_stop = True
                 self.parent_menu.snifferthread.uart.close()
-                
+            elif self.datasourcecbox.current() == 2:
+                self.identifythread.uart.close()
+                self.identifythread.thread_stop = True
             self.parent.status.setstatus('%s', self.comnumbox.get() + '已关闭')
         except NameError:
             self.parent.status.setstatus('%s', '串口未打开')
 
-    def IsOpen(self, event):
+    def IsOpen(self, *event):
         '''
         Parameter：
             event：回调事件
@@ -209,5 +239,9 @@ class UartRoot(tk.Tk):
         comnunm = self.comnumbox.get()
         if comnunm in self.parent_menu.opened_uart:
             self.uartstatus.itemconfig(self.statusrec, fill='green')
+            self.uartopenbutton.configure(text = "关闭串口")
+            self.buttonstatus = 1
         else:
             self.uartstatus.itemconfig(self.statusrec, fill='red')
+            self.uartopenbutton.configure(text = "打开串口")
+            self.buttonstatus = 0

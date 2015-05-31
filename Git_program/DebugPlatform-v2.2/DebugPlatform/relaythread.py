@@ -11,7 +11,7 @@ class myThread (threading.Thread):
         self.thread_stop = False
         self.port = port
         self.baud = baud
-        self.uart= serial.Serial(port = self.port,baudrate = self.baud)
+        # self.uart= serial.Serial(port = self.port,baudrate = self.baud)
         self.statusbar = rootframe
         self.showdata = rootframe
         self.stopcar = rootframe
@@ -29,6 +29,8 @@ class myThread (threading.Thread):
         self.timeoutflag = 0
         self.netuploadthread = threading.Thread(target = self.netupload)
         self.netuploadthread.setDaemon(True)
+        self.killthread = False
+        self.thread_stop = False
     
     def netupdate(self):
         '''
@@ -40,6 +42,8 @@ class myThread (threading.Thread):
         Others：
         '''
         while(1):
+            if(self.killthread == True):
+                break
             response=urllib2.urlopen("http://123.57.11.98:8080/mm/get_new",timeout=10)
             content=eval(response.read())
             self.content = content
@@ -55,6 +59,8 @@ class myThread (threading.Thread):
         Others：
         '''
         while(1):
+            if(self.killthread == True):
+                break
             start = time.clock()
             try:
                 urllib2.urlopen("http://123.57.11.98:8080/mm/set_new?data="+self.datatoshow[:-1],timeout=1)
@@ -77,50 +83,64 @@ class myThread (threading.Thread):
         a=0
         count = 0
         if self.carstoproot.updatamode == 0:
-            self.netuploadthread.start()                   
+            self.netuploadthread.start()
+
         while(1):
-            try:
-                self.currenttab = self.showdata.appFrame.index('current')
-            except:
-                print "1"
-            if self.currenttab==0:
-                if ord(self.uart.read(1))==0x7D:
-                    if ord(self.uart.read(1))==0x7E:
-                        count+=1
-                        buf = self.uart.read(8)
-                        self.datatoshow=''
-                        for i in buf:
-                            a+=1
-                            if(a%2==1):
-                                self.datatoshow =  self.datatoshow+str(ord(i))+"|"
-                            else:
-                                self.datatoshow =  self.datatoshow+str(ord(i))+","
-                        self.statusbar.status.setdata('串口数据:%s Count:%s',self.datatoshow[:-1],count) 
-                if self.stopcar.appFrame.carnum==0:
-                    self.statusbar.status.setstatus('%s',"未配置停车个数")
-                else:
-                    if self.carstoproot.datamode == 0:
-                        self.stopcar.appFrame.stopcar(self.datatoshow[:-1])
-#                         self.statusbar.status.setstatus('%s',"未开启网络数据下载")
+            while(self.thread_stop == False and self.uart.isOpen()==True):
+                try:
+                    self.currenttab = self.showdata.appFrame.index('current')
+                except:
+                    print "1"
+                if self.currenttab==0:
+
+                    if ord(self.uart.read(1))==0x7D:
+                        if ord(self.uart.read(1))==0x7E:
+                            print "ok"
+                            self.uart.write("a")
+                    '''旧版数据接收
+                    if ord(self.uart.read(1))==0x7D:
+                        if ord(self.uart.read(1))==0x7E:
+
+                            count+=1
+                            buf = self.uart.read(8)
+                            self.datatoshow=''
+                            for i in buf:
+                                a+=1
+                                if(a%2==1):
+                                    self.datatoshow =  self.datatoshow+str(ord(i))+"|"
+                                else:
+                                    self.datatoshow =  self.datatoshow+str(ord(i))+","
+
+
+                            self.statusbar.status.setdata('串口数据:%s Count:%s',self.datatoshow[:-1],count)
+                    if self.stopcar.appFrame.carnum==0:
+                        self.statusbar.status.setstatus('%s',"未配置停车个数")
                     else:
-                        if self.threadstartflag == 0:
-                            self.threadstartflag = 1
-                            self.netreceive.start()   
-                        comtent=self.content
-                        self.netdatabuf=''
-                        try:
-                            if comtent['err_code'] == 0: 
-                                for items in comtent['data']:
-                                    self.netdatabuf = self.netdatabuf+str(items['name']+'|'+items['value']+',')   
-                                self.stopcar.appFrame.stopcar(self.netdatabuf[:-1])  
-                                self.statusbar.status.setstatus('%s',"网络数据:"+self.netdatabuf[:-1])
-                            else:
-                                self.statusbar.status.setstatus('%s',"数据返回错误")
-                        except:
-                            print "2"
-            
-                
-           
-                    
-        
+                        if self.carstoproot.datamode == 0:
+                            self.stopcar.appFrame.stopcar(self.datatoshow[:-1])
+    #                         self.statusbar.status.setstatus('%s',"未开启网络数据下载")
+                        else:
+                            if self.threadstartflag == 0:
+                                self.threadstartflag = 1
+                                self.netreceive.start()
+                            comtent=self.content
+                            self.netdatabuf=''
+                            try:
+                                if comtent['err_code'] == 0:
+                                    for items in comtent['data']:
+                                        self.netdatabuf = self.netdatabuf+str(items['name']+'|'+items['value']+',')
+                                    self.stopcar.appFrame.stopcar(self.netdatabuf[:-1])
+                                    self.statusbar.status.setstatus('%s',"网络数据:"+self.netdatabuf[:-1])
+                                else:
+                                    self.statusbar.status.setstatus('%s',"数据返回错误")
+                            except:
+                                print "2"
+                    '''
+
+    def Createuart(self):
+        self.uart= serial.Serial()
+        self.uart.port = self.port
+        self.uart.baudrate = self.baud
+
+
         

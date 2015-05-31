@@ -13,7 +13,10 @@ class myThread (threading.Thread):
         self.thread_stop = True
         self.magneticdata = 0
         self.carstatus = 0
-        self.uart= serial.Serial(port = port,baudrate = baud)
+        self.port = port
+        self.baud = baud
+
+
         self.filename = filename
         self.sensordata=[]
         self.count = 0
@@ -34,10 +37,10 @@ class myThread (threading.Thread):
         self.count = 0
         self.app.identifyuartopen = 1
         while(1):
-            if(self.thread_stop == True):
+            if(self.thread_stop == True and self.uart.isOpen()==True):
                 self.uart.read(self.uart.inWaiting())
                 time.sleep(0.5)
-            while(self.thread_stop == False):
+            while(self.thread_stop == False and self.uart.isOpen()==True):
                 if self.currenttab == 3:
                     buf = self.uart.read(1)
                     if len(buf)!= 0:
@@ -69,3 +72,8 @@ class myThread (threading.Thread):
                 self.app.Drawonce(count=self.count,value=self.sensordata)
                 self.root.status.setdata('RX:%s ',self.sensordata) 
                 time.sleep(0.2)
+
+    def Creatuart(self):
+        self.uart= serial.Serial()
+        self.uart.port = self.port
+        self.uart.baudrate = self.baud

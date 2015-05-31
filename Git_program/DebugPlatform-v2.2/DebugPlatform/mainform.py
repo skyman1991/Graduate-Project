@@ -123,7 +123,6 @@ class MenuBar(tk.Menu):
         '''删掉了mainloop'''
         self.uartform.mainloop()
 
-    
     def netsettings(self):
         pass
     
