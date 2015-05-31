@@ -62,7 +62,6 @@ class myThread (threading.Thread):
 #                     time.sleep(0.5)
                     #每次有5个新数据
                     # 不是采集5位需要改的
-                        
 
     def update(self):
         while(1):

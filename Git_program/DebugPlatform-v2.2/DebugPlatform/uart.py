@@ -162,6 +162,7 @@ class UartRoot(tk.Tk):
                 self.updatethread = threading.Thread(target=self.snifferthread.updatetext)
                 self.updatethread.setDaemon(True)
                 self.updatethread.start()
+                # 识别
             elif self.datasourcecbox.current() == 2:
                 self.identifythread = identifythread.myThread(rootframe=self.parent,threadID=1, name='identify',port=self.comnumbox.get(), baud=self.bordratecbox.get(),filename = self.txtidentifyfilname)
                 self.identifythread.setDaemon(True)

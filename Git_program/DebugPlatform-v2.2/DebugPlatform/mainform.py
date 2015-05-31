@@ -259,7 +259,7 @@ class Application(ttk.Notebook):
         self.zoomenable = 0
         self.admiddleline = [] #中值曲线
         self.datacanvaswidth = 0 #canvas宽度 最后一个x坐标值
-        
+
     def updatetab(self, event):
         '''
         Parameter：
@@ -604,9 +604,14 @@ class Application(ttk.Notebook):
 #         self.dataidentifybutton.grid(row=1, column=2, sticky=tk.W)
 
         self.dataRPbutton = tk.Button(self.tab4, command=self.RPdata, background="red", text="开启自动识别")
-        self.dataRPbutton.grid(row=1, column=3, sticky=tk.W)
+        self.dataRPbutton.grid(row=1, column=2, sticky=tk.E)
         self.dataclearbutton = tk.Button(self.tab4, text="清屏", command=self.Cleardata)
-        self.dataclearbutton.grid(row=1, column=3, sticky=tk.E, padx=70)
+        self.dataclearbutton.grid(row=1, column=3, padx=20,sticky = tk.W,)
+
+        ttk.Label(self.tab4,text="标定值：").grid(row=1,column=3)
+        self.dataspinbox = tk.Spinbox(self.tab4,width = 5,from_=0,to=1024)
+        self.dataspinbox.grid(row = 1,column = 3,sticky = tk.E,padx = 40)
+
 
         self.datascale= ttk.Scale(self.tab4,orient=tk.HORIZONTAL,from_=1,to=50,command=self.Zoomcallback)
         self.datascale.grid(row=1,column=4,sticky = tk.W+tk.E)
@@ -649,6 +654,7 @@ class Application(ttk.Notebook):
         inputsb.config(command=self.datatext.yview)
         self.datatext.config(yscrollcommand=inputsb.set)
 
+
     def Cleardata(self):
         '''
         Parameter：
@@ -669,6 +675,7 @@ class Application(ttk.Notebook):
         self.canvasoval=[]
         self.datacavas.config(scrollregion=(0, 0, 0, 512))
         self.datatext.delete(0.0, tk.END)
+        self.menu.uartform.identifythread.filename = "F:\\Graduate\\Test\\data\\identify\\identify-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
 
     def RPdata(self):
         '''
@@ -800,8 +807,7 @@ class Application(ttk.Notebook):
         self.datacavas.bind("<Button-1>", self.Showdetaildata)
         self.datacavas.bind("<B1-Motion>", self.Showdetaildata)
         self.datacavas.bind("<Control-Key>",self.Zoom)
-        self.datacavas.bind("<KeyPress-Down>",self.minusmiddle)
-        self.datacavas.bind("<KeyPress-Up>",self.addmiddle)
+
         self.datacavas.focus_set()
 
     def Zoom(self,event):
@@ -860,6 +866,9 @@ class Application(ttk.Notebook):
         if self.admiddleflag == 0:
             self.admiddle = 512 - value[0]/2
             self.admiddleflag = 1
+            self.dataspinbox.insert(1,value[0])
+            # self.dataspinbox.configure(value=value[0])
+
         for v in value:
             if(v > 1024):
                 v = 1024
@@ -868,6 +877,12 @@ class Application(ttk.Notebook):
             ym = self.drawonceym
             
             self.canvasline.append(self.datacavas.create_line(xm, ym, xm + offset, y, fill="red"))
+            if self.dataspinbox.get()!="" :
+                try:
+                    self.admiddle = 512-int(self.dataspinbox.get())/2
+                except ValueError,error:
+                    print error
+
             self.admiddleline.append(self.datacavas.create_line(xm, self.admiddle, xm + offset, self.admiddle, fill="darkblue"))
             self.drawonceym = y
             count += 1
@@ -1011,7 +1026,6 @@ class Application(ttk.Notebook):
         self.admiddleline = []
 
         self.admiddleline.append(self.datacavas.create_line(0, self.admiddle, self.datacanvaswidth, self.admiddle, fill="darkblue"))
-
 
     def addmiddle(self,event):
         '''
