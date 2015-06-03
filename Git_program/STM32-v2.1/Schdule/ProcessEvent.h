@@ -21,6 +21,9 @@
 #define    EVENT_DATAACK_HANDLER          12
 #define    EVENT_WAKE_A7139               13
 #define    EVENT_CSMA_RESEND              14
+#define    EVENT_COLLECT_DATA             15
+#define    EVENT_IDENTIFY_CAR             16
+#define    EVENT_UPLOAD_DATA							17
 
 extern void Init_TQ(void);
 extern uint8 PostTask(uint8 event);

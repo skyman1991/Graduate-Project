@@ -103,11 +103,15 @@ void Usart1_PutData(uint8_t *buffer,uint8_t count)
  * 输入  ：无
  * 输出  ：无
  */	
+uint8 buda = 0;
 void USART1_IRQHandler(void)
 {
 
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)//接收中断(接收到的数据必须是0x0d 0x0a结尾)
 	{
+			USART_ClearFlag(USART1 , USART_FLAG_RXNE);
+			buda=USART_ReceiveData(USART1);
+		
 	}
 } 
 

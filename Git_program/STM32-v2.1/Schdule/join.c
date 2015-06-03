@@ -74,10 +74,10 @@ void JoinRequestHandler()
 }
 void JoinRequestACKOKHandler()
 {
+		RootDevice.connected_devece_count++;
 		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_id = DataRecvBuffer[4];
 		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_innernum = DataRecvBuffer[5];
 	  RootDevice.endpoint_device[RootDevice.connected_devece_count].pyh_address = new_node_pyh_address;
-		RootDevice.connected_devece_count++;
 		RootDevice.free_node = MAX_NODE_NUM-RootDevice.connected_devece_count;
 }
 

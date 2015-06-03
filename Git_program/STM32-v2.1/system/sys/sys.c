@@ -24,5 +24,6 @@ void sys_init(void)
 	  //TIM4_Int_Init(72,99);  //最小时间单位 1us
 		Interrupt_Init();
 		Init_TQ();
+		Init_Upload_TQ();
 		
 }

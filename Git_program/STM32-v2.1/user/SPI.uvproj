@@ -635,6 +635,16 @@
               <FileType>5</FileType>
               <FilePath>..\Schdule\tdma.h</FilePath>
             </File>
+            <File>
+              <FileName>upload.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Schdule\upload.c</FilePath>
+            </File>
+            <File>
+              <FileName>upload.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Schdule\upload.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

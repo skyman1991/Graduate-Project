@@ -71,6 +71,9 @@ uint8 Process_Event()
 			case EVENT_DATA_HANDLER:
 				DataHandler();
 				break;
+			case EVENT_UPLOAD_DATA:
+				Upload_Data();
+				break;
     }
     return current_event;
 }

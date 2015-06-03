@@ -119,7 +119,6 @@ void EXTI9_5_IRQHandler(void)
 							PostTask(EVENT_JOINREQUESTACKOK_HANDLER);
 							break;
 						case DATA_TYPE:
-
 							PostTask(EVENT_DATA_HANDLER);
 							break;
 				}

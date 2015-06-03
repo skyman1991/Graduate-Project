@@ -1,5 +1,6 @@
 #include "common.h"
 DataACKPacketStruct DataACKPacket;
+
 void CreateDataACK(uint8 src_cluster_id,uint8 src_cluster_innernum)
 {
 		DataACKPacket.pack_length = DATAACK_PACK_LENGTH;
@@ -24,12 +25,14 @@ void CreateDataACK(uint8 src_cluster_id,uint8 src_cluster_innernum)
 		DataSendBuffer[10] = 0;
 		DataSendBuffer[11] = 0;
 }
+UartDataStruct bufnode;
 void DataHandler(void)
 {
 		uint8 inner_num = 0;
 		uint8 ab_slot_num = 0;
 		uint8 src_cluster_id = 0;
 	  uint8 src_cluster_innernum = 0;
+
 	  src_cluster_id = DataRecvBuffer[4];
 	  src_cluster_innernum = DataRecvBuffer[5];
 	  ab_slot_num = DataRecvBuffer[6]<<8|DataRecvBuffer[7];
@@ -38,6 +41,10 @@ void DataHandler(void)
 		{
 				RootDevice.endpoint_device[inner_num].ab_slot_num = ab_slot_num;
 				RootDevice.endpoint_device[inner_num].data = DataRecvBuffer[8];
+				bufnode.address = RootDevice.endpoint_device[inner_num].pyh_address;
+				bufnode.data = RootDevice.endpoint_device[inner_num].data;
+				PostUploadNode(&bufnode);
+				PostTask(EVENT_UPLOAD_DATA);
 				CreateDataACK(src_cluster_id,src_cluster_innernum);
 				
 				SendPack();

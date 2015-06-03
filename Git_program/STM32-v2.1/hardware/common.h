@@ -25,6 +25,7 @@
 #include "device.h"
 #include "tdma.h"
 #include "flash.h"
+#include "upload.h"
 
 
 
