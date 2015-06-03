@@ -31,6 +31,7 @@ class myThread (threading.Thread):
         self.netuploadthread.setDaemon(True)
         self.killthread = False
         self.thread_stop = False
+        self.notedata = []
     
     def netupdate(self):
         '''
@@ -82,6 +83,7 @@ class myThread (threading.Thread):
         '''
         a=0
         count = 0
+
         if self.carstoproot.updatamode == 0:
             self.netuploadthread.start()
 
@@ -94,8 +96,21 @@ class myThread (threading.Thread):
                 if self.currenttab==0:
                     if ord(self.uart.read(1))==0x7D:
                         if ord(self.uart.read(1))==0x7E:
+                            length = ord(self.uart.read(1))     #读出这一包要发的节点个数
+                            self.notedata = []
+                            for i in range(length):
+                                self.notedata.append(ord(self.uart.read(1))<<8|ord(self.uart.read(1)))                  #偶数位为地址
+                                self.notedata.append(ord(self.uart.read(1)))                                            #奇数位为数据
+
+                            if ord(self.uart.read(1))==0x7E:
+                                if ord(self.uart.read(1))==0x7D:
+                                    self.uart.write("o")
+                            else:
+                                print "uart data error"
+                                self.uart.read(self.uart.inWaiting()) #清空串口缓冲区内容
                             print "ok"
-                            self.uart.write("a")
+                            print self.notedata
+
                     '''旧版数据接收
                     if ord(self.uart.read(1))==0x7D:
                         if ord(self.uart.read(1))==0x7E:
