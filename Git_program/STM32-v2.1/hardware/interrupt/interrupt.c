@@ -62,6 +62,7 @@ void TIM3_IRQHandler(void)   //500ms
 {
     TIM_ClearITPendingBit(TIM3, TIM_IT_Update  );  //清除TIMx更新中断标志 
     PostBeacon();
+		PostTask(EVENT_UPLOAD_DATA);
 		Frame_Time = 0;
 		//BeaconSendFlag = 1;
 		time_out++;

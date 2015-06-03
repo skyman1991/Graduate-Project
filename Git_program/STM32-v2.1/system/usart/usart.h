@@ -24,6 +24,7 @@ extern u16 USART_RX_STA;    //接收状态标记
 void uart_init(void);
 extern void Usart1_PutChar(uint8_t ch);
 extern void Usart1_PutData(uint8_t *buffer,uint8_t count);
+extern uint8 USART1_Getchar(void);
 #endif
 
 

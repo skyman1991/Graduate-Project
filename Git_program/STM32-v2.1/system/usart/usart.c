@@ -73,12 +73,12 @@ void uart_init(){
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//IO口悬空输入
   GPIO_Init(GPIOA, &GPIO_InitStructure);               //初始化串口2输入IO
 	
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	/*NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
   NVIC_InitStructure.NVIC_IRQChannel	=	USART1_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority	=	3;
   NVIC_InitStructure.NVIC_IRQChannelSubPriority	=	2;
   NVIC_InitStructure.NVIC_IRQChannelCmd	=	ENABLE;
-  NVIC_Init(&NVIC_InitStructure);
+  NVIC_Init(&NVIC_InitStructure);*/
 
 }
 void Usart1_PutChar(uint8_t ch)
@@ -114,5 +114,10 @@ void USART1_IRQHandler(void)
 		
 	}
 } 
+uint8 USART1_Getchar(void)
+{
+		while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET){} 
+		return USART_ReceiveData(USART1); 
+}
 
 
