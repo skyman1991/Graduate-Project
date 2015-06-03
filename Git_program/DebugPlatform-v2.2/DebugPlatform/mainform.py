@@ -653,7 +653,6 @@ class Application(ttk.Notebook):
         inputsb.config(command=self.datatext.yview)
         self.datatext.config(yscrollcommand=inputsb.set)
 
-
     def Cleardata(self):
         '''
         Parameter：
@@ -672,6 +671,9 @@ class Application(ttk.Notebook):
         for v in self.canvasoval:
             self.datacavas.delete(v)
         self.canvasoval=[]
+        for v in self.admiddleline:
+            self.datacavas.delete(v)
+        self.admiddleline=[]
         self.datacavas.config(scrollregion=(0, 0, 0, 512))
         self.datatext.delete(0.0, tk.END)
         self.menu.uartform.identifythread.filename = "F:\\Graduate\\Test\\data\\identify\\identify-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
@@ -748,6 +750,9 @@ class Application(ttk.Notebook):
         for v in self.canvasoval:
             self.datacavas.delete(v)
         self.canvasoval=[]
+        for v in self.admiddleline:
+            self.datacavas.delete(v)
+        self.admiddleline=[]
         
         for v in datastr:
             if v != "":
@@ -806,7 +811,8 @@ class Application(ttk.Notebook):
         self.datacavas.bind("<Button-1>", self.Showdetaildata)
         self.datacavas.bind("<B1-Motion>", self.Showdetaildata)
         self.datacavas.bind("<Control-Key>",self.Zoom)
-
+        self.datacavas.bind("<KeyPress-Down>",self.minusmiddle)
+        self.datacavas.bind("<KeyPress-Up>",self.addmiddle)
         self.datacavas.focus_set()
 
     def Zoom(self,event):

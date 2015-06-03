@@ -92,7 +92,6 @@ class myThread (threading.Thread):
                 except:
                     print "1"
                 if self.currenttab==0:
-
                     if ord(self.uart.read(1))==0x7D:
                         if ord(self.uart.read(1))==0x7E:
                             print "ok"
