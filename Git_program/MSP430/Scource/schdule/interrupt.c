@@ -107,14 +107,14 @@ __interrupt void Timer_A0(void)
         }
     }
     //测试低功耗时候使用
-    else if(EndPointDevice.power == 1)                  
+    /*else if(EndPointDevice.power == 1)                  
     {
-        PostTask(EVENT_COLLECT_DATA);
+        
         Receive_Timeout++;
         if(Receive_Timeout>=(EndPointDevice.cluster_innernum))//若节点时间等于节点编号时发送数据
         {
             Receive_Timeout = 0;
             Data_Change_Flag = 1;
         }
-    }
+    }*/
 }

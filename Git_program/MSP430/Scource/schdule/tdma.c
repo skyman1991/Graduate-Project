@@ -55,7 +55,7 @@ void CreatSendData()
     DataPacket.src_cluster_innernum = EndPointDevice.cluster_innernum;
     
     DataPacket.ab_slot_num = (uint16)Ave_Slop>>8;
-    DataPacket.data = Car_Flag;
+    DataPacket.data = Car_Status;
     //DataPacket.data = (uint8)Ave_Slop;
     
     DataSendBuffer[0] = DataPacket.pack_length;

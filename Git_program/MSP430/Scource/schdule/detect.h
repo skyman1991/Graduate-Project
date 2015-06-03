@@ -27,4 +27,5 @@ extern uint8 Car_Flag;
 extern uint16 Magnet_Value[COLLECT_WIDTH];
 extern uint8  Start_Collect;
 extern int Ave_Slop;
+extern uint8 Car_Status;
 #endif 

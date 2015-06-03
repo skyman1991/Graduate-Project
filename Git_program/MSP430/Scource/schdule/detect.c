@@ -7,6 +7,9 @@ uint16 CODE Magnet_Value[COLLECT_WIDTH];             //传感器采集值
 uint8 Start_Collect = 1;       //是否开启采集
 uint16 collect_count = 0;
 int Ave_Slop = 0;
+uint16 Ave_Stable = 0;          //稳定后的值
+uint8 Car_Status = 0;
+uint8 car_status_memory = 0;
 
 void CollectData()
 {
@@ -48,13 +51,7 @@ void CollectData()
 //    }
 //    Car_Flag_Memory = Car_Flag;
     
-//非低功耗模式测试先注释掉
-//    if(Data_Change_Flag == 1)
-//    {
-//        Data_Change_Flag = 0;
-//        A7139_Deep_Wake();
-//        EN_INT;
-//    }
+
 }
 void bubbledata(DataStruct *a,uint16 n) 
 { 
@@ -97,9 +94,48 @@ void IdentifyCar()
     }
     else
     {
-        Car_Flag = 0;
         halLedClear(1);
+        if(Car_Flag == 1)
+        {
+            Car_Flag = 0;
+
+            delay_ms(1000);
+            Magnet_Value[0] = SampleChannel(0x02);
+            delay_ms(500);
+            Magnet_Value[1] = SampleChannel(0x02);
+            delay_ms(500);
+            Magnet_Value[2] = SampleChannel(0x02);
+            delay_ms(500);
+            Magnet_Value[3] = SampleChannel(0x02);
+            delay_ms(500);
+            Magnet_Value[4] = SampleChannel(0x02);
+            
+            Ave_Stable = (Magnet_Value[0]+Magnet_Value[1]+Magnet_Value[2]+Magnet_Value[3]+Magnet_Value[4])/5;
+            
+            AD_middle_value = AD_middle_value;
+            if(abs(Ave_Stable-AD_middle_value)>20)
+            {
+                halLedSet(1);
+                Car_Status = 1;
+            }
+            else
+            {
+                halLedClear(1);
+                Car_Status = 0;
+            }
+            if(Car_Status != car_status_memory)
+            {
+                Data_Change_Flag = 1;
+            }
+            car_status_memory = Car_Status;
+        }
+    }
+    //非低功耗模式测试先注释掉
+    if(Data_Change_Flag == 1)
+    {
+        Data_Change_Flag = 0;
+        A7139_Deep_Wake();
+        EN_INT;
     }
         
-
 }
