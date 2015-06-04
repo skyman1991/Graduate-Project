@@ -105,16 +105,24 @@ class UartRoot(tk.Tk):
         self.datasourcecbox['value'] = ("中继","Sniffer","识别")
         self.datasourcecbox.set(self.parent_menu.datasourcecboxbuf)
         self.datasourcecbox.grid(row=4, column=1)
+
+        tk.Label(self, text="数据上传:").grid(row=5, column=0)
+        self.updatamodecbox = ttk.Combobox(self,width=10)
+        self.updatamodecbox.grid(row=5,column=1)
+        self.updatamodecbox['value']=("开启","不开启")
+        self.updatamodecbox.set(self.parent_menu.updatamodecboxbuf)
+
         self.uartopenbutton = ttk.Button(self, text='打开串口', command=self.Choseuart)
-        self.uartopenbutton.grid(row=5, column=1)
+        self.uartopenbutton.grid(row=6, column=1)
 
         self.uartstatus = tk.Canvas(self, width=20, height=20, background='black')
         self.statusrec = self.uartstatus.create_rectangle(0, 0, 20, 20, fill='red')      
-        self.uartstatus.grid(row=5, column=0)
+        self.uartstatus.grid(row=6, column=0)
         self.IsOpen(0)
         self.txtfilname = "sniffer-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
         self.txtidentifyfilname = "F:\\Graduate\\Test\\data\\identify\\identify-"+time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(time.time())) + '.txt'
         self.buttonstatus = 0
+        self.datamode = 0
 
     def showupdate(self):
         '''
@@ -127,6 +135,7 @@ class UartRoot(tk.Tk):
         '''
         self.bordratecbox.set(self.parent_menu.bordratecboxbuf)
         self.datasourcecbox.set(self.parent_menu.datasourcecboxbuf)
+        self.updatamodecbox.set(self.parent_menu.updatamodecboxbuf)
         self.IsOpen(0)
 
     def Choseuart(self):
@@ -150,9 +159,10 @@ class UartRoot(tk.Tk):
 #         mainform.root.status.set("%s",'sdf')
 
         try:
-
 #             中继
             if self.datasourcecbox.current() == 0:
+                self.datamode = self.updatamodecbox.current()
+                self.parent_menu.updatamodecboxbuf = self.updatamodecbox.get()
                 self.relaythread = relaythread.myThread(rootframe=self.parent,threadID=0, name='relay', port=self.comnumbox.get(), baud=self.bordratecbox.get())
                 self.relaythread.setDaemon(True)
                 self.relaythread.Createuart()

@@ -82,7 +82,7 @@ class MenuBar(tk.Menu):
         self.add_cascade(label="帮助", menu=helpmenu)
         helpmenu.add_command(label="完善中")
         self.bordratecboxbuf = '115200'
-        self.datasourcecboxbuf = '识别'
+        self.datasourcecboxbuf = '中继'
         self.datasourcecboxvalue = 5
         self.opened_uart = [] 
     
@@ -191,7 +191,7 @@ class StatusBar(ttk.Frame):
         Others：
         '''
         self.label.config(text=defformat % args)
-#         self.label.update_idletasks()
+
     
     def setdata(self, defformat, *args):
         '''
@@ -241,7 +241,9 @@ class Application(ttk.Notebook):
         
         self.root = root
         self.menu = root.rootmenu
+
         self.admiddleflag = 0
+
         
         
         
@@ -258,6 +260,8 @@ class Application(ttk.Notebook):
         self.zoomenable = 0
         self.admiddleline = [] #中值曲线
         self.datacanvaswidth = 0 #canvas宽度 最后一个x坐标值
+        self.carnumbind=[]
+        self.stopedcarnum = 0
 
     def updatetab(self, event):
         '''
@@ -302,6 +306,7 @@ class Application(ttk.Notebook):
         Autor:xiaoxiami 2015.5.29
         Others：
         '''
+        self.statusbar = self.root.status
         global root
         self.carnum = root.rootmenu.carstoproot.carnum
 
@@ -333,7 +338,23 @@ class Application(ttk.Notebook):
             
         for i in range(1, bottomnum):
             self.bottomline.append(self.canvas.create_line(everybottomx * i, self.height / 3 * 2, everybottomx * i, self.height, fill='black', width=5))
-                
+        if self.carnum > 20:
+            self.front.configure(size=10)
+        elif self.carnum > 14:
+            self.front.configure(size=20)
+        elif self.carnum > 8:
+            self.front.configure(size=32)
+
+        if self.carnum % 2 == 0:
+            topwidth = self.width / (self.carnum / 2)
+            bottomwidth = topwidth
+            topnum = self.carnum / 2
+#             bottomnum = topnum
+        else:
+            topwidth = self.width / ((self.carnum + 1) / 2)
+            bottomwidth = self.width / ((self.carnum - 1) / 2)
+            topnum = (self.carnum + 1) / 2
+
     def stopcar(self, move):
         '''
         Parameter：
@@ -387,6 +408,48 @@ class Application(ttk.Notebook):
                     self.stoptext.append(self.canvas.create_text((count - topnum) * bottomwidth + bottomwidth / 2, self.height - self.height / 6, text=num + ":\n未停车", font=self.front, fill='green'))        
             count = count + 1 
         
+    def stopcaronce(self,move):
+        count = 0
+        if self.stopedcarnum > self.carnum:
+            self.statusbar.setstatus('车辆数：%s，车位数：%s，无法继续停车',str(self.stopedcarnum),str(self.carnum))
+            return
+        if self.carnum % 2 == 0:
+            topwidth = self.width / (self.carnum / 2)
+            bottomwidth = topwidth
+            topnum = self.carnum / 2
+#             bottomnum = topnum
+        else:
+            topwidth = self.width / ((self.carnum + 1) / 2)
+            bottomwidth = self.width / ((self.carnum - 1) / 2)
+            topnum = (self.carnum + 1) / 2
+
+        count=0
+        buf = move.split(",")
+        self.carmove = []
+        for i in buf:
+            self.carmove.append(i.split("|"))
+
+        for num, act in self.carmove:
+            #如果该节点编号已经显示过，则只更新显示
+            if num in self.carnumbind:
+                if act=="1":
+                    self.canvas.itemconfigure(('text'+str(num)),text=num + ":\n已停车",fill='red')
+                else:
+                    self.canvas.itemconfigure(('text'+str(num)),text=num + ":\n未停车",fill='green')
+            else:
+                self.carnumbind.append(num)
+                if self.stopedcarnum < topnum:
+                    if act == '1':
+                        self.canvas.create_text(self.stopedcarnum * topwidth + topwidth / 2, self.height / 6, text=num + ":\n已停车", font=self.front, fill='red',tag=('text'+str(num)))
+                    else:
+                        self.canvas.create_text(self.stopedcarnum * topwidth + topwidth / 2, self.height / 6, text=num + ":\n未停车", font=self.front, fill='green',tag=('text'+str(num)))
+                else:
+                    if act == '1':
+                        self.canvas.create_text((self.stopedcarnum - topnum) * bottomwidth + bottomwidth / 2, self.height - self.height / 6, text=num + ":\n已停车", font=self.front, fill='red',tag=('text'+str(num)))
+                    else:
+                        self.canvas.create_text((self.stopedcarnum - topnum) * bottomwidth + bottomwidth / 2, self.height - self.height / 6, text=num + ":\n未停车", font=self.front, fill='green',tag=('text'+str(num)))
+                self.stopedcarnum = self.stopedcarnum + 1
+
     def NetStatus(self):
         '''
         Parameter：
@@ -584,7 +647,7 @@ class Application(ttk.Notebook):
         Autor:xiaoxiami 2015.5.29
         Others：
         '''
-        self.statusbar = root.status
+
         
         self.tab4.rowconfigure(0, weight=60)
         self.tab4.rowconfigure(1, weight=1)

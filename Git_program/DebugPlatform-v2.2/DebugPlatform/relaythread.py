@@ -19,6 +19,7 @@ class myThread (threading.Thread):
         self.menu = rootframe.rootmenu
         self.app = self.root.appFrame
         self.carstoproot = self.menu.carstoproot
+        self.uartroot = self.menu.uartform
         self.radiovalue = self.app.radiovalue.get()
         self.data=[]
         self.netreceive = threading.Thread(target = self.netupdate)
@@ -84,8 +85,8 @@ class myThread (threading.Thread):
         a=0
         count = 0
 
-        if self.carstoproot.updatamode == 0:
-            self.netuploadthread.start()
+        # if self.uartroot.datamode == 0:
+        #     self.netuploadthread.start()
 
         while(1):
             while(self.thread_stop == False and self.uart.isOpen()==True):
@@ -94,22 +95,61 @@ class myThread (threading.Thread):
                 except:
                     print "1"
                 if self.currenttab==0:
-                    if ord(self.uart.read(1))==0x7D:
-                        if ord(self.uart.read(1))==0x7E:
+                    if ord(self.uart.read(1)) == 0x7D:
+                        if ord(self.uart.read(1)) == 0x7E:
+                            count+=1
                             length = ord(self.uart.read(1))     #读出这一包要发的节点个数
                             self.notedata = []
                             for i in range(length):
-                                self.notedata.append(ord(self.uart.read(1))<<8|ord(self.uart.read(1)))                  #偶数位为地址
-                                self.notedata.append(ord(self.uart.read(1)))                                            #奇数位为数据
-
-                            if ord(self.uart.read(1))==0x7E:
-                                if ord(self.uart.read(1))==0x7D:
-                                    self.uart.write("o")
+                                self.datatoshow=''
+                                num = ord(self.uart.read(1))<<8|ord(self.uart.read(1))
+                                self.notedata.append(num)                  #偶数位为地址
+                                self.datatoshow = self.datatoshow+str(num)+"|"
+                                status = ord(self.uart.read(1))
+                                self.notedata.append(status)                                            #奇数位为数据
+                                self.datatoshow =  self.datatoshow+str(status)+","
+                            if len(self.notedata) == length*2:
+                                self.uart.write("o")
                             else:
                                 print "uart data error"
                                 self.uart.read(self.uart.inWaiting()) #清空串口缓冲区内容
-                            print "ok"
-                            print self.notedata
+                            self.statusbar.status.setdata('串口数据:%s 计数:%s',self.datatoshow[:-1],count)
+                            if self.stopcar.appFrame.carnum==0:
+                                self.statusbar.status.setstatus('%s',"未配置停车个数")
+                            else:
+                                self.stopcar.appFrame.stopcaronce(self.datatoshow[:-1])
+                                if self.uartroot.datamode == 0:
+                                    start = time.clock()
+                                    try:
+                                        urllib2.urlopen("http://123.57.11.98:8080/mm/set_new?data="+self.datatoshow[:-1],timeout=1)
+                                        urllib2.urlopen("http://123.57.11.98:8080/mm/set?data=" + self.datatoshow[:-1],timeout=1)
+                                    except:
+                                        self.statusbar.status.setstatus('%s',"网络连接超时，请检查网络或关闭数据上传下载功能")
+                                    end  = time.clock()
+                                    time.sleep(0.5)
+                                    self.statusbar.status.setstatus('网络时延:%s',str(end - start))
+                                else:
+                                    if self.threadstartflag == 0:
+                                        self.threadstartflag = 1
+                                        self.netreceive.start()
+                                    comtent=self.content
+                                    self.netdatabuf=''
+                                    try:
+                                        if comtent['err_code'] == 0:
+                                            for items in comtent['data']:
+                                                self.netdatabuf = self.netdatabuf+str(items['name']+'|'+items['value']+',')
+                                            self.stopcar.appFrame.stopcaronce(self.netdatabuf[:-1])
+                                            self.statusbar.status.setstatus('%s',"网络数据:"+self.netdatabuf[:-1])
+                                        else:
+                                            self.statusbar.status.setstatus('%s',"数据返回错误")
+                                    except:
+                                        print "2"
+
+
+
+
+
+
 
                     '''旧版数据接收
                     if ord(self.uart.read(1))==0x7D:

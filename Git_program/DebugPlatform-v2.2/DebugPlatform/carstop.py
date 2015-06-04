@@ -46,11 +46,11 @@ class CarStopRoot(tk.Tk):
         self.carlocatecbox.set(self.menu.carlocatecboxbuf)
         self.carlocatecbox.grid(row=2, column=1,sticky=tk.W)
         
-        tk.Label(self, text="数据上传:").grid(row=3, column=0)
-        self.updatamodecbox = ttk.Combobox(self,width=10)
-        self.updatamodecbox.grid(row=3,column=1)
-        self.updatamodecbox['value']=("开启","不开启")
-        self.updatamodecbox.set(self.menu.updatamodecboxbuf)
+        # tk.Label(self, text="数据上传:").grid(row=3, column=0)
+        # self.updatamodecbox = ttk.Combobox(self,width=10)
+        # self.updatamodecbox.grid(row=3,column=1)
+        # self.updatamodecbox['value']=("开启","不开启")
+        # self.updatamodecbox.set(self.menu.updatamodecboxbuf)
         
         tk.Label(self, text="数据源:").grid(row=4, column=0)
         self.datamodecbox = ttk.Combobox(self,width=10)
@@ -69,7 +69,7 @@ class CarStopRoot(tk.Tk):
         Others：
         '''
         self.carlocatecbox.set(self.menu.carlocatecboxbuf)
-        self.updatamodecbox.set(self.menu.updatamodecboxbuf)
+        # self.updatamodecbox.set(self.menu.updatamodecboxbuf)
         self.datamodecbox.set(self.menu.datamodecboxbuf)
   
     def carstopconfirm(self):
@@ -84,15 +84,15 @@ class CarStopRoot(tk.Tk):
         self.locat = self.carlocatecbox.current()
         self.carnum = int(self.carnumspinbox.get())
         self.datamode = self.datamodecbox.current()
-        self.updatamode = self.updatamodecbox.current()
+        # self.updatamode = self.updatamodecbox.current()
         
         self.menu.carlocatecboxbuf = self.carlocatecbox.get()
         self.menu.datamodecboxbuf = self.datamodecbox.get()
-        self.menu.updatamodecboxbuf = self.updatamodecbox.get()
+        # self.menu.updatamodecboxbuf = self.updatamodecbox.get()
         global root
         self.app.DrawParking()
-        try:
-            self.destroy()
-        except:
-            pass
+        # try:
+        #     self.exit()
+        # except:
+        #     pass
 
