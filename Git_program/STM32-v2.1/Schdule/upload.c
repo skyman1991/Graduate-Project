@@ -104,8 +104,8 @@ void Upload_Data()
         Usart1_PutChar(node.data);
         node = PopUploadNode();
     }
-		Usart1_PutChar(0x7E);
-		Usart1_PutChar(0x7D);
+		//Usart1_PutChar(0x7E);
+		//Usart1_PutChar(0x7D);
 		while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET)
 		{
 				if (time_out++ > 200)

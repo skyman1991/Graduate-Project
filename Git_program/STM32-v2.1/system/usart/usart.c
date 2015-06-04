@@ -116,7 +116,6 @@ void USART1_IRQHandler(void)
 } 
 uint8 USART1_Getchar(void)
 {
-		while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET){} 
 		return USART_ReceiveData(USART1); 
 }
 
