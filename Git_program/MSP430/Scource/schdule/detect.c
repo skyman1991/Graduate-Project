@@ -115,12 +115,10 @@ void IdentifyCar()
             AD_middle_value = AD_middle_value;
             if(abs(Ave_Stable-AD_middle_value)>20)
             {
-                halLedSet(1);
                 Car_Status = 1;
             }
             else
             {
-                halLedClear(1);
                 Car_Status = 0;
             }
             if(Car_Status != car_status_memory)
