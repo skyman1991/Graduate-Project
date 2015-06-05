@@ -18,7 +18,7 @@
 #define    JOINREQUESTACKOK_TYPE    4
 #define    DATA_TYPE                5
 #define    DATAACK_TYPE             6
-
+#define    REJOIN_TYPE              7
 //packet length
 #define    BEACON_PACK_LENGTH            7
 #define    JOINREQUEST_PACK_LENGTH       6  
@@ -26,6 +26,7 @@
 #define    JOINREQUESTACKOK_PACK_LENGTH  6  
 #define    DATA_PACK_LENGTH              9  
 #define    DATAACK_PACK_LENGTH           8
+#define    REJION_PACK_LENGTH            8
 
 
 typedef struct{

@@ -2,7 +2,7 @@
 #                                                                              #
 #      IAR Universal Linker V6.2.0.62                                          #
 #                                                                              #
-#           Link time     =  04/Jun/2015  14:55:33                             #
+#           Link time     =  05/Jun/2015  19:39:26                             #
 #           Target CPU    =  MSP430                                            #
 #           List file     =  F:\Graduate\Git_program\MSP430\Net\Debug\List\net #
 #                            .map                                              #
@@ -198,7 +198,7 @@ DATA16_AN
            P3OUT                   0019 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FBDE - FBFF (0x22 bytes), align: 1
+  Relative segment, address: FB78 - FB99 (0x22 bytes), align: 1
   Segment part 40.            Intra module refs:   A7139_Cal
                                                    A7139_Config
                                                    A7139_GetRSSI
@@ -208,45 +208,45 @@ DATA16_AN
                                                    A7139_WritePageB
            LOCAL                   ADDRESS         
            =====                   =======         
-           A7139_WriteReg          FBDE 
+           A7139_WriteReg          FB78 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FBB8 - FBDD (0x26 bytes), align: 1
+  Relative segment, address: FB0E - FB33 (0x26 bytes), align: 1
   Segment part 39.            Intra module refs:   A7139_Cal
                                                    A7139_Config
                                                    A7139_GetRSSI
                                                    A7139_ReadPageA
            LOCAL                   ADDRESS         
            =====                   =======         
-           A7139_ReadReg           FBB8 
+           A7139_ReadReg           FB0E 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FA6C - FA97 (0x2c bytes), align: 1
+  Relative segment, address: F9EE - FA19 (0x2c bytes), align: 1
   Segment part 38.            Intra module refs:   A7139_Cal
                                                    A7139_Config
                                                    A7139_SetPackLen
            LOCAL                   ADDRESS         
            =====                   =======         
-           A7139_WritePageA        FA6C 
+           A7139_WritePageA        F9EE 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F9B6 - F9E3 (0x2e bytes), align: 1
+  Relative segment, address: F90C - F939 (0x2e bytes), align: 1
   Segment part 37.            Intra module refs:   A7139_Config
                                                    A7139_SetFreq
            LOCAL                   ADDRESS         
            =====                   =======         
-           A7139_WritePageB        F9B6 
+           A7139_WritePageB        F90C 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FB68 - FB8F (0x28 bytes), align: 1
+  Relative segment, address: FAE6 - FB0D (0x28 bytes), align: 1
   Segment part 36.            Intra module refs:   A7139_Cal
            LOCAL                   ADDRESS         
            =====                   =======         
-           A7139_ReadPageA         FB68 
+           A7139_ReadPageA         FAE6 
                calls direct
     -------------------------------------------------------------------------
 DATA16_Z
@@ -257,44 +257,43 @@ DATA16_Z
            look                    0208 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EE70 - EEFB (0x8c bytes), align: 1
+  Relative segment, address: ED9C - EE27 (0x8c bytes), align: 1
   Segment part 35.            Intra module refs:   A7139_Init
            LOCAL                   ADDRESS         
            =====                   =======         
-           A7139_Config            EE70 
+           A7139_Config            ED9C 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FCEC - FD01 (0x16 bytes), align: 1
+  Relative segment, address: FC4C - FC61 (0x16 bytes), align: 1
   Segment part 34.            Intra module refs:   A7139_Cal
                                                    A7139_Config
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Err_State               FCEC 
+           Err_State               FC4C 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E6FA - E7E9 (0xf0 bytes), align: 1
+  Relative segment, address: E584 - E673 (0xf0 bytes), align: 1
   Segment part 33.            Intra module refs:   A7139_Init
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_Cal               E6FA            Scan_Channel (join)
+           A7139_Cal               E584            Scan_Channel (join)
                                                    SortChannel (join)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E7EA - E8C3 (0xda bytes), align: 1
+  Relative segment, address: E674 - E74D (0xda bytes), align: 1
   Segment part 32.            Intra module refs:   A7139_Init
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_SetFreq           E7EA            Scan_Channel (join)
+           A7139_SetFreq           E674            Scan_Channel (join)
                                                    SortChannel (join)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FDC2 - FDCF (0xe bytes), align: 1
+  Relative segment, address: FCF6 - FD03 (0xe bytes), align: 1
   Segment part 30.            Intra module refs:   A7139_DeepSleep
-                                                   A7139_Deep_Wake
                                                    A7139_GetRSSI
                                                    A7139_Init
                                                    A7139_ReadFIFO
@@ -307,75 +306,75 @@ DATA16_Z
                                                    SendPack
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_StrobeCmd         FDC2            Timer_A0 (interrupt)
+           A7139_StrobeCmd         FCF6            Timer_A0 (interrupt)
                                                    port1_ISR (interrupt)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F08A - F107 (0x7e bytes), align: 1
-  Segment part 29.            Intra module refs:   A7139_Deep_Wake
+  Relative segment, address: EFB6 - F033 (0x7e bytes), align: 1
+  Segment part 29.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_Init              F08A            halBoardInit (board)
+           A7139_Init              EFB6            ReJoinHandler (join)
+                                                   halBoardInit (board)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F396 - F3EF (0x5a bytes), align: 1
+  Relative segment, address: F2CE - F327 (0x5a bytes), align: 1
   Segment part 28.            Intra module refs:   A7139_Init
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_SetCID            F396 
+           A7139_SetCID            F2CE 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F8EC - F923 (0x38 bytes), align: 1
+  Relative segment, address: F842 - F879 (0x38 bytes), align: 1
   Segment part 25.            Intra module refs:   A7139_Config
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_SetPackLen        F8EC 
+           A7139_SetPackLen        F842 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F338 - F395 (0x5e bytes), align: 1
+  Relative segment, address: F270 - F2CD (0x5e bytes), align: 1
   Segment part 23.            Intra module refs:   SendPack
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_WriteFIFO         F338 
+           A7139_WriteFIFO         F270 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F6FC - F741 (0x46 bytes), align: 1
+  Relative segment, address: F6D6 - F71B (0x46 bytes), align: 1
   Segment part 22.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_ReadFIFO          F6FC            RecvDataACK (tdma)
+           A7139_ReadFIFO          F6D6            RecvDataACK (tdma)
                                                    Scan_Channel (join)
                                                    port1_ISR (interrupt)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EC0E - ECAB (0x9e bytes), align: 1
+  Relative segment, address: EB46 - EBE3 (0x9e bytes), align: 1
   Segment part 20.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_GetRSSI           EC0E            Scan_Channel (join)
+           A7139_GetRSSI           EB46            Scan_Channel (join)
                                                    SendByCSMA (mac)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE70 - FE71 (0x2 bytes), align: 1
+  Relative segment, address: FD9A - FD9B (0x2 bytes), align: 1
   Segment part 16.            Intra module refs:   A7139_Init
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Correct_State           FE70 
+           Correct_State           FD9A 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FA40 - FA6B (0x2c bytes), align: 1
-  Segment part 13.            Intra module refs:   A7139_Deep_Wake
-                                                   A7139_WakeToRecv
+  Relative segment, address: F996 - F9C1 (0x2c bytes), align: 1
+  Segment part 13.            Intra module refs:   A7139_WakeToRecv
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           RXMode                  FA40            DataSend (tdma)
+           RXMode                  F996            DataSend (tdma)
                                                    Interrupt_Init (interrupt)
                                                    JoinRequestACKHandler (join)
                                                    RecvDataACK (tdma)
@@ -384,56 +383,48 @@ DATA16_Z
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F5DA - F623 (0x4a bytes), align: 1
+  Relative segment, address: F4C8 - F517 (0x50 bytes), align: 1
   Segment part 12.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SendPack                F5DA            DataSend (tdma)
+           SendPack                F4C8            DataSend (tdma)
                                                    JoinRequestACKHandler (join)
                                                    SendByCSMA (mac)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE0C - FE17 (0xc bytes), align: 1
+  Relative segment, address: FD28 - FD33 (0xc bytes), align: 1
   Segment part 11.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_Sleep             FE0C            BeaconHandler (mac)
+           A7139_Sleep             FD28            BeaconHandler (mac)
                                                    CSMADataResend (tdma)
                                                    DataSend (tdma)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE2C - FE33 (0x8 bytes), align: 1
+  Relative segment, address: FD66 - FD6D (0x8 bytes), align: 1
   Segment part 10.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_DeepSleep         FE2C            JoinRequestACKHandler (join)
+           A7139_DeepSleep         FD66            JoinRequestACKHandler (join)
                                                    RecvDataACK (tdma)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FAEE - FB17 (0x2a bytes), align: 1
+  Relative segment, address: FA1A - FA43 (0x2a bytes), align: 1
   Segment part 9.             Intra module refs:   A7139_WakeToRecv
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_Wake              FAEE            DataSend (tdma)
+           A7139_Wake              FA1A            DataSend (tdma)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE4C - FE53 (0x8 bytes), align: 1
+  Relative segment, address: FD6E - FD75 (0x8 bytes), align: 1
   Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           A7139_WakeToRecv        FE4C            Process_Event (ProcessEvent)
-               calls direct
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: FC66 - FC87 (0x22 bytes), align: 1
-  Segment part 7.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           A7139_Deep_Wake         FC66            IdentifyCar (detect)
+           A7139_WakeToRecv        FD6E            Process_Event (ProcessEvent)
                calls direct
 
     *************************************************************************
@@ -516,28 +507,28 @@ DATA16_AN
            P2DIR                   002A 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F6B4 - F6FB (0x48 bytes), align: 1
+  Relative segment, address: F646 - F68D (0x48 bytes), align: 1
   Segment part 11.            Intra module refs:   AD_cal
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SampleChannel           F6B4            CollectData (detect)
-                                                   IdentifyCar (detect)
+           SampleChannel           F646            CollectData (detect)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE44 - FE4B (0x8 bytes), align: 1
+  Relative segment, address: FD76 - FD7D (0x8 bytes), align: 1
   Segment part 10.            Intra module refs:   ADC10_ISR::??INTVEC 10
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ADC10_ISR               FE44 
+           ADC10_ISR               FD76 
                interrupt function
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EA1C - EAC1 (0xa6 bytes), align: 1
+  Relative segment, address: E954 - E9F9 (0xa6 bytes), align: 1
   Segment part 9.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           AD_cal                  EA1C            halBoardInit (board)
+           AD_cal                  E954            ReJoinHandler (join)
+                                                   halBoardInit (board)
                calls direct
     -------------------------------------------------------------------------
 INTVEC
@@ -556,11 +547,11 @@ INTVEC
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: F624 - F66B (0x48 bytes), align: 1
+  Relative segment, address: F5FE - F645 (0x48 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           halBoardInit            F624            main (main)
+           halBoardInit            F5FE            main (main)
                calls direct
 
     *************************************************************************
@@ -571,45 +562,45 @@ INTVEC
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FCBC - FCD3 (0x18 bytes), align: 1
+  Relative segment, address: FC08 - FC1F (0x18 bytes), align: 1
   Segment part 13.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           delayus                 FCBC            CSMABackOff (mac)
+           delayus                 FC08            CSMABackOff (mac)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FDA2 - FDB1 (0x10 bytes), align: 1
+  Relative segment, address: FCC6 - FCD5 (0x10 bytes), align: 1
   Segment part 10.            Intra module refs:   delay_10us
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           delay_1us               FDA2            SPIx_ReadByte (spi)
+           delay_1us               FCC6            SPIx_ReadByte (spi)
                                                    SPIx_ReadWord (spi)
                                                    SPIx_WriteByte (spi)
                                                    SPIx_WriteWord (spi)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F924 - F955 (0x32 bytes), align: 1
+  Relative segment, address: F87A - F8AB (0x32 bytes), align: 1
   Segment part 9.             Intra module refs:   delay_100us
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           delay_10us              F924            A7139_ReadReg (A7139)
+           delay_10us              F87A            A7139_ReadReg (A7139)
                                                    A7139_WriteReg (A7139)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FB40 - FB67 (0x28 bytes), align: 1
+  Relative segment, address: FA96 - FABD (0x28 bytes), align: 1
   Segment part 7.             Intra module refs:   delay_1ms
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           delay_100us             FB40 
+           delay_100us             FA96 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FB90 - FBB7 (0x28 bytes), align: 1
+  Relative segment, address: FABE - FAE5 (0x28 bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           delay_1ms               FB90            SampleChannel (adc)
+           delay_1ms               FABE            SampleChannel (adc)
                                                    Scan_Channel (join)
                calls direct
 
@@ -620,101 +611,66 @@ INTVEC
 
   SEGMENTS IN THE MODULE
   ======================
-DATA16_AN
-  Relative segment, address: 0025 - 0025 (0x1 bytes), align: 0
-  Segment part 1. ROOT        Intra module refs:   DataSend (tdma)
-                                                   IdentifyCar
-                                                   Interrupt_Init (interrupt)
-                                                   JoinRequestACKHandler (join)
-                                                   RecvDataACK (tdma)
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           P1IE                    0025 
-    -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 020A - 020B (0x2 bytes), align: 1
-  Segment part 4.             Intra module refs:   IdentifyCar
+  Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            AD_middle_value         020A            AD_cal (adc)
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 02DE - 02DE (0x1 bytes), align: 0
-  Segment part 5.             Intra module refs:   IdentifyCar
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           Car_Flag                02DE 
-    -------------------------------------------------------------------------
-DATA16_Z
   Relative segment, address: 020C - 0215 (0xa bytes), align: 1
-  Segment part 7.             Intra module refs:   CollectData
-                                                   IdentifyCar
+  Segment part 6.             Intra module refs:   CollectData
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Magnet_Value            020C 
     -------------------------------------------------------------------------
 DATA16_I
   Relative segment, address: 0204 - 0204 (0x1 bytes), align: 0
-  Segment part 8.             Intra module refs:   CollectData
-                                                   IdentifyCar
+  Segment part 7.             Intra module refs:   CollectData
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Start_Collect           0204            Timer_A (interrupt)
     -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 0216 - 0217 (0x2 bytes), align: 1
-  Segment part 10.            Intra module refs:   CollectData
+  Segment part 9.             Intra module refs:   CollectData
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            collect_count           0216 
     -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 0218 - 0219 (0x2 bytes), align: 1
-  Segment part 11.            Intra module refs:   IdentifyCar
+  Segment part 10.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            Ave_Slop                0218            CreatSendData (tdma)
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 021A - 021B (0x2 bytes), align: 1
-  Segment part 12.            Intra module refs:   IdentifyCar
+  Relative segment, address: 02DC - 02DC (0x1 bytes), align: 0
+  Segment part 12.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Ave_Stable              021A 
-    -------------------------------------------------------------------------
-DATA16_Z
-  Relative segment, address: 02DF - 02DF (0x1 bytes), align: 0
-  Segment part 13.            Intra module refs:   IdentifyCar
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           Car_Status              02DF            CreatSendData (tdma)
-    -------------------------------------------------------------------------
-DATA16_Z
-  Relative segment, address: 02E0 - 02E0 (0x1 bytes), align: 0
-  Segment part 14.            Intra module refs:   IdentifyCar
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           car_status_memory       02E0 
+           Car_Status              02DC            CreatSendData (tdma)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F806 - F841 (0x3c bytes), align: 1
-  Segment part 17.
+  Relative segment, address: F75C - F797 (0x3c bytes), align: 1
+  Segment part 16.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CollectData             F806            Process_Event (ProcessEvent)
+           CollectData             F75C            Process_Event (ProcessEvent)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E0EC - E261 (0x176 bytes), align: 1
-  Segment part 15.
+  Relative segment, address: FD9C - FD9D (0x2 bytes), align: 1
+  Segment part 14.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           IdentifyCar             E0EC            Process_Event (ProcessEvent)
-               calls direct
+           IdentifyCar             FD9C            Process_Event (ProcessEvent)
     -------------------------------------------------------------------------
 DATA16_ID
   Relative segment, address: E0C0 - E0C0 (0x1 bytes), align: 0
-  Segment part 9.             Intra module refs:   Start_Collect
+  Segment part 8.             Intra module refs:   Start_Collect
 
     *************************************************************************
 
@@ -756,6 +712,16 @@ DATA16_AN
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            P1IES                   0024 
+    -------------------------------------------------------------------------
+DATA16_AN
+  Relative segment, address: 0025 - 0025 (0x1 bytes), align: 0
+  Segment part 6. ROOT        Intra module refs:   DataSend (tdma)
+                                                   Interrupt_Init (interrupt)
+                                                   JoinRequestACKHandler (join)
+                                                   RecvDataACK (tdma)
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           P1IE                    0025 
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0026 - 0026 (0x1 bytes), align: 0
@@ -825,11 +791,11 @@ DATA16_AN
            P3SEL                   001B 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EF84 - F007 (0x84 bytes), align: 1
+  Relative segment, address: EEB0 - EF33 (0x84 bytes), align: 1
   Segment part 34.            Intra module refs:   GPIO_Init
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           halDigioConfig          EF84            SPI3_Init (spi)
+           halDigioConfig          EEB0            SPI3_Init (spi)
                                                    time_init (timer)
                calls direct
     -------------------------------------------------------------------------
@@ -846,7 +812,6 @@ DATA16_C
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            pinGIO2                 E093            DataSend (tdma)
-                                                   IdentifyCar (detect)
                                                    Interrupt_Init (interrupt)
                                                    JoinRequestACKHandler (join)
                                                    RecvDataACK (tdma)
@@ -874,11 +839,11 @@ DATA16_C
            TIME1                   E0A2 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FB18 - FB3F (0x28 bytes), align: 1
+  Relative segment, address: FA6E - FA95 (0x28 bytes), align: 1
   Segment part 25.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           GPIO_Init               FB18            halBoardInit (board)
+           GPIO_Init               FA6E            halBoardInit (board)
                calls direct
 
     *************************************************************************
@@ -910,25 +875,25 @@ DATA16_AN
            FCTL3                   012C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE34 - FE3B (0x8 bytes), align: 1
+  Relative segment, address: FD5E - FD65 (0x8 bytes), align: 1
   Segment part 14.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           FLASHInit               FE34            halBoardInit (board)
+           FLASHInit               FD5E            halBoardInit (board)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE6C - FE6F (0x4 bytes), align: 1
+  Relative segment, address: FD96 - FD99 (0x4 bytes), align: 1
   Segment part 10.            Intra module refs:   GetPhyAddress
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           FLASH_Readw             FE6C 
+           FLASH_Readw             FD96 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE3C - FE43 (0x8 bytes), align: 1
+  Relative segment, address: FD56 - FD5D (0x8 bytes), align: 1
   Segment part 7.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           GetPhyAddress           FE3C            main (main)
+           GetPhyAddress           FD56            main (main)
                calls direct
 
     *************************************************************************
@@ -965,62 +930,62 @@ DATA16_AN
            TA1CCTL0                0182 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 02E1 - 02E1 (0x1 bytes), align: 0
+  Relative segment, address: 02DD - 02DD (0x1 bytes), align: 0
   Segment part 13.            Intra module refs:   Timer_A0
                                                    port1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Receive_Timeout         02E1 
+           Receive_Timeout         02DD 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 021C - 021F (0x4 bytes), align: 1
+  Relative segment, address: 021A - 021D (0x4 bytes), align: 1
   Segment part 14.            Intra module refs:   Timer_A
                                                    port1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Frame_Time              021C            DataSend (tdma)
+           Frame_Time              021A            DataSend (tdma)
                                                    RecvDataACK (tdma)
                                                    SendByCSMA (mac)
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0220 - 0221 (0x2 bytes), align: 1
+  Relative segment, address: 021E - 021F (0x2 bytes), align: 1
   Segment part 15.            Intra module refs:   Timer_A
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Collect_Time            0220 
+           Collect_Time            021E 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FC00 - FC21 (0x22 bytes), align: 1
+  Relative segment, address: FB34 - FB55 (0x22 bytes), align: 1
   Segment part 22.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Interrupt_Init          FC00            halBoardInit (board)
+           Interrupt_Init          FB34            halBoardInit (board)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ECAC - ED45 (0x9a bytes), align: 1
+  Relative segment, address: E7FE - E8AB (0xae bytes), align: 1
   Segment part 21.            Intra module refs:   port1_ISR::??INTVEC 4
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           port1_ISR               ECAC 
+           port1_ISR               E7FE 
                interrupt function
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F4EE - F53F (0x52 bytes), align: 1
+  Relative segment, address: F3D4 - F425 (0x52 bytes), align: 1
   Segment part 20.            Intra module refs:   Timer_A::??INTVEC 26
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Timer_A                 F4EE 
+           Timer_A                 F3D4 
                interrupt function
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F26E - F2D5 (0x68 bytes), align: 1
+  Relative segment, address: F1A6 - F20D (0x68 bytes), align: 1
   Segment part 19.            Intra module refs:   Timer_A0::??INTVEC 18
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Timer_A0                F26E 
+           Timer_A0                F1A6 
                interrupt function
                calls direct
     -------------------------------------------------------------------------
@@ -1058,7 +1023,7 @@ DATA16_C
                                                    SortChannel
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ChannelList             E04A            A7139_Deep_Wake (A7139)
+           ChannelList             E04A 
     -------------------------------------------------------------------------
 DATA16_I
   Relative segment, address: 0205 - 0205 (0x1 bytes), align: 0
@@ -1075,80 +1040,96 @@ DATA16_I
            EndChannel              0206            main (main)
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 02E2 - 0321 (0x40 bytes), align: 0
-  Segment part 9.             Intra module refs:   Scan_Channel
+  Relative segment, address: 02DE - 031D (0x40 bytes), align: 0
+  Segment part 9.             Intra module refs:   ReJoinHandler
+                                                   Scan_Channel
                                                    SortChannel
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ScanChannel             02E2 
+           ScanChannel             02DE 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0222 - 0229 (0x8 bytes), align: 1
+  Relative segment, address: 0220 - 0227 (0x8 bytes), align: 1
   Segment part 10.            Intra module refs:   CreatJoinRequest
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           JoinRequestPacket       0222 
+           JoinRequestPacket       0220 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0322 - 0327 (0x6 bytes), align: 0
+  Relative segment, address: 031E - 0323 (0x6 bytes), align: 0
   Segment part 11.            Intra module refs:   CreatJoinRequestACKOK
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            JoinRequestACKOKPacket
-                                   0322 
+                                   031E 
+    -------------------------------------------------------------------------
+DATA16_Z
+  Relative segment, address: 0324 - 0324 (0x1 bytes), align: 0
+  Segment part 12.            Intra module refs:   ReJoinHandler
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ReJoinFlag              0324            main (main)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E604 - E6F9 (0xf6 bytes), align: 1
+  Relative segment, address: E48E - E583 (0xf6 bytes), align: 1
+  Segment part 20.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           Scan_Channel            E48E            main (main)
+               calls direct
+    -------------------------------------------------------------------------
+<CODE> 1 (was CODE)
+  Relative segment, address: E74E - E7FD (0xb0 bytes), align: 1
+  Segment part 19.            Intra module refs:   SortChannel
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           bubble                  E74E 
+               calls direct
+    -------------------------------------------------------------------------
+<CODE> 1 (was CODE)
+  Relative segment, address: F328 - F37F (0x58 bytes), align: 1
   Segment part 18.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Scan_Channel            E604            main (main)
+           SortChannel             F328            main (main)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E8C4 - E973 (0xb0 bytes), align: 1
-  Segment part 17.            Intra module refs:   SortChannel
+  Relative segment, address: EF34 - EFB5 (0x82 bytes), align: 1
+  Segment part 17.            Intra module refs:   SendJoinRequest
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           bubble                  E8C4 
-               calls direct
+           CreatJoinRequest        EF34 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F3F0 - F447 (0x58 bytes), align: 1
+  Relative segment, address: FCE6 - FCF5 (0x10 bytes), align: 1
   Segment part 16.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SortChannel             F3F0            main (main)
+           SendJoinRequest         FCE6            Process_Event (ProcessEvent)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F008 - F089 (0x82 bytes), align: 1
-  Segment part 15.            Intra module refs:   SendJoinRequest
+  Relative segment, address: EE28 - EEAF (0x88 bytes), align: 1
+  Segment part 15.            Intra module refs:   JoinRequestACKHandler
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CreatJoinRequest        F008 
+           CreatJoinRequestACKOK   EE28 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FDB2 - FDC1 (0x10 bytes), align: 1
+  Relative segment, address: F12E - F1A5 (0x78 bytes), align: 1
   Segment part 14.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SendJoinRequest         FDB2            Process_Event (ProcessEvent)
+           JoinRequestACKHandler   F12E            Process_Event (ProcessEvent)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EEFC - EF83 (0x88 bytes), align: 1
-  Segment part 13.            Intra module refs:   JoinRequestACKHandler
+  Relative segment, address: ED0E - ED9B (0x8e bytes), align: 1
+  Segment part 13.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CreatJoinRequestACKOK   EEFC 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: F186 - F1FD (0x78 bytes), align: 1
-  Segment part 12.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           JoinRequestACKHandler   F186            Process_Event (ProcessEvent)
+           ReJoinHandler           ED0E            Process_Event (ProcessEvent)
                calls direct
     -------------------------------------------------------------------------
 DATA16_ID
@@ -1167,28 +1148,28 @@ DATA16_ID
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FC88 - FCA1 (0x1a bytes), align: 1
+  Relative segment, address: FBD6 - FBEF (0x1a bytes), align: 1
   Segment part 6.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           halLedSet               FC88            AD_cal (adc)
-                                                   IdentifyCar (detect)
+           halLedSet               FBD6            AD_cal (adc)
+                                                   SendPack (A7139)
                                                    halBoardInit (board)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FD02 - FD17 (0x16 bytes), align: 1
+  Relative segment, address: FC20 - FC35 (0x16 bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           halLedClear             FD02            AD_cal (adc)
-                                                   IdentifyCar (detect)
+           halLedClear             FC20            AD_cal (adc)
+                                                   port1_ISR (interrupt)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FD18 - FD2D (0x16 bytes), align: 1
+  Relative segment, address: FC62 - FC77 (0x16 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           halLedToggle            FD18            Err_State (A7139)
+           halLedToggle            FC62            Err_State (A7139)
 
     *************************************************************************
 
@@ -1205,21 +1186,21 @@ DATA16_AN
            TA0R                    0170 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 022A - 0239 (0x10 bytes), align: 1
+  Relative segment, address: 0228 - 0237 (0x10 bytes), align: 1
   Segment part 3.             Intra module refs:   BeaconHandler
                                                    CSMABackOff
                                                    PackValid
                                                    SendByCSMA
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           EndPointDevice          022A            A7139_Deep_Wake (A7139)
-                                                   CreatJoinRequest (join)
+           EndPointDevice          0228            CreatJoinRequest (join)
                                                    CreatJoinRequestACKOK (join)
                                                    CreatSendData (tdma)
                                                    DataACKHandler (tdma)
                                                    DataSend (tdma)
                                                    JoinRequestACKHandler (join)
                                                    RXMode (A7139)
+                                                   ReJoinHandler (join)
                                                    RecvDataACK (tdma)
                                                    SendPack (A7139)
                                                    SortChannel (join)
@@ -1228,21 +1209,21 @@ DATA16_Z
                                                    port1_ISR (interrupt)
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0328 - 0333 (0xc bytes), align: 0
+  Relative segment, address: 0325 - 0330 (0xc bytes), align: 0
   Segment part 4.             Intra module refs:   PackValid
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           DataRecvBuffer          0328            JoinRequestACKHandler (join)
+           DataRecvBuffer          0325            JoinRequestACKHandler (join)
                                                    Process_Event (ProcessEvent)
                                                    RecvDataACK (tdma)
                                                    port1_ISR (interrupt)
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0334 - 033F (0xc bytes), align: 0
+  Relative segment, address: 0331 - 033C (0xc bytes), align: 0
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           DataSendBuffer          0334            CSMADataResend (tdma)
+           DataSendBuffer          0331            CSMADataResend (tdma)
                                                    CreatJoinRequest (join)
                                                    CreatJoinRequestACKOK (join)
                                                    CreatSendData (tdma)
@@ -1251,65 +1232,58 @@ DATA16_Z
                                                    SendPack (A7139)
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 023A - 023B (0x2 bytes), align: 1
+  Relative segment, address: 0238 - 0239 (0x2 bytes), align: 1
   Segment part 6.             Intra module refs:   CSMABackOff
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CSMA_BackOff_Random     023A 
+           CSMA_BackOff_Random     0238 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0340 - 0340 (0x1 bytes), align: 0
+  Relative segment, address: 033D - 033D (0x1 bytes), align: 0
   Segment part 7.             Intra module refs:   SendByCSMA
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CSMA_BackOff_Count      0340 
-    -------------------------------------------------------------------------
-DATA16_Z
-  Relative segment, address: 0341 - 0341 (0x1 bytes), align: 0
-  Segment part 10.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           Data_Change_Flag        0341            IdentifyCar (detect)
+           CSMA_BackOff_Count      033D 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE00 - FE0B (0xc bytes), align: 1
+  Relative segment, address: FD10 - FD1B (0xc bytes), align: 1
   Segment part 15.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Unpack                  FE00            RecvDataACK (tdma)
+           Unpack                  FD10            RecvDataACK (tdma)
                                                    port1_ISR (interrupt)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F2D6 - F337 (0x62 bytes), align: 1
+  Relative segment, address: F20E - F26F (0x62 bytes), align: 1
   Segment part 14.            Intra module refs:   SendByCSMA
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CSMABackOff             F2D6 
+           CSMABackOff             F20E 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: ED46 - EDDB (0x96 bytes), align: 1
+  Relative segment, address: EBE4 - EC79 (0x96 bytes), align: 1
   Segment part 13.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SendByCSMA              ED46            CSMADataResend (tdma)
+           SendByCSMA              EBE4            CSMADataResend (tdma)
                                                    SendJoinRequest (join)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F448 - F49B (0x54 bytes), align: 1
+  Relative segment, address: F380 - F3D3 (0x54 bytes), align: 1
   Segment part 12.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           BeaconHandler           F448            Process_Event (ProcessEvent)
+           BeaconHandler           F380            Process_Event (ProcessEvent)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F784 - F7C5 (0x42 bytes), align: 1
+  Relative segment, address: F478 - F4C7 (0x50 bytes), align: 1
   Segment part 11.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           PackValid               F784            RecvDataACK (tdma)
+           PackValid               F478            RecvDataACK (tdma)
                                                    port1_ISR (interrupt)
 
     *************************************************************************
@@ -1320,18 +1294,18 @@ DATA16_Z
   SEGMENTS IN THE MODULE
   ======================
 DATA16_Z
-  Relative segment, address: 0342 - 034D (0xc bytes), align: 0
+  Relative segment, address: 033E - 0349 (0xc bytes), align: 0
   Segment part 2.             Intra module refs:   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           normal_test             0342 
+           normal_test             033E 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F742 - F783 (0x42 bytes), align: 1
+  Relative segment, address: F5B2 - F5FD (0x4c bytes), align: 1
   Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           main                    F742            Segment part 18 (?cstart)
+           main                    F5B2            Segment part 18 (?cstart)
                calls direct
 
     *************************************************************************
@@ -1378,11 +1352,11 @@ DATA16_AN
            CALBC1_16MHZ            10F9 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FC22 - FC43 (0x22 bytes), align: 1
+  Relative segment, address: FB9A - FBBB (0x22 bytes), align: 1
   Segment part 9.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           halMcuInit              FC22            halBoardInit (board)
+           halMcuInit              FB9A            halBoardInit (board)
 
     *************************************************************************
 
@@ -1392,43 +1366,44 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 DATA16_Z
-  Relative segment, address: 034E - 0352 (0x5 bytes), align: 0
+  Relative segment, address: 034A - 034E (0x5 bytes), align: 0
   Segment part 2.             Intra module refs:   Init_TQ
                                                    Pop_T
                                                    PostTask
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           TQ                      034E 
+           TQ                      034A 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 023C - 023D (0x2 bytes), align: 1
+  Relative segment, address: 023A - 023B (0x2 bytes), align: 1
   Segment part 3.             Intra module refs:   Init_TQ
                                                    Pop_T
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           current_tsk             023C 
+           current_tsk             023A 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 023E - 023F (0x2 bytes), align: 1
+  Relative segment, address: 023C - 023D (0x2 bytes), align: 1
   Segment part 4.             Intra module refs:   Init_TQ
                                                    PostTask
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           last_tsk                023E 
+           last_tsk                023C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FCA2 - FCBB (0x1a bytes), align: 1
+  Relative segment, address: FBBC - FBD5 (0x1a bytes), align: 1
   Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Init_TQ                 FCA2            halBoardInit (board)
+           Init_TQ                 FBBC            ReJoinHandler (join)
+                                                   halBoardInit (board)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FA98 - FAC3 (0x2c bytes), align: 1
+  Relative segment, address: F9C2 - F9ED (0x2c bytes), align: 1
   Segment part 7.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           PostTask                FA98            BeaconHandler (mac)
+           PostTask                F9C2            BeaconHandler (mac)
                                                    CollectData (detect)
                                                    RecvDataACK (tdma)
                                                    Timer_A (interrupt)
@@ -1436,19 +1411,19 @@ DATA16_Z
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F8B4 - F8EB (0x38 bytes), align: 1
+  Relative segment, address: F7D2 - F809 (0x38 bytes), align: 1
   Segment part 6.             Intra module refs:   Process_Event
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Pop_T                   F8B4 
+           Pop_T                   F7D2 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F1FE - F26D (0x70 bytes), align: 1
+  Relative segment, address: F0B2 - F12D (0x7c bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Process_Event           F1FE            main (main)
+           Process_Event           F0B2            main (main)
                calls direct
 
     *************************************************************************
@@ -1487,35 +1462,35 @@ DATA16_C
            scs                     E0B6 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE5A - FE5F (0x6 bytes), align: 1
+  Relative segment, address: FD84 - FD89 (0x6 bytes), align: 1
   Segment part 16.            Intra module refs:   SPIx_ReadByte
                                                    SPIx_ReadWord
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           MOSI_IN                 FE5A 
+           MOSI_IN                 FD84 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE54 - FE59 (0x6 bytes), align: 1
+  Relative segment, address: FD7E - FD83 (0x6 bytes), align: 1
   Segment part 15.            Intra module refs:   SPIx_ReadByte
                                                    SPIx_ReadWord
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           MOSI_OUT                FE54 
+           MOSI_OUT                FD7E 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FAC4 - FAED (0x2a bytes), align: 1
+  Relative segment, address: FA44 - FA6D (0x2a bytes), align: 1
   Segment part 14.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SPI3_Init               FAC4            halBoardInit (board)
+           SPI3_Init               FA44            halBoardInit (board)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F842 - F87B (0x3a bytes), align: 1
+  Relative segment, address: F798 - F7D1 (0x3a bytes), align: 1
   Segment part 13.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SPIx_WriteByte          F842            A7139_ReadFIFO (A7139)
+           SPIx_WriteByte          F798            A7139_ReadFIFO (A7139)
                                                    A7139_ReadReg (A7139)
                                                    A7139_SetCID (A7139)
                                                    A7139_StrobeCmd (A7139)
@@ -1524,27 +1499,27 @@ DATA16_C
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F7C6 - F805 (0x40 bytes), align: 1
+  Relative segment, address: F71C - F75B (0x40 bytes), align: 1
   Segment part 12.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SPIx_WriteWord          F7C6            A7139_WriteReg (A7139)
+           SPIx_WriteWord          F71C            A7139_WriteReg (A7139)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F540 - F58D (0x4e bytes), align: 1
+  Relative segment, address: F518 - F565 (0x4e bytes), align: 1
   Segment part 11.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SPIx_ReadWord           F540            A7139_ReadReg (A7139)
+           SPIx_ReadWord           F518            A7139_ReadReg (A7139)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F66C - F6B3 (0x48 bytes), align: 1
+  Relative segment, address: F68E - F6D5 (0x48 bytes), align: 1
   Segment part 10.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SPIx_ReadByte           F66C            A7139_ReadFIFO (A7139)
+           SPIx_ReadByte           F68E            A7139_ReadFIFO (A7139)
                calls direct
 
     *************************************************************************
@@ -1558,62 +1533,62 @@ DATA16_C
   SEGMENTS IN THE MODULE
   ======================
 DATA16_Z
-  Relative segment, address: 0240 - 0249 (0xa bytes), align: 1
+  Relative segment, address: 023E - 0247 (0xa bytes), align: 1
   Segment part 4.             Intra module refs:   CreatSendData
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           DataPacket              0240 
+           DataPacket              023E 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 024A - 024D (0x4 bytes), align: 1
+  Relative segment, address: 0248 - 024B (0x4 bytes), align: 1
   Segment part 6.             Intra module refs:   RecvDataACK
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           send_time               024A 
+           send_time               0248 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 024E - 0251 (0x4 bytes), align: 1
+  Relative segment, address: 024C - 024F (0x4 bytes), align: 1
   Segment part 7.             Intra module refs:   RecvDataACK
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           resend_count            024E 
+           resend_count            024C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EAC2 - EB67 (0xa6 bytes), align: 1
+  Relative segment, address: E9FA - EA9F (0xa6 bytes), align: 1
   Segment part 12.            Intra module refs:   DataSend
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           RecvDataACK             EAC2 
+           RecvDataACK             E9FA 
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EB68 - EC0D (0xa6 bytes), align: 1
+  Relative segment, address: EAA0 - EB45 (0xa6 bytes), align: 1
   Segment part 11.            Intra module refs:   DataSend
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CreatSendData           EB68 
+           CreatSendData           EAA0 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EDDC - EE6F (0x94 bytes), align: 1
+  Relative segment, address: EC7A - ED0D (0x94 bytes), align: 1
   Segment part 10.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           DataSend                EDDC            Process_Event (ProcessEvent)
+           DataSend                EC7A            Process_Event (ProcessEvent)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FDDC - FDE7 (0xc bytes), align: 1
+  Relative segment, address: FD40 - FD4B (0xc bytes), align: 1
   Segment part 9.             Intra module refs:   RecvDataACK
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           DataACKHandler          FDDC            Process_Event (ProcessEvent)
+           DataACKHandler          FD40            Process_Event (ProcessEvent)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FD92 - FDA1 (0x10 bytes), align: 1
+  Relative segment, address: FCD6 - FCE5 (0x10 bytes), align: 1
   Segment part 8.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CSMADataResend          FD92            Process_Event (ProcessEvent)
+           CSMADataResend          FCD6            Process_Event (ProcessEvent)
                calls direct
 
     *************************************************************************
@@ -1652,19 +1627,19 @@ DATA16_AN
            TA1CCR0                 0192 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: F9E4 - FA11 (0x2e bytes), align: 1
+  Relative segment, address: F968 - F995 (0x2e bytes), align: 1
   Segment part 17.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           time_init               F9E4            halBoardInit (board)
+           time_init               F968            halBoardInit (board)
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE74 - FE75 (0x2 bytes), align: 1
+  Relative segment, address: FDA0 - FDA1 (0x2 bytes), align: 1
   Segment part 13.            Intra module refs:   watchdog_timer::??INTVEC 20
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           watchdog_timer          FE74 
+           watchdog_timer          FDA0 
                interrupt function
     -------------------------------------------------------------------------
 INTVEC
@@ -1725,11 +1700,11 @@ DATA16_AN
            UCA0TXBUF               0067 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FC44 - FC65 (0x22 bytes), align: 1
+  Relative segment, address: FB56 - FB77 (0x22 bytes), align: 1
   Segment part 16.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           halUartInit             FC44            halBoardInit (board)
+           halUartInit             FB56            halBoardInit (board)
 
     *************************************************************************
 
@@ -1739,11 +1714,11 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FE72 - FE73 (0x2 bytes), align: 1
+  Relative segment, address: FD9E - FD9F (0x2 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __DebugBreak            FE72            __exit (?__exit)
+           __DebugBreak            FD9E            __exit (?__exit)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?__exit
@@ -1751,25 +1726,13 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FD5A - FD6D (0x14 bytes), align: 1
+  Relative segment, address: FC8E - FCA1 (0x14 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __exit                  FD5A            Segment part 6 (?_exit)
+           __exit                  FC8E            Segment part 6 (?_exit)
                                                    _exit (?_exit)
                calls direct
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?abs
-
-  SEGMENTS IN THE MODULE
-  ======================
-<CODE> 1 (was CODE)
-  Relative segment, address: FE18 - FE21 (0xa bytes), align: 1
-  Segment part 2.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           abs                     FE18            IdentifyCar (detect)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?_exit
@@ -1777,14 +1740,14 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FE60, align: 1
+  Relative segment, address: FD8E, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _exit                   FE60            exit (?exit)
+           _exit                   FD8E            exit (?exit)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE60 - FE63 (0x4 bytes), align: 1
+  Relative segment, address: FD8E - FD91 (0x4 bytes), align: 1
   Segment part 6.             Intra module refs:   _exit
 
     -------------------------------------------------------------------------
@@ -1797,7 +1760,7 @@ CSTACK
   Segment part 1.
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0252, align: 1
+  Relative segment, address: 0250, align: 1
   Segment part 2.
     -------------------------------------------------------------------------
 DATA16_I
@@ -1824,21 +1787,19 @@ CSTART
            =====                   =======         ======
            ?cstart_init_zero       E0C8            AD_middle_value (detect)
                                                    Ave_Slop (detect)
-                                                   Ave_Stable (detect)
                                                    CSMA_BackOff_Count (mac)
                                                    CSMA_BackOff_Random (mac)
-                                                   Car_Flag (detect)
                                                    Car_Status (detect)
                                                    Collect_Time (interrupt)
                                                    DataPacket (tdma)
                                                    DataRecvBuffer (mac)
                                                    DataSendBuffer (mac)
-                                                   Data_Change_Flag (mac)
                                                    EndPointDevice (mac)
                                                    Frame_Time (interrupt)
                                                    JoinRequestACKOKPacket (join)
                                                    JoinRequestPacket (join)
                                                    Magnet_Value (detect)
+                                                   ReJoinFlag (join)
                                                    Receive_Timeout (interrupt)
                                                    ScanChannel (join)
                                                    Segment part 10 (?rand)
@@ -1849,7 +1810,6 @@ CSTART
                                                    _Randinit (?rand)
                                                    __iar_Tls_setup__Randinit (?rand)
                                                    __iar_Tls_setup__Randseed (?rand)
-                                                   car_status_memory (detect)
                                                    collect_count (detect)
                                                    current_tsk (ProcessEvent)
                                                    last_tsk (ProcessEvent)
@@ -1894,25 +1854,25 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FDD0 - FDD1 (0x2 bytes), align: 1
+  Relative segment, address: FD34 - FD35 (0x2 bytes), align: 1
   Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Epilogue5              FDD0            A7139_SetFreq (A7139)
+           ?Epilogue5              FD34            A7139_SetFreq (A7139)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FDD2 - FDD3 (0x2 bytes), align: 1
+  Relative segment, address: FD36 - FD37 (0x2 bytes), align: 1
   Segment part 4.             Intra module refs:   ?Epilogue5
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Epilogue4              FDD2 
+           ?Epilogue4              FD36 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FDD4 - FDDB (0x8 bytes), align: 1
+  Relative segment, address: FD38 - FD3F (0x8 bytes), align: 1
   Segment part 5.             Intra module refs:   ?Epilogue4
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Epilogue3              FDD4            Scan_Channel (join)
+           ?Epilogue3              FD38            Scan_Channel (join)
                                                    bubble (join)
 
     -------------------------------------------------------------------------
@@ -1921,11 +1881,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FE64 - FE67 (0x4 bytes), align: 1
+  Relative segment, address: FD92 - FD95 (0x4 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           exit                    FE64            Segment part 18 (?cstart)
+           exit                    FD92            Segment part 18 (?cstart)
                calls direct
 
     -------------------------------------------------------------------------
@@ -1934,11 +1894,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: F108 - F185 (0x7e bytes), align: 1
+  Relative segment, address: F034 - F0B1 (0x7e bytes), align: 1
   Segment part 1.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Cast32uto32f           F108            A7139_SetFreq (A7139)
+           _Cast32uto32f           F034            A7139_SetFreq (A7139)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : _Cast32fto32u
@@ -1946,11 +1906,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FDF4 - FDFF (0xc bytes), align: 1
+  Relative segment, address: FD1C - FD27 (0xc bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Cast32fto32u           FDF4            A7139_SetFreq (A7139)
+           _Cast32fto32u           FD1C            A7139_SetFreq (A7139)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?FLT_Extract
@@ -1958,11 +1918,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: F58E - F5D9 (0x4c bytes), align: 1
+  Relative segment, address: F566 - F5B1 (0x4c bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?FLT_Extract            F58E            _Cast32fto32u (_Cast32fto32u)
+           ?FLT_Extract            F566            _Cast32fto32u (_Cast32fto32u)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?FLT_LT
@@ -1970,11 +1930,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: F49C - F4ED (0x52 bytes), align: 1
+  Relative segment, address: F426 - F477 (0x52 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?FLT_LT                 F49C            _CmpLt32f (_CmpLt32f)
+           ?FLT_LT                 F426            _CmpLt32f (_CmpLt32f)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : _CmpLt32f
@@ -1982,11 +1942,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FE22 - FE2B (0xa bytes), align: 1
+  Relative segment, address: FD4C - FD55 (0xa bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _CmpLt32f               FE22            A7139_SetFreq (A7139)
+           _CmpLt32f               FD4C            A7139_SetFreq (A7139)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : _Mul32f
@@ -1994,11 +1954,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E4F4 - E603 (0x110 bytes), align: 1
+  Relative segment, address: E37E - E48D (0x110 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Mul32f                 E4F4            A7139_SetFreq (A7139)
+           _Mul32f                 E37E            A7139_SetFreq (A7139)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : _Div32f
@@ -2006,11 +1966,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E3C4 - E4F3 (0x130 bytes), align: 1
+  Relative segment, address: E24E - E37D (0x130 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Div32f                 E3C4            A7139_SetFreq (A7139)
+           _Div32f                 E24E            A7139_SetFreq (A7139)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : _Add32f
@@ -2018,18 +1978,18 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E262 - E265 (0x4 bytes), align: 1
+  Relative segment, address: E0EC - E0EF (0x4 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Sub32f                 E262            A7139_SetFreq (A7139)
+           _Sub32f                 E0EC            A7139_SetFreq (A7139)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E266 - E3C3 (0x15e bytes), align: 1
+  Relative segment, address: E0F0 - E24D (0x15e bytes), align: 1
   Segment part 1.             Intra module refs:   _Sub32f
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Add32f                 E266 
+           _Add32f                 E0F0 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?Mul816
@@ -2037,12 +1997,12 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FA12 - FA3F (0x2e bytes), align: 1
+  Relative segment, address: F93A - F967 (0x2e bytes), align: 1
   Segment part 1.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Mul16                  FA12            CSMABackOff (mac)
-           ?Mul16to32u             FA12 
+           ?Mul16                  F93A            CSMABackOff (mac)
+           ?Mul16to32u             F93A 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?Mul32
@@ -2050,11 +2010,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: F956 - F985 (0x30 bytes), align: 1
+  Relative segment, address: F8AC - F8DB (0x30 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?Mul32                  F956            DataSend (tdma)
+           ?Mul32                  F8AC            DataSend (tdma)
                                                    Segment part 13 (?rand)
                                                    SendByCSMA (mac)
 
@@ -2064,13 +2024,12 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FCD4 - FCEB (0x18 bytes), align: 1
+  Relative segment, address: FBF0 - FC07 (0x18 bytes), align: 1
   Segment part 1.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod16u              FCD4            ?DivMod16s (?DivMod816s)
+           ?DivMod16u              FBF0            ?DivMod16s (?DivMod816s)
                                                    CSMABackOff (mac)
-                                                   IdentifyCar (detect)
                                                    Pop_T (ProcessEvent)
                                                    PostTask (ProcessEvent)
 
@@ -2080,12 +2039,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: F986 - F9B5 (0x30 bytes), align: 1
+  Relative segment, address: F8DC - F90B (0x30 bytes), align: 1
   Segment part 1.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod16s              F986            BeaconHandler (mac)
-                                                   IdentifyCar (detect)
+           ?DivMod16s              F8DC            BeaconHandler (mac)
                                                    SendByCSMA (mac)
 
     -------------------------------------------------------------------------
@@ -2094,11 +2052,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: F87C - F8B3 (0x38 bytes), align: 1
+  Relative segment, address: F80A - F841 (0x38 bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod32u              F87C            DataSend (tdma)
+           ?DivMod32u              F80A            DataSend (tdma)
                                                    SendByCSMA (mac)
 
     -------------------------------------------------------------------------
@@ -2107,11 +2065,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FDE8 - FDF3 (0xc bytes), align: 1
+  Relative segment, address: FD04 - FD0F (0xc bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?ShiftLeft16            FDE8            halDigioConfig (digio)
+           ?ShiftLeft16            FD04            halDigioConfig (digio)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?memcpy
@@ -2119,11 +2077,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FD6E - FD7F (0x12 bytes), align: 1
+  Relative segment, address: FCB4 - FCC5 (0x12 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           memcpy                  FD6E            __data16_memcpy (?memzero)
+           memcpy                  FCB4            __data16_memcpy (?memzero)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?memzero
@@ -2131,18 +2089,18 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: FD80 - FD91 (0x12 bytes), align: 1
+  Relative segment, address: FCA2 - FCB3 (0x12 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __data16_memzero        FD80            ?cstart_init_zero (?cstart)
+           __data16_memzero        FCA2            ?cstart_init_zero (?cstart)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FE68 - FE6B (0x4 bytes), align: 1
+  Relative segment, address: FD8A - FD8D (0x4 bytes), align: 1
   Segment part 3.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __data16_memcpy         FE68            ?cstart_init_copy (?cstart)
+           __data16_memcpy         FD8A            ?cstart_init_copy (?cstart)
                calls direct
 
     -------------------------------------------------------------------------
@@ -2151,19 +2109,19 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 DATA16_Z
-  Relative segment, address: 0353 - 0353 (0x1 bytes), align: 0
+  Relative segment, address: 034F - 034F (0x1 bytes), align: 0
   Segment part 2.             Intra module refs:   rand
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _Randinit               0353 
+           _Randinit               034F 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0252 - 0253 (0x2 bytes), align: 1
+  Relative segment, address: 0250 - 0251 (0x2 bytes), align: 1
   Segment part 3.             Intra module refs:   rand
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            __iar_Tls_setup__Randinit
-                                   0252 
+                                   0250 
     -------------------------------------------------------------------------
 DATA16_I
   Relative segment, address: 0200 - 0203 (0x4 bytes), align: 1
@@ -2174,43 +2132,43 @@ DATA16_I
            _Randseed               0200 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0254 - 0255 (0x2 bytes), align: 1
+  Relative segment, address: 0252 - 0253 (0x2 bytes), align: 1
   Segment part 6.             Intra module refs:   rand
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            __iar_Tls_setup__Randseed
-                                   0254 
+                                   0252 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 0256 - 0259 (0x4 bytes), align: 1
+  Relative segment, address: 0254 - 0257 (0x4 bytes), align: 1
   Segment part 7.             Intra module refs:   rand
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 025A - 025B (0x2 bytes), align: 1
+  Relative segment, address: 0258 - 0259 (0x2 bytes), align: 1
   Segment part 8.             Intra module refs:   rand
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 025C - 02DB (0x80 bytes), align: 1
+  Relative segment, address: 025A - 02D9 (0x80 bytes), align: 1
   Segment part 9.             Intra module refs:   rand
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 02DC - 02DD (0x2 bytes), align: 1
+  Relative segment, address: 02DA - 02DB (0x2 bytes), align: 1
   Segment part 10.            Intra module refs:   rand
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E974 - EA1B (0xa8 bytes), align: 1
+  Relative segment, address: E8AC - E953 (0xa8 bytes), align: 1
   Segment part 11.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           rand                    E974            CSMABackOff (mac)
+           rand                    E8AC            CSMABackOff (mac)
                calls direct and indirect
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FD2E - FD43 (0x16 bytes), align: 1
+  Relative segment, address: FC36 - FC4B (0x16 bytes), align: 1
   Segment part 12.            Intra module refs:   rand
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: FD44 - FD59 (0x16 bytes), align: 1
+  Relative segment, address: FC78 - FC8D (0x16 bytes), align: 1
   Segment part 13.            Intra module refs:   Segment part 12
                                                    rand
     -------------------------------------------------------------------------
@@ -2245,13 +2203,13 @@ DATA16_AN                              0003 - 0003               1   rel    0
                                        0192 - 0193               2 
                                        01B0 - 01B5               6 
 DATA16_I                               0200 - 0206               7   rel    1
-DATA16_Z                               0208 - 0353             14C   rel    1
+DATA16_Z                               0208 - 034F             148   rel    1
 CSTACK                                 03B0 - 03FF              50   rel    1
 DATA16_AN                              10F8 - 10F9               2   rel    0
 DATA16_C                               E000 - E0BA              BB   rel    1
 DATA16_ID                              E0BC - E0C2               7   rel    1
 CSTART                                 E0C4 - E0EB              28   rel    1
-<CODE> 1                               E0EC - FE75            1D8A   rel    1
+<CODE> 1                               E0EC - FDA1            1CB6   rel    1
 INTVEC                                 FFE0 - FFFB              1C   com    1
 RESET                                  FFFE - FFFF               2   rel    1
 
@@ -2261,8 +2219,8 @@ RESET                                  FFFE - FFFF               2   rel    1
                 *                                      *
                 ****************************************
 
- 7 632 bytes of CODE  memory
-   419 bytes of DATA  memory (+ 58 absolute )
+ 7 420 bytes of CODE  memory
+   415 bytes of DATA  memory (+ 58 absolute )
    194 bytes of CONST memory
 
 Errors: none

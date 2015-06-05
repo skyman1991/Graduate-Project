@@ -7,6 +7,7 @@ UartDataStruct UploadTQ[UPLOAD_NODE_NUM];
 uint8 current_upload_tsk;
 uint8 last_upload_tsk;
 uint8 Node_Inwaiting = 0;							//队列中节点的数量
+uint16 Pop_Count = 0;
 
 void Clear_Node(UartDataStruct *node)
 {
@@ -96,6 +97,7 @@ void Upload_Data()
     Usart1_PutChar(0x7E);								//包头
 		Usart1_PutChar(last_upload_tsk);			//本次要发送的节点个数
     node = PopUploadNode();
+		Pop_Count = 0;
 		//发送队列内存在的全部节点
     while (!Empty_Node(&node))
     {
@@ -103,6 +105,12 @@ void Upload_Data()
         Usart1_PutChar(node.address);
         Usart1_PutChar(node.data);
         node = PopUploadNode();
+			  Pop_Count++;
+				if(Pop_Count>UPLOAD_NODE_NUM)
+				{
+						//队列已经满了，还没有发出去
+						return;
+				}
     }
 		//Usart1_PutChar(0x7E);
 		//Usart1_PutChar(0x7D);
@@ -125,6 +133,4 @@ void Upload_Data()
 		current_upload_tsk = 0;
 		last_upload_tsk = 0;
 		Node_Inwaiting = 0;
-		
-
 }

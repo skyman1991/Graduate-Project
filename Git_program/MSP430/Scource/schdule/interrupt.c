@@ -49,8 +49,11 @@ __interrupt void port1_ISR(void)
               case DATAACK_TYPE:
                 PostTask(EVENT_DATAACK_HANDLER);
                 break;
+              case REJOIN_TYPE:
+                PostTask(EVENT_REJOIN_HANDLER);
+                break;
             }
-            //halLedClear(1);
+            halLedClear(1);
             TIME1_HIGH;
         }
         

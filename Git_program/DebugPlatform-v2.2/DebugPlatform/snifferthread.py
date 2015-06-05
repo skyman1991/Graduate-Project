@@ -159,6 +159,14 @@ class myThread (threading.Thread):
             "  源编号:"+str(self.data[5])+\
             "  时间戳:"+str(self.data[6]<<8|self.data[7])
             
+    def ReJoin(self):
+        return "ReJoin: 应答:" + str((self.data[1]&0x02)>>1)+\
+            "  目的簇ID:"+str(self.data[2])+\
+            "  目的编号:"+str(self.data[3])+\
+            "  源簇ID:" + str(self.data[4])+\
+            "  源编号:"+str(self.data[5])+\
+            "  目的物理地址:"+str(self.data[6]<<8|self.data[7])
+
     def unpack(self):
         '''
         Parameter：
@@ -187,6 +195,9 @@ class myThread (threading.Thread):
         elif type == 6:
             self.datatype = 6
             return self.DataACK()
+        elif type == 7:
+            self.datatype = 7
+            return self.ReJoin()
         else:
             return 'unkonw type:'+str(self.data)
     

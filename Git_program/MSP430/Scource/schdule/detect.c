@@ -73,67 +73,67 @@ void bubbledata(DataStruct *a,uint16 n)
 }
 void IdentifyCar()
 {
-    int i=0;
-    //当前长度为5，长度变化需要修改此处。
-
-    Ave_Slop = (int)((Magnet_Value[1]-Magnet_Value[0]))+
-               (int)((Magnet_Value[2]-Magnet_Value[0]))/2+
-               (int)((Magnet_Value[3]-Magnet_Value[0]))/3+
-               (int)((Magnet_Value[4]-Magnet_Value[0]))/4;
-    Ave_Slop = Ave_Slop/COLLECT_WIDTH;
-    Start_Collect = 1;
-    if(Ave_Slop>SLOP_THRESHLOD)
-    {
-        Car_Flag = 1;
-        halLedSet(1);
-    }
-    else if(Ave_Slop<-SLOP_THRESHLOD)
-    {
-        Car_Flag = 1;
-        halLedSet(1);
-    }
-    else
-    {
-        halLedClear(1);
-        if(Car_Flag == 1)
-        {
-            Car_Flag = 0;
-
-            delay_ms(1000);
-            Magnet_Value[0] = SampleChannel(0x02);
-            delay_ms(500);
-            Magnet_Value[1] = SampleChannel(0x02);
-            delay_ms(500);
-            Magnet_Value[2] = SampleChannel(0x02);
-            delay_ms(500);
-            Magnet_Value[3] = SampleChannel(0x02);
-            delay_ms(500);
-            Magnet_Value[4] = SampleChannel(0x02);
-            
-            Ave_Stable = (Magnet_Value[0]+Magnet_Value[1]+Magnet_Value[2]+Magnet_Value[3]+Magnet_Value[4])/5;
-            
-            AD_middle_value = AD_middle_value;
-            if(abs(Ave_Stable-AD_middle_value)>20)
-            {
-                Car_Status = 1;
-            }
-            else
-            {
-                Car_Status = 0;
-            }
-            if(Car_Status != car_status_memory)
-            {
-                Data_Change_Flag = 1;
-            }
-            car_status_memory = Car_Status;
-        }
-    }
+//    int i=0;
+//    //当前长度为5，长度变化需要修改此处。
+//
+//    Ave_Slop = (int)((Magnet_Value[1]-Magnet_Value[0]))+
+//               (int)((Magnet_Value[2]-Magnet_Value[0]))/2+
+//               (int)((Magnet_Value[3]-Magnet_Value[0]))/3+
+//               (int)((Magnet_Value[4]-Magnet_Value[0]))/4;
+//    Ave_Slop = Ave_Slop/COLLECT_WIDTH;
+//    Start_Collect = 1;
+//    if(Ave_Slop>SLOP_THRESHLOD)
+//    {
+//        Car_Flag = 1;
+//        //halLedSet(1);
+//    }
+//    else if(Ave_Slop<-SLOP_THRESHLOD)
+//    {
+//        Car_Flag = 1;
+//        //halLedSet(1);
+//    }
+//    else
+//    {
+//        //halLedClear(1);
+//        if(Car_Flag == 1)
+//        {
+//            Car_Flag = 0;
+//
+//            delay_ms(1000);
+//            Magnet_Value[0] = SampleChannel(0x02);
+//            delay_ms(500);
+//            Magnet_Value[1] = SampleChannel(0x02);
+//            delay_ms(500);
+//            Magnet_Value[2] = SampleChannel(0x02);
+//            delay_ms(500);
+//            Magnet_Value[3] = SampleChannel(0x02);
+//            delay_ms(500);
+//            Magnet_Value[4] = SampleChannel(0x02);
+//            
+//            Ave_Stable = (Magnet_Value[0]+Magnet_Value[1]+Magnet_Value[2]+Magnet_Value[3]+Magnet_Value[4])/5;
+//            
+//            AD_middle_value = AD_middle_value;
+//            if(abs(Ave_Stable-AD_middle_value)>20)
+//            {
+//                Car_Status = 1;
+//            }
+//            else
+//            {
+//                Car_Status = 0;
+//            }
+//            if(Car_Status != car_status_memory)
+//            {
+//                Data_Change_Flag = 1;
+//            }
+//            car_status_memory = Car_Status;
+//        }
+//    }
     //非低功耗模式测试先注释掉
-    if(Data_Change_Flag == 1)
-    {
-        Data_Change_Flag = 0;
-        A7139_Deep_Wake();
-        EN_INT;
-    }
+//    if(Data_Change_Flag == 1)
+//    {
+//        Data_Change_Flag = 0;
+//        A7139_Deep_Wake();
+//        EN_INT;
+//    }
         
 }

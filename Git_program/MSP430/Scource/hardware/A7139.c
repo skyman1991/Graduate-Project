@@ -727,7 +727,7 @@ void SendPack()
     delay_us(1);
     A7139_StrobeCmd(CMD_TX);
     while(GIO1);
-    //halLedSet(1);
+    halLedSet(1);
     TIME1_LOW;
 
 }

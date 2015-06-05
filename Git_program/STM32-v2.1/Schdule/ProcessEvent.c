@@ -74,6 +74,10 @@ uint8 Process_Event()
 			case EVENT_UPLOAD_DATA:
 				Upload_Data();
 				break;
+			case EVENT_REJOIN_SEND:
+				SendReJoin();
+				break;
+			
     }
     return current_event;
 }
