@@ -791,6 +791,7 @@ class Application(ttk.Notebook):
         Autor:xiaoxiami 2015.5.29
         Others：选定identify和sensor文件夹下的文件，识别方式不同
         '''
+        self.statusbar = self.root.status
 #         self.datapath = "F:\\Graduate\\Test\\data\\1.txt"
         try:
             self.data_file_object = open(self.datapath)
@@ -874,8 +875,9 @@ class Application(ttk.Notebook):
         self.datacavas.bind("<Button-1>", self.Showdetaildata)
         self.datacavas.bind("<B1-Motion>", self.Showdetaildata)
         self.datacavas.bind("<Control-Key>",self.Zoom)
-        self.datacavas.bind("<KeyPress-Down>",self.minusmiddle)
-        self.datacavas.bind("<KeyPress-Up>",self.addmiddle)
+        #会跟Ctrl+Key冲突
+        # self.datacavas.bind("<KeyPress-Down>",self.minusmiddle)
+        # self.datacavas.bind("<KeyPress-Up>",self.addmiddle)
         self.datacavas.focus_set()
 
     def Zoom(self,event):
@@ -897,6 +899,7 @@ class Application(ttk.Notebook):
             self.datascalevalue = 0
         elif self.datascalevalue>50:
             self.datascalevalue=50
+
 
         self.datascale.set(self.datascalevalue)
         self.datascalelabel.config(text=str(self.datascalevalue))
@@ -999,6 +1002,7 @@ class Application(ttk.Notebook):
         Autor:xiaoxiami 2015.5.29
         Others：两种识别方式，还未完成
         '''
+
         offset = int(self.datascale.get())
         width = 8
         threshold = 100
