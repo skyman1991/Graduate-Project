@@ -1,9 +1,0 @@
-import threading
-import time
-def update():
-	while(1):
-		print "I'm thread"
-		time.sleep(1)
-thread1 = threading.Thread(target = update)
-thread1.setDaemon(True)
-thread1.start()
