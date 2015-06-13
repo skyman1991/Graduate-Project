@@ -91,11 +91,10 @@ uint8 PackValid(void)
 {
     uint16 phy_address = 0;
     phy_address = DataRecvBuffer[2]<<8|DataRecvBuffer[3];
-    if((DataRecvBuffer[2]==EndPointDevice.cluster_id&&
-        DataRecvBuffer[3]==EndPointDevice.cluster_innernum)||
-       (DataRecvBuffer[2]==BROADCAST&&
-        DataRecvBuffer[3]==BROADCAST)||
-       (phy_address==EndPointDevice.pyh_address))
+    if((DataRecvBuffer[2]==EndPointDevice.cluster_id&&DataRecvBuffer[3]==EndPointDevice.cluster_innernum)||
+       (DataRecvBuffer[2]==BROADCAST&&DataRecvBuffer[3]==BROADCAST)||
+       (phy_address==EndPointDevice.pyh_address)||
+       (DataRecvBuffer[2]==EndPointDevice.cluster_id && DataRecvBuffer[3]==BROADCAST))
         return 1;
     else
         return 0;

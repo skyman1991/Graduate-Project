@@ -8,6 +8,7 @@ int main(void)
 {	    
     uint8 i=0;
     __disable_interrupt();
+
     halBoardInit();    
     A7139_SetPackLen(MAX_PACK_LENGTH);
     delay_us(1);

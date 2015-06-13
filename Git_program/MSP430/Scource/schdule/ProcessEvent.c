@@ -87,6 +87,9 @@ uint8 Process_Event()
       case EVENT_IDENTIFY_CAR:
         IdentifyCar();
         break;
+      case EVENT_REJOIN_HANDLER:
+        ReJoinHandler();
+        break;
     }
     return current_event;
 }

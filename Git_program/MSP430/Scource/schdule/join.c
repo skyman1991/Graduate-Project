@@ -6,6 +6,7 @@ uint8 EndChannel = CHANNEL_2;
 ChannelTable ScanChannel[CHANNEL_NUM];
 JoinRequestPacketStruct JoinRequestPacket;
 JoinRequestACKOKPacketStruct JoinRequestACKOKPacket;
+uint8 ReJoinFlag = 0;
 
 uint8 Scan_Channel(uint8 startch,uint8 endch)
 {
@@ -177,5 +178,36 @@ void JoinRequestACKHandler()
     }
     else
     {}
+    
+}
+void ReJoinHandler()
+{
+    __disable_interrupt();
+    A7139_Init(470.001f);
+    Init_TQ();
+    AD_cal(); 
+    EndPointDevice.backup_channel = 0;
+    EndPointDevice.channel = 0;
+    EndPointDevice.cluster_id = 0;
+    EndPointDevice.cluster_innernum = 0;
+    EndPointDevice.connected = 0;
+    EndPointDevice.csma_length = 0;
+    EndPointDevice.data_ack = 0;
+    EndPointDevice.des_cluster_id = 0;
+    EndPointDevice.des_cluster_innernum = 0;
+    EndPointDevice.device_type = 0;
+    EndPointDevice.free_node = 0;
+    EndPointDevice.power = 0;
+    EndPointDevice.pyh_address = 0;
+    EndPointDevice.state = 0;
+    EndPointDevice.time_stamp = 0;
+    for(int i=0;i<CHANNEL_NUM;i++)
+    {
+        ScanChannel[i].channel_free = 0;
+        ScanChannel[i].channel_num = 0;
+        ScanChannel[i].channel_rssi = 0;
+        ScanChannel[i].cluster_id = 0;
+    }
+    ReJoinFlag = 1;
     
 }

@@ -10,7 +10,7 @@ uint8 RecvDataACK()
     {
         if(Frame_Time>send_time+DATAACK_TIMEOUT)             //60为DataACK接收超时，在收到ACK时不会进入if内
         {
-            //TIME1_LOW;
+            TIME1_LOW;
             resend_count++;
             EndPointDevice.data_ack = 0;
             RXMode();
@@ -73,12 +73,12 @@ void CreatSendData()
 }
  
     
-
+uint32 a,b,c;             //防止第一个节点为负
+uint32 before_slot_wake = WAKE_TIME;
+uint8 ack_flag = 0;
 void DataSend(void)
 {
-    uint32 a,b,c;             //防止第一个节点为负
-    uint32 before_slot_wake = WAKE_TIME;
-    uint8 ack_flag = 0;
+    
     //before_slot_wake = (((EndPointDevice.cluster_innernum-1)*SLOT_LENGTH)-WAKE_TIME)+5000;
     //为什么写一起就不对！！！
     a = (EndPointDevice.cluster_innernum-1);
@@ -89,12 +89,12 @@ void DataSend(void)
     DIS_INT;
     while(Frame_Time<=before_slot_wake);
     EndPointDevice.data_ack = 0;
-    //TIME1_LOW;
+    
 
     A7139_Wake();
 
     CreatSendData();
-    //TIME1_HIGH;
+    TIME1_LOW;
     SendPack();
     RXMode();
     ack_flag = RecvDataACK();
@@ -120,7 +120,7 @@ void DataACKHandler()
 {
     EndPointDevice.time_stamp = DataSendBuffer[6]<<8|DataSendBuffer[7];
     EndPointDevice.data_ack = 1;
-    //TIME1_LOW;
+    TIME1_LOW;
 }
 void CSMADataResend()
 {

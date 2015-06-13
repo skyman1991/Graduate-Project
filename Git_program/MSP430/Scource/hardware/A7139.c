@@ -727,15 +727,15 @@ void SendPack()
     delay_us(1);
     A7139_StrobeCmd(CMD_TX);
     while(GIO1);
-    halLedSet(1);
-    TIME1_LOW;
+    //halLedSet(1);
+    //TIME1_LOW;
 
 }
 
 void A7139_Sleep(void)
 {
 #if (SLEEP_EN)
-    TIME1_HIGH;
+    //TIME1_HIGH;
     A7139_StrobeCmd(CMD_SLEEP);
 #endif
 }
@@ -750,7 +750,7 @@ void A7139_Wake(void)
     A7139_StrobeCmd(CMD_STBY);
     delay_us(1);
     A7139_StrobeCmd(CMD_PLL);
-    TIME1_LOW;
+    //TIME1_LOW;
     delay_ms(4);
     
 }

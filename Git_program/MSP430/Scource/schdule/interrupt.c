@@ -2,6 +2,8 @@
 uint8   Receive_Timeout = 0;            //接收超时重启
 uint32  Frame_Time = 0;                 //超帧内计时
 uint16  Collect_Time = 0;               //采集计时
+uint16 Keep_Alive_Count = 0;
+uint16 Keep_Alive_Detect = 0;
 void Interrupt_Init(void)
 {
     P1DIR &=~ pinGIO2.pin_bm;
@@ -53,8 +55,8 @@ __interrupt void port1_ISR(void)
                 PostTask(EVENT_REJOIN_HANDLER);
                 break;
             }
-            halLedClear(1);
-            TIME1_HIGH;
+            //halLedClear(1);
+            //TIME1_HIGH;
         }
         
 
@@ -94,10 +96,12 @@ __interrupt void Timer_A (void)
 __interrupt void Timer_A0(void)
 {
     TA0CCTL0 &= ~CCIFG;
+    
     if(EndPointDevice.power == 0)                       //超时没有接收到重启
     {
+
         Receive_Timeout++;
-        if(Receive_Timeout>10)
+        if(Receive_Timeout>5)
         {
             EndPointDevice.state = CMD_STBY;
             A7139_StrobeCmd(CMD_STBY);
@@ -106,7 +110,17 @@ __interrupt void Timer_A0(void)
             delay_us(1);
             A7139_StrobeCmd(CMD_RX);
             delay_us(1);
-            Receive_Timeout = 0;
+            
+        }
+    }
+    else
+    {
+        Keep_Alive_Count++;
+        if(Keep_Alive_Count == KEEP_ALIVE_PERIOD)
+        {
+            Keep_Alive_Detect = 1;
+            Data_Change_Flag = 1;
+            Keep_Alive_Count = 0;
         }
     }
     //测试低功耗时候使用

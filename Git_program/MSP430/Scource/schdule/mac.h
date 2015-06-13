@@ -3,6 +3,7 @@
 /****************更改beacon周期需要重新调的参数*************/
 #define    BEACON_PERIOD     5000
 #define    BEFOR_BEACON_WAKE BEACON_PERIOD-150   //在beacon前1.5ms时唤醒芯片
+#define    KEEP_ALIVE_PERIOD   20  //单位s
 
 /**********************************************************/
 #define    SLOT_LENGTH     20000     //单位us
@@ -33,6 +34,7 @@
 #define    JOINREQUESTACKOK_TYPE    4
 #define    DATA_TYPE                5
 #define    DATAACK_TYPE             6
+#define    REJOIN_TYPE              7
 
 
 //packet length

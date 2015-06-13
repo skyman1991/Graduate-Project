@@ -65,4 +65,6 @@ extern void SortChannel();
 extern void CreatJoinRequest();
 extern void JoinRequestACKHandler();
 extern void SendJoinRequest();
+extern void ReJoinHandler();
+extern uint8 ReJoinFlag;
 #endif
