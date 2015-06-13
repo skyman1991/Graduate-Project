@@ -34,9 +34,10 @@ uint8 PostBeacon(void)
 
 void SendBeacon(void)
 {
-		
+		TIME2_HIGH;
 	  SendPack();
 		LED1_REV();
 		RXMode();
+		TIME2_LOW;
 
 }

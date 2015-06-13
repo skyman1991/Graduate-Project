@@ -2,7 +2,7 @@
 JoinRequestACKPacketStruct JoinRequestACKPacket;
 ReJoinPacketStruct ReJoinPacket;
 uint32 new_node_pyh_address = 0;
-uint8 current_node_num = 0;
+
 void CreateJoinRequectACK(uint8 joinstatus,uint8 accept,uint8 id,uint32 des_address)
 {
 		JoinRequestACKPacket.length = JOINREQUESTACK_PACK_LENGTH;
@@ -52,13 +52,13 @@ void JoinRequestHandler()
 	  uint8 accept = 0;
 		//uint8 current_node_num = RootDevice.connected_devece_count;
 		new_node_pyh_address = DataRecvBuffer[4]<<8|DataRecvBuffer[5];
-	  for(i=0;i<RootDevice.connected_devece_count;i++)
+	  for(i=0;i<RootDevice.connected_devece_count+1;i++)
 		{
 				if(RootDevice.endpoint_device[i].pyh_address == new_node_pyh_address)	//该设备已经入网
 				{
 						joinstatus = 1;
 						accept = 1;
-						CreateJoinRequectACK(joinstatus,accept,i+1,new_node_pyh_address);
+						CreateJoinRequectACK(joinstatus,accept,i,new_node_pyh_address);
 						SendPack();
 						RXMode();
 						return ;
@@ -67,15 +67,15 @@ void JoinRequestHandler()
 		if(RootDevice.connected_devece_count<=MAX_NODE_NUM)		//还有资源，可以加入
 		{
 				accept = 1;
-			  current_node_num++;
-				CreateJoinRequectACK(joinstatus,accept,current_node_num,new_node_pyh_address);
+				RootDevice.connected_devece_count++;
+				RootDevice.endpoint_device[RootDevice.connected_devece_count].pyh_address = new_node_pyh_address;
+				CreateJoinRequectACK(joinstatus,accept,RootDevice.connected_devece_count,new_node_pyh_address);
 				SendPack();
 				RXMode();
 		}
 }
 void JoinRequestACKOKHandler()
 {
-		RootDevice.connected_devece_count++;
 		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_id = DataRecvBuffer[4];
 		RootDevice.endpoint_device[RootDevice.connected_devece_count].cluster_innernum = DataRecvBuffer[5];
 	  RootDevice.endpoint_device[RootDevice.connected_devece_count].pyh_address = new_node_pyh_address;

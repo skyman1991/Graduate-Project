@@ -114,20 +114,24 @@ void Upload_Data()
     }
 		//Usart1_PutChar(0x7E);
 		//Usart1_PutChar(0x7D);
-		while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET)
+		if(Power_Mode == 1)			//只发送一次时要求确认
 		{
-				if (time_out++ > 200)
+				while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET)
 				{
-						delay_us(10);
+						if (time_out++ > 200)
+						{
+								delay_us(10);
+								current_upload_tsk = 0;				//如果没有收到确认，发送指针置头，重新发送
+								return;
+						}
+				}
+				if(USART1_Getchar()!='o')					//确认数据位'o'
+				{
 						current_upload_tsk = 0;				//如果没有收到确认，发送指针置头，重新发送
 						return;
 				}
 		}
-		if(USART1_Getchar()!='o')					//确认数据位'o'
-		{
-				current_upload_tsk = 0;				//如果没有收到确认，发送指针置头，重新发送
-				return;
-		}
+		
 		//若发送成功，清空队列中节点信息，插入和发送指针置头
 		Clear_Buffer(current_memory,last_memory);
 		current_upload_tsk = 0;

@@ -217,17 +217,17 @@
         <Ww>
           <count>10</count>
           <WinNumber>1</WinNumber>
-          <ItemText>node</ItemText>
+          <ItemText>Node_Inwaiting ,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rec</ItemText>
+          <ItemText>\\SPI\../Schdule/device.c\RootDevice</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>1</WinNumber>
-          <ItemText>buda</ItemText>
+          <ItemText>time_out,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <DebugFlag>
@@ -421,8 +421,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>378</TopLine>
-      <CurrentLine>383</CurrentLine>
+      <TopLine>743</TopLine>
+      <CurrentLine>768</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\hardware\A7139\A7139.c</PathWithFileName>
       <FilenameWithoutPath>A7139.c</FilenameWithoutPath>
@@ -475,10 +475,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>23</ColumnNumber>
+      <ColumnNumber>5</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>40</TopLine>
-      <CurrentLine>57</CurrentLine>
+      <TopLine>109</TopLine>
+      <CurrentLine>152</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\hardware\interrupt\interrupt.c</PathWithFileName>
       <FilenameWithoutPath>interrupt.c</FilenameWithoutPath>
@@ -540,8 +540,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>116</TopLine>
-      <CurrentLine>121</CurrentLine>
+      <TopLine>136</TopLine>
+      <CurrentLine>141</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SYSTEM\delay\delay.c</PathWithFileName>
       <FilenameWithoutPath>delay.c</FilenameWithoutPath>
@@ -566,10 +566,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>54</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>44</TopLine>
-      <CurrentLine>45</CurrentLine>
+      <TopLine>94</TopLine>
+      <CurrentLine>110</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SYSTEM\usart\usart.c</PathWithFileName>
       <FilenameWithoutPath>usart.c</FilenameWithoutPath>
@@ -617,7 +617,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>146</TopLine>
+      <TopLine>143</TopLine>
       <CurrentLine>151</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\CORE\startup_stm32f10x_hd.s</PathWithFileName>
@@ -664,10 +664,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>1</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>293</TopLine>
+      <CurrentLine>298</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\STM32F10x_FWLib\src\stm32f10x_gpio.c</PathWithFileName>
       <FilenameWithoutPath>stm32f10x_gpio.c</FilenameWithoutPath>
@@ -708,8 +708,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>866</TopLine>
-      <CurrentLine>875</CurrentLine>
+      <TopLine>890</TopLine>
+      <CurrentLine>895</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\STM32F10x_FWLib\src\stm32f10x_usart.c</PathWithFileName>
       <FilenameWithoutPath>stm32f10x_usart.c</FilenameWithoutPath>
@@ -757,8 +757,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>2</TopLine>
-      <CurrentLine>8</CurrentLine>
+      <TopLine>4</TopLine>
+      <CurrentLine>18</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -776,7 +776,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>22</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>15</TopLine>
       <CurrentLine>29</CurrentLine>
@@ -806,8 +806,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>52</TopLine>
-      <CurrentLine>60</CurrentLine>
+      <TopLine>55</TopLine>
+      <CurrentLine>57</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Schdule\ProcessEvent.c</PathWithFileName>
       <FilenameWithoutPath>ProcessEvent.c</FilenameWithoutPath>
@@ -832,10 +832,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>101</ColumnNumber>
+      <ColumnNumber>75</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>53</TopLine>
-      <CurrentLine>80</CurrentLine>
+      <TopLine>56</TopLine>
+      <CurrentLine>61</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Schdule\join.c</PathWithFileName>
       <FilenameWithoutPath>join.c</FilenameWithoutPath>
@@ -860,10 +860,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>35</ColumnNumber>
+      <ColumnNumber>20</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>15</CurrentLine>
+      <CurrentLine>6</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Schdule\device.c</PathWithFileName>
       <FilenameWithoutPath>device.c</FilenameWithoutPath>
@@ -888,10 +888,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>8</ColumnNumber>
+      <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>27</TopLine>
-      <CurrentLine>47</CurrentLine>
+      <TopLine>26</TopLine>
+      <CurrentLine>45</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Schdule\tdma.c</PathWithFileName>
       <FilenameWithoutPath>tdma.c</FilenameWithoutPath>
@@ -916,10 +916,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>33</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>94</TopLine>
-      <CurrentLine>123</CurrentLine>
+      <TopLine>64</TopLine>
+      <CurrentLine>65</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Schdule\upload.c</PathWithFileName>
       <FilenameWithoutPath>upload.c</FilenameWithoutPath>

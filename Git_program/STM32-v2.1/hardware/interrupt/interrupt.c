@@ -58,11 +58,22 @@ void Interrupt_Init(void)
 * Output         : None
 * Return         : None
 *******************************************************************************/
+uint8 TIM3_Count = 0;
 void TIM3_IRQHandler(void)   //500ms
 {
     TIM_ClearITPendingBit(TIM3, TIM_IT_Update  );  //清除TIMx更新中断标志 
-    PostBeacon();
-		PostTask(EVENT_UPLOAD_DATA);
+    TIM3_Count++;
+		if(TIM3_Count<5)
+		{	
+				PostTask(EVENT_REJOIN_SEND);
+		}
+		else
+		{
+				TIM3_Count = 10;
+				PostBeacon();
+				PostTask(EVENT_UPLOAD_DATA);
+		}
+		
 		Frame_Time = 0;
 		//BeaconSendFlag = 1;
 		time_out++;
@@ -131,7 +142,7 @@ uint8 mode = 0;
 void EXTI3_IRQHandler(void)
 {
 		EXTI->PR |= EXTI_Line3;
-		if(mode==254)
+		/*if(mode==254)
 			mode = 0;
 		mode++;
 		if(mode%2==0)
@@ -143,7 +154,7 @@ void EXTI3_IRQHandler(void)
 		{
 				Power_Mode = 0;
 				LED5_OFF();
-		}
+		}*/
 			
 }
 void DisableInterrupt()

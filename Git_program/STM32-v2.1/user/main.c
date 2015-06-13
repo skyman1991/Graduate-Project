@@ -11,8 +11,8 @@ int main(void)
 		RootDevice.cluster_id = ROOT;
 		RootDevice.cluster_innernum = 0;
 		RootDevice.free_node = MAX_NODE_NUM;
-
 		EnableInterrupt();
+		PostTask(EVENT_REJOIN_SEND);
 	  for(;;)
 		{
 				Process_Event();

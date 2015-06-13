@@ -57,6 +57,7 @@ uint8 Process_Event()
 {
     uint8 current_event;
     current_event = Pop_T();
+
     switch(current_event)
     {
 			case EVENT_BEACON_SEND:
